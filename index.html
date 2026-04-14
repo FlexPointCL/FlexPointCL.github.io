@@ -353,6 +353,7 @@
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 1.25rem;
+            overflow: visible;
         }
 
         .service-card {
@@ -360,14 +361,19 @@
             border: 1px solid var(--borde);
             border-radius: 1rem;
             padding: 2rem;
-            transition: background 0.2s, border-color 0.2s, transform 0.2s;
+            transition: transform 0.28s cubic-bezier(0.34, 1.3, 0.64, 1), box-shadow 0.28s ease, border-color 0.28s ease, background 0.2s;
             cursor: default;
+            position: relative;
+            z-index: 1;
+            will-change: transform;
         }
 
         .service-card:hover {
-            background: #1a1a1a;
-            border-color: #444;
-            transform: translateY(-3px);
+            transform: scale(1.7) translateZ(0);
+            z-index: 300;
+            background: #191919;
+            border-color: rgba(0, 255, 136, 0.35);
+            box-shadow: 0 0 60px rgba(0,255,136,0.18), 0 32px 80px rgba(0,0,0,0.8);
         }
 
         .service-icon {
@@ -494,30 +500,55 @@
             font-weight: 500;
         }
 
-        /* ─── CTA / CONTACTO ─── */
+        /* ─── SECTION TYPEWRITER HEADLINES ─── */
+        .tw-section {
+            visibility: hidden;
+        }
+        .tw-section.tw-done {
+            visibility: visible;
+        }
+
+        /* ─── CTA / CONTACTO — BRAND HERO ─── */
         #contacto {
             border-top: 1px solid var(--borde);
             text-align: center;
+            padding: 6rem 2rem;
         }
 
-        .cta-box {
-            background: var(--card);
-            border: 1px solid var(--borde);
-            border-radius: 1.5rem;
-            padding: 5.5rem 3rem;
-            max-width: 860px;
+        .brand-hero {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2rem;
+            max-width: 900px;
             margin: 0 auto;
         }
 
-        .cta-box .section-title {
-            margin-bottom: 1rem;
-            font-size: clamp(2rem, 5vw, 3rem);
+        .brand-logo-giant {
+            width: min(600px, 85vw);
+            height: auto;
+            filter: drop-shadow(0 0 60px rgba(0,255,136,0.25)) drop-shadow(0 0 120px rgba(0,255,136,0.12));
+            animation: logoPulse 4s ease-in-out infinite;
         }
 
-        .cta-box .section-desc {
-            margin: 0 auto 2.5rem;
+        @keyframes logoPulse {
+            0%, 100% { filter: drop-shadow(0 0 40px rgba(0,255,136,0.2)) drop-shadow(0 0 80px rgba(0,255,136,0.1)); }
+            50%       { filter: drop-shadow(0 0 80px rgba(0,255,136,0.45)) drop-shadow(0 0 160px rgba(0,255,136,0.2)); }
+        }
+
+        .brand-tagline {
+            font-size: clamp(2rem, 5vw, 3.2rem);
+            font-weight: 800;
+            line-height: 1.1;
+            color: var(--texto);
+            letter-spacing: -0.02em;
+        }
+
+        .brand-desc {
             font-size: 1.1rem;
+            color: var(--suave);
             max-width: 560px;
+            line-height: 1.75;
         }
 
         .contact-options {
@@ -944,10 +975,10 @@
     </section>
 
     <!-- SERVICIOS -->
-    <section id="servicios">
+    <section id="servicios" style="overflow:visible;">
         <div class="section-header">
             <div class="section-label">Servicios</div>
-            <h2 class="section-title">Todo lo que tu empresa necesita,<br>en un solo ecosistema</h2>
+            <h2 class="section-title tw-section" data-tw="Construido para empresas que no se conforman.">Construido para empresas que no se conforman.</h2>
             <p class="section-desc">Desde automatización hasta inteligencia de datos, diseñamos soluciones a medida que eliminan la fricción y aceleran tus resultados.</p>
         </div>
 
@@ -1040,7 +1071,7 @@
     <section id="testimonios">
         <div class="section-header">
             <div class="section-label">Clientes</div>
-            <h2 class="section-title">Lo que dicen quienes<br>ya dieron el paso</h2>
+            <h2 class="section-title tw-section" data-tw="Lo que dicen quienes ya dieron el paso.">Lo que dicen quienes ya dieron el paso.</h2>
             <p class="section-desc">Empresas reales, resultados concretos. Sin adornos.</p>
         </div>
 
@@ -1049,12 +1080,12 @@
                 <div class="testimonio-stars">
                     <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
                 </div>
-                <p class="testimonio-quote">Teníamos un equipo de 3 personas respondiendo consultas por WhatsApp todo el día. FlexPoint nos implementó un agente IA y en dos semanas ese tiempo se liberó casi por completo. Hoy ese equipo hace trabajo real.</p>
+                <p class="testimonio-quote">Teníamos un equipo de 3 personas respondiendo consultas por WhatsApp todo el día. Implementamos el agente IA y en dos semanas ese tiempo se liberó casi por completo. Hoy ese equipo hace trabajo real.</p>
                 <div class="testimonio-author">
-                    <div class="testimonio-avatar" style="background: #00ff88;">MJ</div>
+                    <div class="testimonio-avatar" style="background: #00ff88;">V</div>
                     <div class="testimonio-info">
-                        <strong>María José Carrasco</strong>
-                        <span>Gerente General · Distribuidora Norte</span>
+                        <strong>Gerente General</strong>
+                        <span>Empresa · Consumo Masivo</span>
                     </div>
                 </div>
             </div>
@@ -1065,10 +1096,10 @@
                 </div>
                 <p class="testimonio-quote">Les mostramos la calculadora de ROI a nuestros prospectos antes de la reunión. La conversación cambió completamente — ya no llegamos a explicar qué hacemos, llegamos a hablar de implementación.</p>
                 <div class="testimonio-author">
-                    <div class="testimonio-avatar" style="background: #00cc6a;">RF</div>
+                    <div class="testimonio-avatar" style="background: #00cc6a;">A</div>
                     <div class="testimonio-info">
-                        <strong>Rodrigo Fuentes</strong>
-                        <span>Director Comercial · Grupo Fuentes & Asociados</span>
+                        <strong>Director Comercial</strong>
+                        <span>Empresa · Retail Nacional</span>
                     </div>
                 </div>
             </div>
@@ -1079,10 +1110,10 @@
                 </div>
                 <p class="testimonio-quote">Nuestros reportes tardaban 3 días en generarse. Ahora el dashboard se actualiza solo cada hora. El equipo directivo toma decisiones el mismo día, no la siguiente semana.</p>
                 <div class="testimonio-author">
-                    <div class="testimonio-avatar" style="background: #00e07a;">CV</div>
+                    <div class="testimonio-avatar" style="background: #00e07a;">C</div>
                     <div class="testimonio-info">
-                        <strong>Catalina Vidal</strong>
-                        <span>CEO · Retail Concept SpA</span>
+                        <strong>CEO</strong>
+                        <span>Empresa · Industria Logística</span>
                     </div>
                 </div>
             </div>
@@ -1113,10 +1144,11 @@
 
     <!-- CONTACTO -->
     <section id="contacto">
-        <div class="cta-box">
-            <div class="section-label">Conversemos</div>
-            <h2 class="section-title">Listo para crecer<br>más allá de los límites</h2>
-            <p class="section-desc">Cuéntanos dónde está el cuello de botella en tu operación y te mostramos cómo FlexPoint puede resolverlo.</p>
+        <div class="brand-hero">
+            <img src="LOGOotro.png" alt="FlexPoint" class="brand-logo-giant">
+            <div class="section-label" style="margin-bottom:0;">Conversemos</div>
+            <div class="brand-tagline">Listo para crecer<br>más allá de los límites</div>
+            <p class="brand-desc">Cuéntanos dónde está el cuello de botella en tu operación y te mostramos cómo FlexPoint puede resolverlo.</p>
             <div class="contact-options">
                 <button onclick="openCalendly()" class="btn-primary">📅 Agendar reunión gratis</button>
                 <a href="https://wa.me/56985835922?text=Hola%20FlexPoint,%20quiero%20saber%20más%20sobre%20sus%20servicios." target="_blank" rel="noopener noreferrer" class="btn-secondary">WhatsApp</a>
@@ -1276,7 +1308,10 @@
         function openCalendly() {
             const modal = document.getElementById('calendlyModal');
             const frame = document.getElementById('calendlyFrame');
-            if (!frame.src) frame.src = CALENDLY_URL; // carga lazy
+            if (!frame.getAttribute('data-loaded')) {
+                frame.src = CALENDLY_URL;
+                frame.setAttribute('data-loaded', '1');
+            }
             modal.classList.add('open');
             document.body.style.overflow = 'hidden';
         }
@@ -1453,23 +1488,55 @@
                 const br = document.createElement('br');
                 h1.insertBefore(br, cursor);
                 const s2 = document.createElement('span');
-                s2.style.color = '#00ff88';
+                // LINE2 en blanco, igual que el resto del título
                 h1.insertBefore(s2, cursor);
                 let j = 0;
                 function typeLine2() {
                     if (j < LINE2.length) {
                         s2.textContent += LINE2[j++];
                         setTimeout(typeLine2, SPEED);
-                    } else {
-                        // dejar cursor 2.5 s y sacarlo
-                        setTimeout(() => cursor.remove(), 2500);
                     }
+                    // cursor queda parpadeando indefinidamente
                 }
                 typeLine2();
             }
 
             // Iniciar con breve retardo (esperar fadeUp del hero)
             setTimeout(typeLine1, 500);
+        })();
+
+        /* ─── SECTION TYPEWRITER TITLES ─── */
+        (function () {
+            const SPEED = 38;
+            function twSection(el) {
+                const text = el.dataset.tw || el.textContent;
+                el.textContent = '';
+                el.classList.add('tw-done');
+                const cur = document.createElement('span');
+                cur.className = 'tw-cursor';
+                cur.style.height = '0.8em';
+                el.appendChild(cur);
+                let i = 0;
+                function type() {
+                    if (i < text.length) {
+                        cur.insertAdjacentText('beforebegin', text[i++]);
+                        setTimeout(type, SPEED);
+                    } else {
+                        setTimeout(() => cur.remove(), 1800);
+                    }
+                }
+                type();
+            }
+            const obs = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting && !entry.target.dataset.twDone) {
+                        entry.target.dataset.twDone = '1';
+                        obs.unobserve(entry.target);
+                        twSection(entry.target);
+                    }
+                });
+            }, { threshold: 0.4 });
+            document.querySelectorAll('.tw-section').forEach(el => obs.observe(el));
         })();
     </script>
 </body>
