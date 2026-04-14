@@ -177,6 +177,12 @@
             width: auto;
             max-width: 480px;
             margin-bottom: 1.25rem;
+            animation: heroGlow 4s ease-in-out infinite;
+        }
+
+        @keyframes heroGlow {
+            0%, 100% { filter: drop-shadow(0 0 30px rgba(0,255,136,0.25)) drop-shadow(0 0 60px rgba(0,255,136,0.1)); }
+            50%       { filter: drop-shadow(0 0 70px rgba(0,255,136,0.55)) drop-shadow(0 0 140px rgba(0,255,136,0.25)); }
         }
 
         .hero-headline {
@@ -190,7 +196,7 @@
         }
 
         .hero-headline span {
-            color: var(--verde);
+            color: var(--texto);
         }
 
         /* cursor parpadeante typewriter */
@@ -882,7 +888,7 @@
         <div class="hero-content">
             <div class="hero-badge">Soluciones Empresariales Inteligentes</div>
             <img src="LOGOotro.png" alt="FlexPoint" class="hero-logo">
-            <h1 class="hero-headline">Gestión inteligente.<br><span>Sin límites.</span></h1>
+            <h1 class="hero-headline">Gestión inteligente sin límites!</h1>
             <p class="hero-sub">
                 FlexPoint es el ecosistema de soluciones digitales que transforma la forma en que tu empresa opera, decide y crece — con tecnología real, no promesas.
             </p>
@@ -1065,7 +1071,6 @@
     <!-- CONTACTO -->
     <section id="contacto">
         <div class="brand-hero">
-            <img src="LOGOotro.png" alt="FlexPoint" class="brand-logo-giant">
             <div class="section-label" style="margin-bottom:0;">Conversemos</div>
             <div class="brand-tagline tw-section" data-tw="Listo para crecer más allá de los límites">Listo para crecer más allá de los límites</div>
             <p class="brand-desc">Cuéntanos dónde está el cuello de botella en tu operación y te mostramos cómo FlexPoint puede resolverlo.</p>
@@ -1343,52 +1348,30 @@
         (function () {
             const h1    = document.querySelector('.hero-headline');
             if (!h1) return;
-            const LINE1 = 'Gestión inteligente.';
-            const LINE2 = 'Sin límites.';
-            const SPEED = 52; // ms por carácter
+            const TEXT  = 'Gestión inteligente sin límites!';
+            const SPEED = 52;
 
             h1.style.visibility = 'visible';
-            h1.innerHTML = ''; // limpiar contenido estático
+            h1.innerHTML = '';
 
-            // Cursor parpadeante
+            const wrap = document.createElement('span');
+            wrap.style.color = '#e0e0e0';
             const cursor = document.createElement('span');
             cursor.className = 'tw-cursor';
             cursor.style.height = '0.85em';
-
-            const s1 = document.createElement('span');
-            h1.appendChild(s1);
+            h1.appendChild(wrap);
             h1.appendChild(cursor);
 
             let i = 0;
-            function typeLine1() {
-                if (i < LINE1.length) {
-                    s1.textContent += LINE1[i++];
-                    setTimeout(typeLine1, SPEED);
-                } else {
-                    // pausa, luego línea 2
-                    setTimeout(startLine2, 320);
+            function type() {
+                if (i < TEXT.length) {
+                    wrap.textContent += TEXT[i++];
+                    setTimeout(type, SPEED);
                 }
+                // cursor queda parpadeando indefinidamente
             }
 
-            function startLine2() {
-                const br = document.createElement('br');
-                h1.insertBefore(br, cursor);
-                const s2 = document.createElement('span');
-                // LINE2 en blanco, igual que el resto del título
-                h1.insertBefore(s2, cursor);
-                let j = 0;
-                function typeLine2() {
-                    if (j < LINE2.length) {
-                        s2.textContent += LINE2[j++];
-                        setTimeout(typeLine2, SPEED);
-                    }
-                    // cursor queda parpadeando indefinidamente
-                }
-                typeLine2();
-            }
-
-            // Iniciar con breve retardo (esperar fadeUp del hero)
-            setTimeout(typeLine1, 500);
+            setTimeout(type, 500);
         })();
 
         /* ─── SECTION TYPEWRITER TITLES ─── */
