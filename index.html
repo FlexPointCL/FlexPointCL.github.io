@@ -513,19 +513,21 @@
             border-top: 1px solid var(--borde);
             text-align: center;
             padding: 6rem 2rem;
+            max-width: none;
+            overflow: visible;
         }
 
         .brand-hero {
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 2rem;
-            max-width: 900px;
+            gap: 1.5rem;
+            max-width: 1300px;
             margin: 0 auto;
         }
 
         .brand-logo-giant {
-            width: min(600px, 85vw);
+            width: min(1100px, 95vw);
             height: auto;
             filter: drop-shadow(0 0 60px rgba(0,255,136,0.25)) drop-shadow(0 0 120px rgba(0,255,136,0.12));
             animation: logoPulse 4s ease-in-out infinite;
@@ -537,18 +539,21 @@
         }
 
         .brand-tagline {
-            font-size: clamp(2rem, 5vw, 3.2rem);
+            font-size: clamp(1.4rem, 3vw, 2.2rem);
             font-weight: 800;
             line-height: 1.1;
             color: var(--texto);
             letter-spacing: -0.02em;
+            white-space: nowrap;
         }
 
         .brand-desc {
-            font-size: 1.1rem;
+            font-size: 1rem;
             color: var(--suave);
-            max-width: 560px;
-            line-height: 1.75;
+            max-width: none;
+            line-height: 1.6;
+            white-space: nowrap;
+            margin-top: -0.75rem;
         }
 
         .contact-options {
@@ -599,95 +604,7 @@
             color: var(--texto);
         }
 
-        /* ─── MODAL CALENDLY ─── */
-        .modal-overlay {
-            display: none;
-            position: fixed !important;
-            inset: 0;
-            z-index: 9999 !important;
-            background: rgba(0, 0, 0, 0.88);
-            backdrop-filter: blur(10px);
-            align-items: center;
-            justify-content: center;
-            padding: 1rem;
-        }
-
-        .modal-overlay.open {
-            display: flex !important;
-        }
-
-        .modal-box {
-            background: #111;
-            border: 1px solid rgba(0, 255, 136, 0.18);
-            border-radius: 1.25rem;
-            width: 100%;
-            max-width: 440px;
-            max-height: 90vh;
-            display: flex;
-            flex-direction: column;
-            overflow: hidden;
-            box-shadow: 0 0 60px rgba(0, 255, 136, 0.1), 0 24px 60px rgba(0,0,0,0.7);
-            animation: modalIn 0.22s ease-out both;
-        }
-
-        @keyframes modalIn {
-            from { opacity: 0; transform: scale(0.96) translateY(12px); }
-            to { opacity: 1; transform: scale(1) translateY(0); }
-        }
-
-        /* barra superior compacta: sólo botón cerrar */
-        .modal-topbar {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0.75rem 1rem;
-            border-bottom: 1px solid var(--borde);
-            flex-shrink: 0;
-        }
-
-        .modal-topbar-label {
-            font-size: 0.75rem;
-            font-weight: 700;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-            color: var(--verde);
-        }
-
-        .modal-close {
-            background: rgba(255,255,255,0.06);
-            border: 1px solid var(--borde);
-            color: var(--suave);
-            font-size: 1rem;
-            cursor: pointer;
-            width: 30px;
-            height: 30px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: background 0.2s, color 0.2s, border-color 0.2s;
-            line-height: 1;
-        }
-
-        .modal-close:hover {
-            background: rgba(255,255,255,0.12);
-            border-color: #444;
-            color: var(--texto);
-        }
-
-        .modal-body {
-            flex: 1;
-            overflow: hidden;
-            min-height: 0;
-        }
-
-        .modal-body iframe {
-            width: 100%;
-            height: 100%;
-            min-height: 630px;
-            border: none;
-            display: block;
-        }
+        /* modal removed — Calendly opens in new tab */
 
         /* ─── TESTIMONIOS ─── */
         #testimonios {
@@ -914,18 +831,21 @@
                 justify-content: center;
             }
 
-            .modal-box {
-                border-radius: 1rem 1rem 0 0;
-                width: 100%;
-                max-width: 100%;
-                max-height: 92vh;
-                position: fixed;
-                bottom: 0;
-                left: 0;
+            .brand-logo-giant {
+                width: min(320px, 85vw);
             }
 
-            .modal-body iframe {
-                min-height: 460px;
+            .brand-tagline {
+                font-size: clamp(1.3rem, 5vw, 1.7rem);
+                white-space: normal;
+                text-align: center;
+            }
+
+            .brand-desc {
+                font-size: 0.9rem;
+                white-space: normal;
+                text-align: center;
+                margin-top: 0;
             }
         }
 
@@ -1031,7 +951,7 @@
     <section id="porque">
         <div class="section-header">
             <div class="section-label">Por qué FlexPoint</div>
-            <h2 class="section-title">Construido para empresas<br>que no se conforman</h2>
+            <h2 class="section-title">El equipo que entra a la operación contigo.</h2>
             <p class="section-desc">No somos una agencia de marketing ni un proveedor de software genérico. Somos el equipo que se mete en la operación contigo.</p>
         </div>
 
@@ -1147,7 +1067,7 @@
         <div class="brand-hero">
             <img src="LOGOotro.png" alt="FlexPoint" class="brand-logo-giant">
             <div class="section-label" style="margin-bottom:0;">Conversemos</div>
-            <div class="brand-tagline">Listo para crecer<br>más allá de los límites</div>
+            <div class="brand-tagline tw-section" data-tw="Listo para crecer más allá de los límites">Listo para crecer más allá de los límites</div>
             <p class="brand-desc">Cuéntanos dónde está el cuello de botella en tu operación y te mostramos cómo FlexPoint puede resolverlo.</p>
             <div class="contact-options">
                 <button onclick="openCalendly()" class="btn-primary">📅 Agendar reunión gratis</button>
@@ -1170,18 +1090,6 @@
         </div>
     </footer>
 
-    <!-- MODAL CALENDLY -->
-    <div id="calendlyModal" class="modal-overlay" role="dialog" aria-modal="true" aria-label="Agendar reunión">
-        <div class="modal-box">
-            <div class="modal-topbar">
-                <span class="modal-topbar-label">📅 Agendar reunión</span>
-                <button class="modal-close" onclick="closeCalendly()" aria-label="Cerrar">✕</button>
-            </div>
-            <div class="modal-body">
-                <iframe id="calendlyFrame" src="" title="Calendly" loading="lazy" allow="payment"></iframe>
-            </div>
-        </div>
-    </div>
 
     <script>
         /* ─── CONSTELLATION PARTICLES ─── */
@@ -1302,32 +1210,10 @@
         }
         animate();
 
-        /* ─── CALENDLY MODAL ─── */
-        const CALENDLY_URL = 'https://calendly.com/flexpointcl/30min?hide_gdpr_banner=1&background_color=111111&text_color=e0e0e0&primary_color=00ff88';
-
+        /* ─── CALENDLY ─── */
         function openCalendly() {
-            const modal = document.getElementById('calendlyModal');
-            const frame = document.getElementById('calendlyFrame');
-            if (!frame.getAttribute('data-loaded')) {
-                frame.src = CALENDLY_URL;
-                frame.setAttribute('data-loaded', '1');
-            }
-            modal.classList.add('open');
-            document.body.style.overflow = 'hidden';
+            window.open('https://calendly.com/flexpointcl/30min', '_blank', 'noopener,noreferrer');
         }
-
-        function closeCalendly() {
-            document.getElementById('calendlyModal').classList.remove('open');
-            document.body.style.overflow = '';
-        }
-
-        // Cerrar al hacer clic fuera del modal
-        document.getElementById('calendlyModal').addEventListener('click', function(e) {
-            if (e.target === this) closeCalendly();
-        });
-
-        // Cerrar con Escape
-        document.addEventListener('keydown', e => { if (e.key === 'Escape') closeCalendly(); });
 
         /* ─── BOTONES: hover y active vía JS (garantizado en todos los navegadores) ─── */
         function applyBtnEffects() {
@@ -1509,9 +1395,13 @@
         (function () {
             const SPEED = 38;
             function twSection(el) {
-                const text = el.dataset.tw || el.textContent;
-                el.textContent = '';
+                const text = (el.dataset.tw || el.textContent).trim();
+                el.innerHTML = '';
                 el.classList.add('tw-done');
+                // Wrap in explicit white span so it never inherits green
+                const wrap = document.createElement('span');
+                wrap.style.cssText = 'color:#e0e0e0;';
+                el.appendChild(wrap);
                 const cur = document.createElement('span');
                 cur.className = 'tw-cursor';
                 cur.style.height = '0.8em';
@@ -1519,7 +1409,7 @@
                 let i = 0;
                 function type() {
                     if (i < text.length) {
-                        cur.insertAdjacentText('beforebegin', text[i++]);
+                        wrap.textContent += text[i++];
                         setTimeout(type, SPEED);
                     } else {
                         setTimeout(() => cur.remove(), 1800);
@@ -1535,7 +1425,7 @@
                         twSection(entry.target);
                     }
                 });
-            }, { threshold: 0.4 });
+            }, { threshold: 0.3 });
             document.querySelectorAll('.tw-section').forEach(el => obs.observe(el));
         })();
     </script>
