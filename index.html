@@ -6,6 +6,8 @@
     <title>FlexPoint | Grow Beyond Limits</title>
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%230f0f0f'/><rect x='7' y='6' width='17' height='3.5' rx='1.75' fill='%2300ff88'/><rect x='7' y='6' width='3.5' height='20' rx='1.75' fill='%2300ff88'/><rect x='7' y='14' width='12' height='3.5' rx='1.75' fill='%2300ff88'/><circle cx='23.5' cy='24.5' r='3.2' fill='%2300ff88'/></svg>">
     <meta name="theme-color" content="#0f0f0f">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -1346,13 +1348,16 @@
 
         /* ─── TYPEWRITER HERO ─── */
         (function () {
-            const h1    = document.querySelector('.hero-headline');
-            if (!h1) return;
+            const h1 = document.querySelector('.hero-headline');
+            if (!h1 || h1.dataset.twInit) return;
+            h1.dataset.twInit = '1';
+
             const TEXT  = 'Gestión inteligente sin límites!';
             const SPEED = 52;
 
-            h1.style.visibility = 'visible';
+            // Limpiar primero, luego mostrar
             h1.innerHTML = '';
+            h1.style.visibility = 'visible';
 
             const wrap = document.createElement('span');
             wrap.style.color = '#e0e0e0';
@@ -1368,9 +1373,7 @@
                     wrap.textContent += TEXT[i++];
                     setTimeout(type, SPEED);
                 }
-                // cursor queda parpadeando indefinidamente
             }
-
             setTimeout(type, 500);
         })();
 
