@@ -106,6 +106,22 @@
             line-height: 1.2;
         }
 
+        /* ─── ESTADOS HOVER/ACTIVE DE BOTONES VÍA CLASE JS ─── */
+        .btn-hover {
+            background: #1affa0 !important;
+            border-color: #1affa0 !important;
+            color: #0f0f0f !important;
+            box-shadow: 0 0 30px rgba(0,255,136,0.75), 0 4px 20px rgba(0,0,0,0.5) !important;
+            transform: translateY(-3px) !important;
+        }
+        .btn-press {
+            background: #0f0f0f !important;
+            border-color: rgba(0,255,136,0.6) !important;
+            color: #00ff88 !important;
+            box-shadow: none !important;
+            transform: scale(0.97) !important;
+        }
+
         #hero {
             position: relative;
             min-height: 100vh;
@@ -231,96 +247,21 @@
             justify-content: center;
         }
 
-        .btn-primary {
-            display: inline-block;
-            padding: 0.9rem 2.2rem;
-            background: var(--verde);
-            color: #0f0f0f;
-            text-decoration: none;
-            border-radius: 0.625rem;
-            font-weight: 700;
-            font-size: 0.9rem;
-            border: 2px solid var(--verde);
-            cursor: pointer;
-            transition: background 0.2s, box-shadow 0.2s, transform 0.15s;
-        }
-
-        .btn-primary:hover,
-        .btn-primary:focus {
-            background: #1affa0;
-            border-color: #1affa0;
-            box-shadow: 0 0 28px rgba(0, 255, 136, 0.7), 0 4px 16px rgba(0,0,0,0.4);
-            transform: translateY(-3px);
-        }
-
-        .btn-primary:active {
-            background: #0f0f0f;
-            border-color: rgba(0,255,136,0.6);
-            color: var(--verde);
-            transform: translateY(0) scale(0.97);
-            box-shadow: none;
-        }
-
-        .btn-secondary {
-            display: inline-block;
-            padding: 0.9rem 2.2rem;
-            background: var(--verde);
-            color: #0f0f0f;
-            text-decoration: none;
-            border-radius: 0.625rem;
-            font-weight: 700;
-            font-size: 0.9rem;
-            border: 2px solid var(--verde);
-            cursor: pointer;
-            transition: background 0.2s, box-shadow 0.2s, transform 0.15s;
-        }
-
-        .btn-secondary:hover,
-        .btn-secondary:focus {
-            background: #1affa0;
-            border-color: #1affa0;
-            box-shadow: 0 0 28px rgba(0,255,136,0.7), 0 4px 16px rgba(0,0,0,0.4);
-            transform: translateY(-3px);
-            color: #0f0f0f;
-        }
-
-        .btn-secondary:active {
-            background: #0f0f0f;
-            border-color: rgba(0,255,136,0.6);
-            color: var(--verde);
-            transform: translateY(0) scale(0.97);
-            box-shadow: none;
-        }
-
+        /* Un solo estilo base para TODOS los botones */
+        .btn-primary,
+        .btn-secondary,
         .btn-calendly {
             display: inline-block;
             padding: 0.9rem 2.2rem;
-            background: var(--verde);
+            background: #00ff88;
             color: #0f0f0f;
             text-decoration: none;
             border-radius: 0.625rem;
             font-weight: 700;
             font-size: 0.9rem;
-            border: 2px solid var(--verde);
+            border: 2px solid #00ff88;
             cursor: pointer;
-            transition: background 0.2s, box-shadow 0.2s, transform 0.15s;
-        }
-
-        .btn-calendly:hover,
-        .btn-calendly:focus {
-            background: #1affa0;
-            border-color: #1affa0;
-            box-shadow: 0 0 28px rgba(0,255,136,0.7), 0 4px 16px rgba(0,0,0,0.4);
-            transform: translateY(-3px);
-            color: #0f0f0f;
-        }
-
-        .btn-calendly:active {
-            background: #0f0f0f;
-            border-color: rgba(0,255,136,0.6);
-            color: var(--verde);
-            transform: translateY(0) scale(0.97);
-            box-shadow: none;
+            transition: background 0.15s, box-shadow 0.15s, transform 0.12s, border-color 0.15s, color 0.15s;
         }
 
         /* ─── SECCIONES ─── */
@@ -1229,29 +1170,15 @@
             window.open('https://calendly.com/flexpointcl/30min', '_blank', 'noopener,noreferrer');
         }
 
-        /* ─── BOTONES: hover y active vía JS ─── */
-        function applyBtnEffects() {
-            const OFF = 'background:#0f0f0f!important;border-color:rgba(0,255,136,0.6)!important;color:#00ff88!important;box-shadow:none!important;transform:scale(0.97)!important';
-            const ON  = 'background:#1affa0!important;border-color:#1affa0!important;box-shadow:0 0 30px rgba(0,255,136,0.75),0 4px 20px rgba(0,0,0,0.5)!important;transform:translateY(-3px)!important;color:#0f0f0f!important';
-
-            document.querySelectorAll('.btn-primary, .btn-secondary, .btn-calendly').forEach(btn => {
-                btn.addEventListener('mouseenter', () => { btn.style.cssText += ';' + ON; });
-                btn.addEventListener('mouseleave', () => {
-                    ['background','borderColor','boxShadow','transform','color'].forEach(p => btn.style[p] = '');
-                });
-                btn.addEventListener('mousedown', () => { btn.style.cssText += ';' + OFF; });
-                btn.addEventListener('mouseup',   () => {
-                    ['background','borderColor','boxShadow','transform','color'].forEach(p => btn.style[p] = '');
-                    btn.style.cssText += ';' + ON;
-                });
-                btn.addEventListener('touchstart', () => { btn.style.cssText += ';' + OFF; }, { passive: true });
-                btn.addEventListener('touchend',   () => {
-                    ['background','borderColor','boxShadow','transform','color'].forEach(p => btn.style[p] = '');
-                });
-            });
-        }
-
-        applyBtnEffects();
+        /* ─── BOTONES: hover y press via clases CSS ─── */
+        document.querySelectorAll('.btn-primary, .btn-secondary, .btn-calendly').forEach(btn => {
+            btn.addEventListener('mouseenter',  () => { btn.classList.add('btn-hover'); });
+            btn.addEventListener('mouseleave',  () => { btn.classList.remove('btn-hover', 'btn-press'); });
+            btn.addEventListener('mousedown',   () => { btn.classList.remove('btn-hover'); btn.classList.add('btn-press'); });
+            btn.addEventListener('mouseup',     () => { btn.classList.remove('btn-press'); btn.classList.add('btn-hover'); });
+            btn.addEventListener('touchstart',  () => { btn.classList.add('btn-press'); }, { passive: true });
+            btn.addEventListener('touchend',    () => { btn.classList.remove('btn-press'); });
+        });
 
         /* ─── COUNTER ANIMATION ─── */
         function animateCount(el, targetVal, prefix, suffix) {
