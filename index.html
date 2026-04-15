@@ -262,57 +262,60 @@
         .btn-secondary {
             display: inline-block;
             padding: 0.9rem 2.2rem;
-            background: transparent;
-            color: var(--texto);
+            background: var(--verde);
+            color: #0f0f0f;
             text-decoration: none;
             border-radius: 0.625rem;
-            font-weight: 600;
+            font-weight: 700;
             font-size: 0.9rem;
-            border: 2px solid #333;
+            border: 2px solid var(--verde);
             cursor: pointer;
-            transition: background 0.2s, border-color 0.2s, color 0.2s, transform 0.15s;
+            transition: background 0.2s, box-shadow 0.2s, transform 0.15s;
         }
 
         .btn-secondary:hover,
         .btn-secondary:focus {
-            background: rgba(255,255,255,0.1);
-            border-color: #aaa;
-            color: #ffffff;
+            background: #1affa0;
+            border-color: #1affa0;
+            box-shadow: 0 0 28px rgba(0,255,136,0.7), 0 4px 16px rgba(0,0,0,0.4);
             transform: translateY(-3px);
+            color: #0f0f0f;
         }
 
         .btn-secondary:active {
-            background: rgba(255,255,255,0.18);
+            background: #00cc6a;
             transform: translateY(0) scale(0.97);
+            box-shadow: 0 0 14px rgba(0,255,136,0.5);
+            color: #0f0f0f;
         }
 
         .btn-calendly {
             display: inline-block;
             padding: 0.9rem 2.2rem;
-            background: transparent;
-            color: var(--verde);
+            background: var(--verde);
+            color: #0f0f0f;
             text-decoration: none;
             border-radius: 0.625rem;
             font-weight: 700;
             font-size: 0.9rem;
-            border: 2px solid rgba(0, 255, 136, 0.5);
+            border: 2px solid var(--verde);
             cursor: pointer;
-            transition: background 0.2s, border-color 0.2s, color 0.2s, box-shadow 0.2s, transform 0.15s;
+            transition: background 0.2s, box-shadow 0.2s, transform 0.15s;
         }
 
         .btn-calendly:hover,
         .btn-calendly:focus {
-            background: var(--verde);
-            border-color: var(--verde);
-            color: #0f0f0f;
-            box-shadow: 0 0 26px rgba(0, 255, 136, 0.6), 0 4px 16px rgba(0,0,0,0.4);
+            background: #1affa0;
+            border-color: #1affa0;
+            box-shadow: 0 0 28px rgba(0,255,136,0.7), 0 4px 16px rgba(0,0,0,0.4);
             transform: translateY(-3px);
+            color: #0f0f0f;
         }
 
         .btn-calendly:active {
             background: #00cc6a;
             transform: translateY(0) scale(0.97);
-            box-shadow: 0 0 14px rgba(0, 255, 136, 0.5);
+            box-shadow: 0 0 14px rgba(0,255,136,0.5);
             color: #0f0f0f;
         }
 
@@ -1269,21 +1272,19 @@
 
             document.querySelectorAll('.btn-secondary').forEach(btn => {
                 btn.addEventListener('mouseenter', () => {
-                    btn.style.background = 'rgba(255,255,255,0.12)';
-                    btn.style.borderColor = '#aaa';
-                    btn.style.color = '#fff';
-                    btn.style.transform = 'translateY(-3px)';
+                    btn.style.cssText += ';background:#1affa0!important;border-color:#1affa0!important;box-shadow:0 0 30px rgba(0,255,136,0.75),0 4px 20px rgba(0,0,0,0.5)!important;transform:translateY(-3px)!important;color:#0f0f0f!important';
                 });
                 btn.addEventListener('mouseleave', () => {
                     btn.style.background = '';
                     btn.style.borderColor = '';
-                    btn.style.color = '';
+                    btn.style.boxShadow = '';
                     btn.style.transform = '';
+                    btn.style.color = '';
                 });
                 btn.addEventListener('mousedown', () => { btn.style.transform = 'scale(0.97)'; });
                 btn.addEventListener('mouseup',   () => { btn.style.transform = 'translateY(-3px)'; });
-                btn.addEventListener('touchstart', () => { btn.style.background = 'rgba(255,255,255,0.18)'; }, { passive: true });
-                btn.addEventListener('touchend',   () => { btn.style.background = ''; });
+                btn.addEventListener('touchstart', () => { btn.style.opacity = '0.8'; }, { passive: true });
+                btn.addEventListener('touchend',   () => { btn.style.opacity = ''; });
             });
         }
 
@@ -1397,9 +1398,8 @@
                     if (i < text.length) {
                         wrap.textContent += text[i++];
                         setTimeout(type, SPEED);
-                    } else {
-                        setTimeout(() => cur.remove(), 1800);
                     }
+                    // cursor queda parpadeando indefinidamente
                 }
                 type();
             }
