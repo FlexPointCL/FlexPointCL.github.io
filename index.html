@@ -254,9 +254,11 @@
         }
 
         .btn-primary:active {
-            background: #00cc6a;
+            background: #0f0f0f;
+            border-color: rgba(0,255,136,0.6);
+            color: var(--verde);
             transform: translateY(0) scale(0.97);
-            box-shadow: 0 0 14px rgba(0, 255, 136, 0.5);
+            box-shadow: none;
         }
 
         .btn-secondary {
@@ -283,10 +285,11 @@
         }
 
         .btn-secondary:active {
-            background: #00cc6a;
+            background: #0f0f0f;
+            border-color: rgba(0,255,136,0.6);
+            color: var(--verde);
             transform: translateY(0) scale(0.97);
-            box-shadow: 0 0 14px rgba(0,255,136,0.5);
-            color: #0f0f0f;
+            box-shadow: none;
         }
 
         .btn-calendly {
@@ -313,10 +316,11 @@
         }
 
         .btn-calendly:active {
-            background: #00cc6a;
+            background: #0f0f0f;
+            border-color: rgba(0,255,136,0.6);
+            color: var(--verde);
             transform: translateY(0) scale(0.97);
-            box-shadow: 0 0 14px rgba(0,255,136,0.5);
-            color: #0f0f0f;
+            box-shadow: none;
         }
 
         /* ─── SECCIONES ─── */
@@ -1225,66 +1229,25 @@
             window.open('https://calendly.com/flexpointcl/30min', '_blank', 'noopener,noreferrer');
         }
 
-        /* ─── BOTONES: hover y active vía JS (garantizado en todos los navegadores) ─── */
+        /* ─── BOTONES: hover y active vía JS ─── */
         function applyBtnEffects() {
-            document.querySelectorAll('.btn-primary').forEach(btn => {
-                btn.addEventListener('mouseenter', () => {
-                    btn.style.cssText += ';background:#1affa0!important;border-color:#1affa0!important;box-shadow:0 0 30px rgba(0,255,136,0.75),0 4px 20px rgba(0,0,0,0.5)!important;transform:translateY(-3px)!important';
-                });
-                btn.addEventListener('mouseleave', () => {
-                    btn.style.background = '';
-                    btn.style.borderColor = '';
-                    btn.style.boxShadow = '';
-                    btn.style.transform = '';
-                });
-                btn.addEventListener('mousedown', () => {
-                    btn.style.transform = 'scale(0.97)';
-                    btn.style.boxShadow = '0 0 14px rgba(0,255,136,0.5)';
-                });
-                btn.addEventListener('mouseup', () => {
-                    btn.style.transform = 'translateY(-3px)';
-                });
-                // Touch
-                btn.addEventListener('touchstart', () => { btn.style.opacity = '0.8'; }, { passive: true });
-                btn.addEventListener('touchend',   () => { btn.style.opacity = ''; });
-            });
+            const OFF = 'background:#0f0f0f!important;border-color:rgba(0,255,136,0.6)!important;color:#00ff88!important;box-shadow:none!important;transform:scale(0.97)!important';
+            const ON  = 'background:#1affa0!important;border-color:#1affa0!important;box-shadow:0 0 30px rgba(0,255,136,0.75),0 4px 20px rgba(0,0,0,0.5)!important;transform:translateY(-3px)!important;color:#0f0f0f!important';
 
-            document.querySelectorAll('.btn-calendly').forEach(btn => {
-                btn.addEventListener('mouseenter', () => {
-                    btn.style.background = '#00ff88';
-                    btn.style.borderColor = '#00ff88';
-                    btn.style.color = '#0f0f0f';
-                    btn.style.boxShadow = '0 0 28px rgba(0,255,136,0.65),0 4px 20px rgba(0,0,0,0.5)';
-                    btn.style.transform = 'translateY(-3px)';
-                });
+            document.querySelectorAll('.btn-primary, .btn-secondary, .btn-calendly').forEach(btn => {
+                btn.addEventListener('mouseenter', () => { btn.style.cssText += ';' + ON; });
                 btn.addEventListener('mouseleave', () => {
-                    btn.style.background = '';
-                    btn.style.borderColor = '';
-                    btn.style.color = '';
-                    btn.style.boxShadow = '';
-                    btn.style.transform = '';
+                    ['background','borderColor','boxShadow','transform','color'].forEach(p => btn.style[p] = '');
                 });
-                btn.addEventListener('mousedown', () => { btn.style.transform = 'scale(0.97)'; });
-                btn.addEventListener('mouseup',   () => { btn.style.transform = 'translateY(-3px)'; });
-                btn.addEventListener('touchstart', () => { btn.style.background = '#00cc6a'; btn.style.color = '#0f0f0f'; }, { passive: true });
-                btn.addEventListener('touchend',   () => { btn.style.background = ''; btn.style.color = ''; });
-            });
-
-            document.querySelectorAll('.btn-secondary').forEach(btn => {
-                btn.addEventListener('mouseenter', () => {
-                    btn.style.cssText += ';background:#1affa0!important;border-color:#1affa0!important;box-shadow:0 0 30px rgba(0,255,136,0.75),0 4px 20px rgba(0,0,0,0.5)!important;transform:translateY(-3px)!important;color:#0f0f0f!important';
+                btn.addEventListener('mousedown', () => { btn.style.cssText += ';' + OFF; });
+                btn.addEventListener('mouseup',   () => {
+                    ['background','borderColor','boxShadow','transform','color'].forEach(p => btn.style[p] = '');
+                    btn.style.cssText += ';' + ON;
                 });
-                btn.addEventListener('mouseleave', () => {
-                    btn.style.background = '';
-                    btn.style.borderColor = '';
-                    btn.style.boxShadow = '';
-                    btn.style.transform = '';
-                    btn.style.color = '';
+                btn.addEventListener('touchstart', () => { btn.style.cssText += ';' + OFF; }, { passive: true });
+                btn.addEventListener('touchend',   () => {
+                    ['background','borderColor','boxShadow','transform','color'].forEach(p => btn.style[p] = '');
                 });
-                btn.addEventListener('mousedown', () => { btn.style.transform = 'scale(0.97)'; });
-                btn.addEventListener('mouseup',   () => { btn.style.transform = 'translateY(-3px)'; });
-                btn.addEventListener('touchstart', () => { btn.style.opacity = '0.8'; }, { passive: true });
-                btn.addEventListener('touchend',   () => { btn.style.opacity = ''; });
             });
         }
 
@@ -1411,7 +1374,7 @@
                         twSection(entry.target);
                     }
                 });
-            }, { threshold: 0.3 });
+            }, { threshold: 0.05, rootMargin: '0px 0px -40px 0px' });
             document.querySelectorAll('.tw-section').forEach(el => obs.observe(el));
         })();
     </script>
