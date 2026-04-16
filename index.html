@@ -66,8 +66,36 @@
         }
 
         .nav-logo {
-            height: 46px;
-            width: auto;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+            flex-shrink: 0;
+        }
+        .nav-logo .logo-icon {
+            width: 32px;
+            height: 32px;
+            background: #4f8bff;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 800;
+            font-size: 1rem;
+            color: #090912;
+            letter-spacing: -1px;
+            flex-shrink: 0;
+        }
+        .nav-logo .logo-text {
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: var(--texto);
+            letter-spacing: -0.03em;
+        }
+        .nav-logo .logo-text span {
+            color: #4f8bff;
         }
 
         .nav-links {
@@ -201,11 +229,41 @@
         }
 
         .hero-logo {
-            height: 160px;
-            width: auto;
-            max-width: 480px;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
             margin-bottom: 1.25rem;
-            animation: heroGlow 4s ease-in-out infinite;
+        }
+        .hero-logo .logo-icon-big {
+            width: 64px;
+            height: 64px;
+            background: #4f8bff;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 800;
+            font-size: 2rem;
+            color: #090912;
+            flex-shrink: 0;
+            box-shadow: 0 0 30px rgba(79,139,255,0.4), 0 0 60px rgba(79,139,255,0.15);
+            animation: iconGlow 4s ease-in-out infinite;
+        }
+        @keyframes iconGlow {
+            0%, 100% { box-shadow: 0 0 20px rgba(79,139,255,0.35), 0 0 50px rgba(79,139,255,0.12); }
+            50%       { box-shadow: 0 0 50px rgba(79,139,255,0.7), 0 0 100px rgba(79,139,255,0.3); }
+        }
+        .hero-logo .logo-text-big {
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 800;
+            font-size: clamp(2rem, 5vw, 3rem);
+            color: var(--texto);
+            letter-spacing: -0.04em;
+            line-height: 1;
+        }
+        .hero-logo .logo-text-big span {
+            color: #4f8bff;
         }
 
         @keyframes heroGlow {
@@ -544,9 +602,31 @@
         }
 
         .footer-logo {
-            height: 28px;
-            width: auto;
-            opacity: 0.6;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            text-decoration: none;
+            opacity: 0.7;
+        }
+        .footer-logo .logo-icon {
+            width: 22px;
+            height: 22px;
+            background: #4f8bff;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 800;
+            font-size: 0.7rem;
+            color: #090912;
+        }
+        .footer-logo .logo-text {
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+            font-size: 0.9rem;
+            color: var(--suave);
+            letter-spacing: -0.02em;
         }
 
         .footer-text {
@@ -710,9 +790,17 @@
             }
 
             .hero-logo {
-                height: 100px;
-                max-width: 280px;
+                gap: 0.75rem;
                 margin-bottom: 1.75rem;
+            }
+            .hero-logo .logo-icon-big {
+                width: 48px;
+                height: 48px;
+                font-size: 1.5rem;
+                border-radius: 12px;
+            }
+            .hero-logo .logo-text-big {
+                font-size: clamp(1.6rem, 7vw, 2.2rem);
             }
 
             .hero-badge {
@@ -817,8 +905,10 @@
         }
 
         @media (max-width: 380px) {
-            .hero-logo {
-                height: 80px;
+            .hero-logo .logo-icon-big {
+                width: 40px;
+                height: 40px;
+                font-size: 1.2rem;
             }
 
             .stat-num {
@@ -831,13 +921,10 @@
 
     <!-- NAV -->
     <nav>
-        <svg viewBox="0 0 160 40" class="nav-logo" xmlns="http://www.w3.org/2000/svg" aria-label="FlexPoint">
-            <rect x="0" y="4" width="6" height="32" rx="3" fill="#4f8bff"/>
-            <rect x="0" y="4" width="22" height="6" rx="3" fill="#4f8bff"/>
-            <rect x="0" y="18" width="16" height="6" rx="3" fill="#4f8bff"/>
-            <circle cx="27" cy="34" r="4.5" fill="#4f8bff"/>
-            <text x="38" y="30" font-family="Space Grotesk, sans-serif" font-weight="700" font-size="20" fill="#eaeaf5" letter-spacing="-0.5">FlexPoint</text>
-        </svg>
+        <a href="#" class="nav-logo">
+            <div class="logo-icon">FP</div>
+            <span class="logo-text">Flex<span>Point</span></span>
+        </a>
         <ul class="nav-links">
             <li><a href="#servicios">Servicios</a></li>
             <li><a href="#porque">Por qué FlexPoint</a></li>
@@ -854,13 +941,10 @@
     <section id="hero">
         <div class="hero-content">
             <div class="hero-badge">Soluciones Empresariales Inteligentes</div>
-            <svg viewBox="0 0 280 70" class="hero-logo" xmlns="http://www.w3.org/2000/svg" aria-label="FlexPoint">
-                <rect x="0" y="6" width="10" height="56" rx="5" fill="#4f8bff"/>
-                <rect x="0" y="6" width="38" height="10" rx="5" fill="#4f8bff"/>
-                <rect x="0" y="30" width="28" height="10" rx="5" fill="#4f8bff"/>
-                <circle cx="46" cy="60" r="8" fill="#4f8bff"/>
-                <text x="62" y="54" font-family="Space Grotesk, sans-serif" font-weight="800" font-size="36" fill="#eaeaf5" letter-spacing="-1">FlexPoint</text>
-            </svg>
+            <div class="hero-logo">
+                <div class="logo-icon-big">FP</div>
+                <div class="logo-text-big">Flex<span>Point</span></div>
+            </div>
             <h1 class="hero-headline">Gestión inteligente sin límites!</h1>
             <p class="hero-sub">
                 FlexPoint es el ecosistema de soluciones digitales que transforma la forma en que tu empresa opera, decide y crece — con tecnología real, no promesas.
@@ -1058,13 +1142,10 @@
 
     <!-- FOOTER -->
     <footer>
-        <svg viewBox="0 0 160 36" class="footer-logo" xmlns="http://www.w3.org/2000/svg" aria-label="FlexPoint">
-            <rect x="0" y="3" width="5.5" height="28" rx="2.75" fill="#4f8bff"/>
-            <rect x="0" y="3" width="20" height="5.5" rx="2.75" fill="#4f8bff"/>
-            <rect x="0" y="16" width="14" height="5.5" rx="2.75" fill="#4f8bff"/>
-            <circle cx="24.5" cy="30" r="4" fill="#4f8bff"/>
-            <text x="34" y="27" font-family="Space Grotesk, sans-serif" font-weight="700" font-size="18" fill="#eaeaf5" letter-spacing="-0.4">FlexPoint</text>
-        </svg>
+        <div class="footer-logo">
+            <div class="logo-icon">FP</div>
+            <span class="logo-text">FlexPoint</span>
+        </div>
         <p class="footer-text">
             &copy; 2025 FlexPoint Chile &nbsp;·&nbsp; Un ecosistema desarrollado por Antigravity
         </p>
