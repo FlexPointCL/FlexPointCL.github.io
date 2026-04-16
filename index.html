@@ -68,34 +68,14 @@
         .nav-logo {
             display: flex;
             align-items: center;
-            gap: 0.5rem;
             text-decoration: none;
             flex-shrink: 0;
         }
-        .nav-logo .logo-icon {
-            width: 32px;
-            height: 32px;
-            background: #4f8bff;
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-family: 'Space Grotesk', sans-serif;
-            font-weight: 800;
-            font-size: 1rem;
-            color: #090912;
-            letter-spacing: -1px;
-            flex-shrink: 0;
-        }
-        .nav-logo .logo-text {
-            font-family: 'Space Grotesk', sans-serif;
-            font-weight: 800;
-            font-size: 1.4rem;
-            color: var(--texto);
-            letter-spacing: -0.04em;
-        }
-        .nav-logo .logo-text span {
-            color: #4f8bff;
+        .nav-logo img {
+            height: 48px;
+            width: auto;
+            object-fit: contain;
+            mix-blend-mode: screen;
         }
 
         .nav-links {
@@ -786,8 +766,8 @@
                 padding: 0.75rem 1.25rem;
             }
 
-            .nav-logo {
-                height: 40px;
+            .nav-logo img {
+                height: 38px;
             }
 
             .nav-links {
@@ -943,7 +923,7 @@
     <!-- NAV -->
     <nav>
         <a href="#" class="nav-logo">
-            <span class="logo-text">Flex<span>Point</span></span>
+            <img src="logo-azul.png" alt="FlexPoint" loading="lazy" decoding="async" width="160" height="48" />
         </a>
         <ul class="nav-links">
             <li><a href="#servicios">Servicios</a></li>
