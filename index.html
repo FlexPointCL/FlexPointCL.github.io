@@ -4,21 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FlexPoint | Grow Beyond Limits</title>
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%230f0f0f'/><rect x='7' y='6' width='17' height='3.5' rx='1.75' fill='%2300ff88'/><rect x='7' y='6' width='3.5' height='20' rx='1.75' fill='%2300ff88'/><rect x='7' y='14' width='12' height='3.5' rx='1.75' fill='%2300ff88'/><circle cx='23.5' cy='24.5' r='3.2' fill='%2300ff88'/></svg>">
-    <meta name="theme-color" content="#0f0f0f">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%23090912'/><rect x='7' y='6' width='17' height='3.5' rx='1.75' fill='%234f8bff'/><rect x='7' y='6' width='3.5' height='20' rx='1.75' fill='%234f8bff'/><rect x='7' y='14' width='12' height='3.5' rx='1.75' fill='%234f8bff'/><circle cx='23.5' cy='24.5' r='3.2' fill='%234f8bff'/></svg>">
+    <meta name="theme-color" content="#090912">
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
     <meta http-equiv="Pragma" content="no-cache">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
-            --verde: #00ff88;
-            --fondo: #0f0f0f;
-            --card: #151515;
-            --borde: #1e1e1e;
-            --texto: #e0e0e0;
-            --suave: #888888;
+            --verde: #4f8bff;
+            --fondo: #090912;
+            --card: #0f0f1c;
+            --borde: #1a1a30;
+            --texto: #eaeaf5;
+            --suave: #7878a8;
         }
 
         *, *::before, *::after {
@@ -39,6 +39,15 @@
             overflow-x: hidden;
         }
 
+        h1, h2, h3, h4,
+        .hero-headline,
+        .section-title,
+        .brand-tagline,
+        .service-card h3,
+        .why-text h4 {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
         /* ─── NAV ─── */
         nav {
             position: fixed;
@@ -51,7 +60,7 @@
             align-items: center;
             justify-content: space-between;
             padding: 0 2rem;
-            background: rgba(15, 15, 15, 0.9);
+            background: rgba(9, 9, 18, 0.92);
             backdrop-filter: blur(14px);
             border-bottom: 1px solid var(--borde);
         }
@@ -81,17 +90,18 @@
 
         .nav-cta {
             background: var(--verde);
-            color: #0f0f0f !important;
+            color: #090912 !important;
             padding: 0.5rem 1.25rem;
             border-radius: 0.5rem;
             font-weight: 700 !important;
             font-size: 0.8rem !important;
+            font-family: 'Space Grotesk', sans-serif;
             transition: opacity 0.2s !important;
         }
 
         .nav-cta:hover {
             opacity: 0.85;
-            color: #0f0f0f !important;
+            color: #090912 !important;
         }
 
         /* ─── HERO ─── */
@@ -99,7 +109,7 @@
         button.btn-primary,
         button.btn-secondary,
         button.btn-calendly {
-            font-family: 'Inter', sans-serif;
+            font-family: 'Space Grotesk', sans-serif;
             -webkit-appearance: none;
             appearance: none;
             outline: none;
@@ -108,16 +118,16 @@
 
         /* ─── ESTADOS HOVER/ACTIVE DE BOTONES VÍA CLASE JS ─── */
         .btn-hover {
-            background: #1affa0 !important;
-            border-color: #1affa0 !important;
-            color: #0f0f0f !important;
-            box-shadow: 0 0 30px rgba(0,255,136,0.75), 0 4px 20px rgba(0,0,0,0.5) !important;
+            background: #7aaaff !important;
+            border-color: #7aaaff !important;
+            color: #090912 !important;
+            box-shadow: 0 0 30px rgba(79,139,255,0.7), 0 4px 20px rgba(0,0,0,0.5) !important;
             transform: translateY(-3px) !important;
         }
         .btn-press {
-            background: #0f0f0f !important;
-            border-color: rgba(0,255,136,0.6) !important;
-            color: #00ff88 !important;
+            background: #090912 !important;
+            border-color: rgba(79,139,255,0.6) !important;
+            color: #4f8bff !important;
             box-shadow: none !important;
             transform: scale(0.97) !important;
         }
@@ -163,8 +173,8 @@
             align-items: center;
             gap: 0.5rem;
             padding: 0.4rem 1rem;
-            background: rgba(0, 255, 136, 0.08);
-            border: 1px solid rgba(0, 255, 136, 0.2);
+            background: rgba(79, 139, 255, 0.09);
+            border: 1px solid rgba(79, 139, 255, 0.22);
             border-radius: 2rem;
             font-size: 0.7rem;
             font-weight: 700;
@@ -199,8 +209,8 @@
         }
 
         @keyframes heroGlow {
-            0%, 100% { filter: drop-shadow(0 0 30px rgba(0,255,136,0.25)) drop-shadow(0 0 60px rgba(0,255,136,0.1)); }
-            50%       { filter: drop-shadow(0 0 70px rgba(0,255,136,0.55)) drop-shadow(0 0 140px rgba(0,255,136,0.25)); }
+            0%, 100% { filter: drop-shadow(0 0 30px rgba(79,139,255,0.3)) drop-shadow(0 0 60px rgba(79,139,255,0.12)); }
+            50%       { filter: drop-shadow(0 0 70px rgba(79,139,255,0.6)) drop-shadow(0 0 140px rgba(79,139,255,0.28)); }
         }
 
         .hero-headline {
@@ -253,13 +263,14 @@
         .btn-calendly {
             display: inline-block;
             padding: 0.9rem 2.2rem;
-            background: #00ff88;
-            color: #0f0f0f;
+            background: #4f8bff;
+            color: #090912;
             text-decoration: none;
             border-radius: 0.625rem;
             font-weight: 700;
             font-size: 0.9rem;
-            border: 2px solid #00ff88;
+            font-family: 'Space Grotesk', sans-serif;
+            border: 2px solid #4f8bff;
             cursor: pointer;
             transition: background 0.15s, box-shadow 0.15s, transform 0.12s, border-color 0.15s, color 0.15s;
         }
@@ -327,15 +338,15 @@
         .service-card:hover {
             transform: scale(1.7) translateZ(0);
             z-index: 300;
-            background: #191919;
-            border-color: rgba(0, 255, 136, 0.35);
-            box-shadow: 0 0 60px rgba(0,255,136,0.18), 0 32px 80px rgba(0,0,0,0.8);
+            background: #14142a;
+            border-color: rgba(79, 139, 255, 0.4);
+            box-shadow: 0 0 60px rgba(79,139,255,0.22), 0 32px 80px rgba(0,0,0,0.85);
         }
 
         .service-icon {
             width: 44px;
             height: 44px;
-            background: rgba(0, 255, 136, 0.1);
+            background: rgba(79, 139, 255, 0.1);
             border-radius: 0.625rem;
             display: flex;
             align-items: center;
@@ -361,8 +372,8 @@
             display: inline-block;
             margin-top: 1.25rem;
             padding: 0.3rem 0.75rem;
-            background: rgba(0, 255, 136, 0.06);
-            border: 1px solid rgba(0, 255, 136, 0.15);
+            background: rgba(79, 139, 255, 0.07);
+            border: 1px solid rgba(79, 139, 255, 0.18);
             border-radius: 2rem;
             font-size: 0.7rem;
             font-weight: 600;
@@ -393,7 +404,7 @@
         }
 
         .why-item:hover {
-            background: #1a1a1a;
+            background: #14142a;
         }
 
         .why-item:first-child {
@@ -485,13 +496,13 @@
         .brand-logo-giant {
             width: min(1100px, 95vw);
             height: auto;
-            filter: drop-shadow(0 0 60px rgba(0,255,136,0.25)) drop-shadow(0 0 120px rgba(0,255,136,0.12));
+            filter: drop-shadow(0 0 60px rgba(79,139,255,0.28)) drop-shadow(0 0 120px rgba(79,139,255,0.14));
             animation: logoPulse 4s ease-in-out infinite;
         }
 
         @keyframes logoPulse {
-            0%, 100% { filter: drop-shadow(0 0 40px rgba(0,255,136,0.2)) drop-shadow(0 0 80px rgba(0,255,136,0.1)); }
-            50%       { filter: drop-shadow(0 0 80px rgba(0,255,136,0.45)) drop-shadow(0 0 160px rgba(0,255,136,0.2)); }
+            0%, 100% { filter: drop-shadow(0 0 40px rgba(79,139,255,0.22)) drop-shadow(0 0 80px rgba(79,139,255,0.1)); }
+            50%       { filter: drop-shadow(0 0 80px rgba(79,139,255,0.5)) drop-shadow(0 0 160px rgba(79,139,255,0.22)); }
         }
 
         .brand-tagline {
@@ -585,8 +596,8 @@
         }
 
         .testimonio-card:hover {
-            background: #1a1a1a;
-            border-color: rgba(0, 255, 136, 0.2);
+            background: #14142a;
+            border-color: rgba(79, 139, 255, 0.25);
             transform: translateY(-3px);
         }
 
@@ -635,7 +646,7 @@
             justify-content: center;
             font-size: 0.8rem;
             font-weight: 800;
-            color: #0f0f0f;
+            color: #090912;
             flex-shrink: 0;
         }
 
@@ -820,7 +831,13 @@
 
     <!-- NAV -->
     <nav>
-        <img src="LOGOotro.png" alt="FlexPoint" class="nav-logo">
+        <svg viewBox="0 0 160 40" class="nav-logo" xmlns="http://www.w3.org/2000/svg" aria-label="FlexPoint">
+            <rect x="0" y="4" width="6" height="32" rx="3" fill="#4f8bff"/>
+            <rect x="0" y="4" width="22" height="6" rx="3" fill="#4f8bff"/>
+            <rect x="0" y="18" width="16" height="6" rx="3" fill="#4f8bff"/>
+            <circle cx="27" cy="34" r="4.5" fill="#4f8bff"/>
+            <text x="38" y="30" font-family="Space Grotesk, sans-serif" font-weight="700" font-size="20" fill="#eaeaf5" letter-spacing="-0.5">FlexPoint</text>
+        </svg>
         <ul class="nav-links">
             <li><a href="#servicios">Servicios</a></li>
             <li><a href="#porque">Por qué FlexPoint</a></li>
@@ -837,14 +854,20 @@
     <section id="hero">
         <div class="hero-content">
             <div class="hero-badge">Soluciones Empresariales Inteligentes</div>
-            <img src="LOGOotro.png" alt="FlexPoint" class="hero-logo">
+            <svg viewBox="0 0 280 70" class="hero-logo" xmlns="http://www.w3.org/2000/svg" aria-label="FlexPoint">
+                <rect x="0" y="6" width="10" height="56" rx="5" fill="#4f8bff"/>
+                <rect x="0" y="6" width="38" height="10" rx="5" fill="#4f8bff"/>
+                <rect x="0" y="30" width="28" height="10" rx="5" fill="#4f8bff"/>
+                <circle cx="46" cy="60" r="8" fill="#4f8bff"/>
+                <text x="62" y="54" font-family="Space Grotesk, sans-serif" font-weight="800" font-size="36" fill="#eaeaf5" letter-spacing="-1">FlexPoint</text>
+            </svg>
             <h1 class="hero-headline">Gestión inteligente sin límites!</h1>
             <p class="hero-sub">
                 FlexPoint es el ecosistema de soluciones digitales que transforma la forma en que tu empresa opera, decide y crece — con tecnología real, no promesas.
             </p>
             <div class="hero-actions">
-                <a href="mailto:hola@flexpoint.cl" class="btn-primary">Email</a>
                 <button onclick="openCalendly()" class="btn-calendly">📅 Agendar reunión</button>
+                <a href="https://github.com/FlexPointCL/CLAUDE" target="_blank" rel="noopener noreferrer" class="btn-secondary">📊 Calculadora ROI</a>
                 <a href="https://wa.me/56985835922?text=Hola%20FlexPoint,%20quiero%20saber%20más." target="_blank" rel="noopener noreferrer" class="btn-secondary">Hablar por WhatsApp</a>
             </div>
         </div>
@@ -958,7 +981,7 @@
                 </div>
                 <p class="testimonio-quote">Teníamos un equipo de 3 personas respondiendo consultas por WhatsApp todo el día. Implementamos el agente IA y en dos semanas ese tiempo se liberó casi por completo. Hoy ese equipo hace trabajo real.</p>
                 <div class="testimonio-author">
-                    <div class="testimonio-avatar" style="background: #00ff88;">V</div>
+                    <div class="testimonio-avatar" style="background: #4f8bff;">V</div>
                     <div class="testimonio-info">
                         <strong>Gerente General</strong>
                         <span>Empresa · Consumo Masivo</span>
@@ -972,7 +995,7 @@
                 </div>
                 <p class="testimonio-quote">Les mostramos la calculadora de ROI a nuestros prospectos antes de la reunión. La conversación cambió completamente — ya no llegamos a explicar qué hacemos, llegamos a hablar de implementación.</p>
                 <div class="testimonio-author">
-                    <div class="testimonio-avatar" style="background: #00cc6a;">A</div>
+                    <div class="testimonio-avatar" style="background: #3a6ee8;">A</div>
                     <div class="testimonio-info">
                         <strong>Director Comercial</strong>
                         <span>Empresa · Retail Nacional</span>
@@ -986,7 +1009,7 @@
                 </div>
                 <p class="testimonio-quote">Nuestros reportes tardaban 3 días en generarse. Ahora el dashboard se actualiza solo cada hora. El equipo directivo toma decisiones el mismo día, no la siguiente semana.</p>
                 <div class="testimonio-author">
-                    <div class="testimonio-avatar" style="background: #00e07a;">C</div>
+                    <div class="testimonio-avatar" style="background: #6a9fff;">C</div>
                     <div class="testimonio-info">
                         <strong>CEO</strong>
                         <span>Empresa · Industria Logística</span>
@@ -1026,6 +1049,7 @@
             <p class="brand-desc">Cuéntanos dónde está el cuello de botella en tu operación y te mostramos cómo FlexPoint puede resolverlo.</p>
             <div class="contact-options">
                 <button onclick="openCalendly()" class="btn-primary">📅 Agendar reunión gratis</button>
+                <a href="https://github.com/FlexPointCL/CLAUDE" target="_blank" rel="noopener noreferrer" class="btn-secondary">📊 Calculadora ROI</a>
                 <a href="https://wa.me/56985835922?text=Hola%20FlexPoint,%20quiero%20saber%20más%20sobre%20sus%20servicios." target="_blank" rel="noopener noreferrer" class="btn-secondary">WhatsApp</a>
                 <a href="mailto:hola@flexpoint.cl" class="btn-secondary">Email</a>
             </div>
@@ -1034,7 +1058,13 @@
 
     <!-- FOOTER -->
     <footer>
-        <img src="LOGOotro.png" alt="FlexPoint" class="footer-logo">
+        <svg viewBox="0 0 160 36" class="footer-logo" xmlns="http://www.w3.org/2000/svg" aria-label="FlexPoint">
+            <rect x="0" y="3" width="5.5" height="28" rx="2.75" fill="#4f8bff"/>
+            <rect x="0" y="3" width="20" height="5.5" rx="2.75" fill="#4f8bff"/>
+            <rect x="0" y="16" width="14" height="5.5" rx="2.75" fill="#4f8bff"/>
+            <circle cx="24.5" cy="30" r="4" fill="#4f8bff"/>
+            <text x="34" y="27" font-family="Space Grotesk, sans-serif" font-weight="700" font-size="18" fill="#eaeaf5" letter-spacing="-0.4">FlexPoint</text>
+        </svg>
         <p class="footer-text">
             &copy; 2025 FlexPoint Chile &nbsp;·&nbsp; Un ecosistema desarrollado por Antigravity
         </p>
@@ -1053,7 +1083,7 @@
         const particles = [];
         const PCOUNT   = 100;
         const LINK_DIST = 140;          // distancia máxima para dibujar línea
-        const DOT_COLORS = ['#00ff88', '#00cc6a', '#00ff8866', '#00ff8833'];
+        const DOT_COLORS = ['#4f8bff', '#3a6ee8', '#4f8bff99', '#4f8bff44'];
 
         let mouse    = { x: -9999, y: -9999 };
         let hasMouse = false;
@@ -1131,7 +1161,7 @@
                     if (d2 < d2max) {
                         const alpha = (1 - Math.sqrt(d2) / LINK_DIST) * 0.18;
                         ctx.globalAlpha = alpha;
-                        ctx.strokeStyle = '#00ff88';
+                        ctx.strokeStyle = '#4f8bff';
                         ctx.lineWidth   = 0.6;
                         ctx.beginPath();
                         ctx.moveTo(particles[i].x, particles[i].y);
@@ -1146,7 +1176,7 @@
                     const d  = Math.sqrt(dx * dx + dy * dy);
                     if (d < 170) {
                         ctx.globalAlpha = (1 - d / 170) * 0.4;
-                        ctx.strokeStyle = '#00ff88';
+                        ctx.strokeStyle = '#4f8bff';
                         ctx.lineWidth   = 0.8;
                         ctx.beginPath();
                         ctx.moveTo(particles[i].x, particles[i].y);
@@ -1251,7 +1281,7 @@
             h1.style.visibility = 'visible';
 
             const wrap = document.createElement('span');
-            wrap.style.color = '#e0e0e0';
+            wrap.style.cssText = 'color:#eaeaf5;';
             const cursor = document.createElement('span');
             cursor.className = 'tw-cursor';
             cursor.style.height = '0.85em';
