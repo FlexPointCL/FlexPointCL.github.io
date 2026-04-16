@@ -85,30 +85,22 @@
         }
 
         .nav-links a {
-            color: #a8c4ff;
+            color: #c8d8ff;
             text-decoration: none;
-            font-size: 1rem;
-            font-weight: 600;
-            letter-spacing: 0.01em;
-            transition: color 0.25s, text-shadow 0.25s;
-            text-shadow: 0 0 12px rgba(79,139,255,0.35);
-            padding: 4px 8px;
+            font-size: 1.05rem;
+            font-weight: 700;
+            letter-spacing: 0.02em;
+            transition: color 0.25s, text-shadow 0.25s, background 0.25s;
+            text-shadow: 0 0 10px rgba(79,139,255,0.7), 0 0 22px rgba(79,139,255,0.35);
+            padding: 5px 12px;
             border-radius: 8px;
             position: relative;
+            background: rgba(79,139,255,0.07);
         }
-        .nav-links a::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            border-radius: 8px;
-            background: radial-gradient(ellipse at 50% 110%, rgba(79,139,255,0.18) 0%, transparent 70%);
-            opacity: 0;
-            transition: opacity 0.3s;
-        }
-        .nav-links a:hover::before { opacity: 1; }
-        .nav-links a:hover {
+        .nav-links a:not(.nav-cta):hover {
             color: #ffffff;
-            text-shadow: 0 0 18px rgba(79,139,255,0.9), 0 0 40px rgba(79,139,255,0.4);
+            background: rgba(79,139,255,0.16);
+            text-shadow: 0 0 14px rgba(120,170,255,1), 0 0 35px rgba(79,139,255,0.7), 0 0 60px rgba(79,139,255,0.3);
         }
 
         .nav-cta {
@@ -253,20 +245,20 @@
         .hero-logo::after {
             content: '';
             position: absolute;
-            bottom: -18px;
+            bottom: -22px;
             left: 50%;
             transform: translateX(-50%);
-            width: 70%;
-            height: 28px;
-            background: radial-gradient(ellipse at center, rgba(79,139,255,0.55) 0%, rgba(79,139,255,0.18) 45%, transparent 75%);
-            filter: blur(8px);
+            width: 85%;
+            height: 50px;
+            background: radial-gradient(ellipse at center, rgba(79,139,255,0.95) 0%, rgba(79,139,255,0.55) 35%, rgba(79,139,255,0.15) 65%, transparent 80%);
+            filter: blur(14px);
             border-radius: 50%;
-            animation: logoUnderGlow 3s ease-in-out infinite;
+            animation: logoUnderGlow 2.5s ease-in-out infinite;
             pointer-events: none;
         }
         @keyframes logoUnderGlow {
-            0%, 100% { opacity: 0.7; transform: translateX(-50%) scaleX(1); }
-            50%       { opacity: 1;   transform: translateX(-50%) scaleX(1.12); }
+            0%, 100% { opacity: 0.85; transform: translateX(-50%) scaleX(1);    filter: blur(14px); }
+            50%       { opacity: 1;    transform: translateX(-50%) scaleX(1.18); filter: blur(18px); }
         }
         .hero-logo .logo-icon-big {
             width: 44px;
