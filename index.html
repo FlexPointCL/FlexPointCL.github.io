@@ -6,6 +6,13 @@
     <title>FlexPoint | Grow Beyond Limits</title>
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%23090912'/><rect x='7' y='6' width='17' height='3.5' rx='1.75' fill='%234f8bff'/><rect x='7' y='6' width='3.5' height='20' rx='1.75' fill='%234f8bff'/><rect x='7' y='14' width='12' height='3.5' rx='1.75' fill='%234f8bff'/><circle cx='23.5' cy='24.5' r='3.2' fill='%234f8bff'/></svg>">
     <meta name="theme-color" content="#090912">
+    <meta name="description" content="FlexPoint — Ecosistema de soluciones digitales para empresas chilenas. Agentes IA, automatización de procesos, dashboards y desarrollo a medida.">
+    <meta property="og:title" content="FlexPoint | Grow Beyond Limits">
+    <meta property="og:description" content="Transformamos la forma en que tu empresa opera, decide y crece — con tecnología real, no promesas.">
+    <meta property="og:image" content="https://flexpoint.cl/logo-azul.png">
+    <meta property="og:url" content="https://flexpoint.cl">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
     <meta http-equiv="Pragma" content="no-cache">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -997,8 +1004,8 @@
                 FlexPoint es el ecosistema de soluciones digitales que transforma la forma en que tu empresa opera, decide y crece — con tecnología real, no promesas.
             </p>
             <div class="hero-actions">
-                <button onclick="openCalendly()" class="btn-calendly">📅 Agendar reunión</button>
-                <a href="https://flexpointcl.github.io/roi" target="_blank" rel="noopener noreferrer" class="btn-secondary">📊 Calculadora ROI</a>
+                <button onclick="openCalendly()" class="btn-calendly" aria-label="Agendar reunión en Calendly">📅 Agendar reunión</button>
+                <a href="https://flexpointcl.github.io/roi" target="_blank" rel="noopener noreferrer" class="btn-secondary" aria-label="Abrir calculadora de ROI">📊 Calculadora ROI</a>
                 <a href="https://wa.me/56985835922?text=Hola%20FlexPoint,%20quiero%20saber%20más." target="_blank" rel="noopener noreferrer" class="btn-secondary">Hablar por WhatsApp</a>
             </div>
         </div>
@@ -1179,7 +1186,7 @@
             <div class="brand-tagline tw-section" data-tw="Listo para crecer más allá de los límites">Listo para crecer más allá de los límites</div>
             <p class="brand-desc">Cuéntanos dónde está el cuello de botella en tu operación y te mostramos cómo FlexPoint puede resolverlo.</p>
             <div class="contact-options">
-                <button onclick="openCalendly()" class="btn-primary">📅 Agendar reunión gratis</button>
+                <button onclick="openCalendly()" class="btn-primary" aria-label="Agendar reunión gratis en Calendly">📅 Agendar reunión gratis</button>
                 <a href="https://flexpointcl.github.io/roi" target="_blank" rel="noopener noreferrer" class="btn-secondary">📊 Calculadora ROI</a>
                 <a href="https://wa.me/56985835922?text=Hola%20FlexPoint,%20quiero%20saber%20más%20sobre%20sus%20servicios." target="_blank" rel="noopener noreferrer" class="btn-secondary">WhatsApp</a>
                 <a href="mailto:hola@flexpoint.cl" class="btn-secondary">Email</a>
@@ -1193,7 +1200,7 @@
             <span class="logo-text">FlexPoint</span>
         </div>
         <p class="footer-text">
-            &copy; 2025 FlexPoint Chile
+            &copy; 2026 FlexPoint Chile
         </p>
         <div class="footer-links">
             <a href="#servicios">Servicios</a>
@@ -1320,7 +1327,9 @@
             particles.forEach(p => { p.update(); p.draw(); });
             requestAnimationFrame(animate);
         }
-        animate();
+        if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+            animate();
+        }
 
         /* ─── CALENDLY ─── */
         function openCalendly() {
