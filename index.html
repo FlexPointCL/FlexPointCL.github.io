@@ -997,7 +997,7 @@
         <div class="hero-content">
             <div class="hero-badge">Soluciones Empresariales Inteligentes</div>
             <div class="hero-logo">
-                <img src="logo-azul.png?v=2" alt="FlexPoint" loading="eager" fetchpriority="high" decoding="async" style="width:min(680px,90vw);height:auto;mix-blend-mode:screen;" />
+                <img src="logo-azul.png?v=2" alt="FlexPoint" loading="eager" fetchpriority="high" decoding="async" width="680" height="209" style="width:min(680px,90vw);height:auto;mix-blend-mode:screen;" />
             </div>
             <h1 class="hero-headline">Gestión inteligente sin límites!</h1>
             <p class="hero-sub">
@@ -1215,8 +1215,8 @@
         const canvas = document.getElementById('trailCanvas');
         const ctx    = canvas.getContext('2d');
         const particles = [];
-        const PCOUNT   = 100;
-        const LINK_DIST = 140;          // distancia máxima para dibujar línea
+        const PCOUNT   = window.innerWidth < 768 ? 30 : 55;
+        const LINK_DIST = 130;
         const DOT_COLORS = ['#4f8bff', '#3a6ee8', '#4f8bff99', '#4f8bff44'];
 
         let mouse    = { x: -9999, y: -9999 };
@@ -1284,38 +1284,35 @@
 
         for (let i = 0; i < PCOUNT; i++) particles.push(new Particle());
 
-        /* líneas entre partículas cercanas (O(n²)/2, 100 pts → ~5000 iter/frame, ok) */
         function drawLinks() {
             const d2max = LINK_DIST * LINK_DIST;
+            ctx.strokeStyle = '#4f8bff';
+            ctx.lineWidth   = 0.6;
             for (let i = 0; i < particles.length; i++) {
                 for (let j = i + 1; j < particles.length; j++) {
                     const dx = particles[i].x - particles[j].x;
                     const dy = particles[i].y - particles[j].y;
                     const d2 = dx * dx + dy * dy;
                     if (d2 < d2max) {
-                        const alpha = (1 - Math.sqrt(d2) / LINK_DIST) * 0.18;
-                        ctx.globalAlpha = alpha;
-                        ctx.strokeStyle = '#4f8bff';
-                        ctx.lineWidth   = 0.6;
+                        ctx.globalAlpha = (1 - Math.sqrt(d2) / LINK_DIST) * 0.18;
                         ctx.beginPath();
                         ctx.moveTo(particles[i].x, particles[i].y);
                         ctx.lineTo(particles[j].x, particles[j].y);
                         ctx.stroke();
                     }
                 }
-                // líneas desde cada partícula al cursor
                 if (hasMouse) {
                     const dx = particles[i].x - mouse.x;
                     const dy = particles[i].y - mouse.y;
-                    const d  = Math.sqrt(dx * dx + dy * dy);
-                    if (d < 170) {
-                        ctx.globalAlpha = (1 - d / 170) * 0.4;
-                        ctx.strokeStyle = '#4f8bff';
+                    const d2 = dx * dx + dy * dy;
+                    if (d2 < 170 * 170) {
                         ctx.lineWidth   = 0.8;
+                        ctx.globalAlpha = (1 - Math.sqrt(d2) / 170) * 0.4;
                         ctx.beginPath();
                         ctx.moveTo(particles[i].x, particles[i].y);
                         ctx.lineTo(mouse.x, mouse.y);
                         ctx.stroke();
+                        ctx.lineWidth = 0.6;
                     }
                 }
             }
