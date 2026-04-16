@@ -196,6 +196,26 @@
 
         /* El canvas tiene pointer-events:none y z-index:0 — no necesita override en el resto */
 
+        .btn-roi {
+            display: inline-block;
+            padding: 0.75rem 2rem;
+            background: #ffffff;
+            color: #4f8bff;
+            text-decoration: none;
+            border-radius: 0.625rem;
+            font-weight: 700;
+            font-size: 1rem;
+            font-family: 'Space Grotesk', sans-serif;
+            border: 2px solid #ffffff;
+            margin-bottom: 1.25rem;
+            box-shadow: 0 0 30px rgba(79,139,255,0.35), 0 4px 20px rgba(0,0,0,0.3);
+            transition: transform 0.15s, box-shadow 0.15s;
+        }
+        .btn-roi:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 0 50px rgba(79,139,255,0.55), 0 8px 30px rgba(0,0,0,0.4);
+        }
+
         .hero-badge {
             display: inline-flex;
             align-items: center;
@@ -939,6 +959,7 @@
     <!-- HERO -->
     <section id="hero">
         <div class="hero-content">
+            <a href="https://github.com/FlexPointCL/CLAUDE" target="_blank" rel="noopener noreferrer" class="btn-roi">📊 Calculadora ROI</a>
             <div class="hero-badge">Soluciones Empresariales Inteligentes</div>
             <div class="hero-logo">
                 <div class="logo-text-big">Flex<span>Point</span></div>
