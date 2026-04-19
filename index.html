@@ -1454,15 +1454,15 @@
                     const dx = mouse.x - this.x;
                     const dy = mouse.y - this.y;
                     const d2 = dx * dx + dy * dy;
-                    if (d2 < 200 * 200) {
-                        const f = 0.018 / Math.sqrt(d2);
+                    if (d2 < 250 * 250) {
+                        const f = 0.035 / Math.sqrt(d2);
                         this.vx += dx * f;
                         this.vy += dy * f;
                     }
                 }
                 // Límite de velocidad
                 const spd = Math.sqrt(this.vx * this.vx + this.vy * this.vy);
-                if (spd > 1.4) { this.vx *= 0.92; this.vy *= 0.92; }
+                if (spd > 2.5) { this.vx *= 0.92; this.vy *= 0.92; }
                 // Mover
                 this.x += this.vx;
                 this.y += this.vy;
