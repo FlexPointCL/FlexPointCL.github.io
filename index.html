@@ -1414,8 +1414,8 @@
         const canvas = document.getElementById('trailCanvas');
         const ctx    = canvas.getContext('2d');
         const particles = [];
-        const PCOUNT   = window.innerWidth < 768 ? 50 : 90;
-        const LINK_DIST = 160;
+        const PCOUNT   = window.innerWidth < 768 ? 70 : 130;
+        const LINK_DIST = 200;
         const DOT_COLORS = ['#4f8bff', '#3a6ee8', '#4f8bff99', '#4f8bff44'];
 
         let mouse    = { x: -9999, y: -9999 };
@@ -1445,7 +1445,7 @@
                 this.vx   = (Math.random() - 0.5) * 0.45;
                 this.vy   = (Math.random() - 0.5) * 0.45;
                 this.size = Math.random() * 1.8 + 0.5;
-                this.alpha = Math.random() * 0.55 + 0.4;
+                this.alpha = Math.random() * 0.6 + 0.55;
                 this.col  = DOT_COLORS[Math.floor(Math.random() * DOT_COLORS.length)];
             }
             update() {
@@ -1493,7 +1493,7 @@
                     const dy = particles[i].y - particles[j].y;
                     const d2 = dx * dx + dy * dy;
                     if (d2 < d2max) {
-                        ctx.globalAlpha = (1 - Math.sqrt(d2) / LINK_DIST) * 0.38;
+                        ctx.globalAlpha = (1 - Math.sqrt(d2) / LINK_DIST) * 0.6;
                         ctx.beginPath();
                         ctx.moveTo(particles[i].x, particles[i].y);
                         ctx.lineTo(particles[j].x, particles[j].y);
