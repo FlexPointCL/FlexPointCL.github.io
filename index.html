@@ -73,6 +73,21 @@
       }
     }
     </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        { "@type": "Question", "name": "¿Qué hace FlexPoint exactamente?", "acceptedAnswer": { "@type": "Answer", "text": "FlexPoint es un ecosistema de soluciones digitales para empresas chilenas. Desarrollamos herramientas SaaS de IA conversacional, automatización de WhatsApp y dashboards de negocio." } },
+        { "@type": "Question", "name": "¿Puedo usar FLEXIA sin tener equipo técnico?", "acceptedAnswer": { "@type": "Answer", "text": "Sí. FLEXIA se configura en una reunión de 30 minutos sin código ni instalaciones. Solo necesitas un número de WhatsApp y una agenda de prospectos." } },
+        { "@type": "Question", "name": "¿FLEXWA MASIVO puede banear mi número de WhatsApp?", "acceptedAnswer": { "@type": "Answer", "text": "Existe riesgo si se envía muy rápido. Por eso FLEXWA MASIVO incluye una calculadora de riesgo en tiempo real antes de lanzar cada campaña." } },
+        { "@type": "Question", "name": "¿Necesito Meta Business API para usar WhatsApp masivo?", "acceptedAnswer": { "@type": "Answer", "text": "No. FLEXWA MASIVO y FLEXWACHAT funcionan con tu número de WhatsApp actual sin aprobación de Meta ni esperas." } },
+        { "@type": "Question", "name": "¿En qué industrias funciona mejor FlexPoint?", "acceptedAnswer": { "@type": "Answer", "text": "Inmobiliarias, centros de salud, retail, educación, seguros y empresas B2B en Chile." } },
+        { "@type": "Question", "name": "¿Cuánto tiempo tarda la implementación?", "acceptedAnswer": { "@type": "Answer", "text": "FLEXIA y FLEXWA MASIVO se activan el mismo día. Proyectos a medida toman entre 1 y 3 semanas." } },
+        { "@type": "Question", "name": "¿Tienen soporte en Chile?", "acceptedAnswer": { "@type": "Answer", "text": "Sí. Todo el equipo está en Chile con soporte por WhatsApp en horario hábil." } }
+      ]
+    }
+    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700;800&display=swap" rel="stylesheet">
@@ -999,6 +1014,64 @@
             color: var(--suave);
         }
 
+        /* ─── FAQ ─── */
+        .faq-list {
+            max-width: 780px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .faq-item {
+            background: var(--card);
+            border: 1px solid var(--borde);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: border-color 0.3s;
+        }
+
+        .faq-item[open] {
+            border-color: var(--verde);
+        }
+
+        .faq-question {
+            list-style: none;
+            padding: 1.25rem 1.5rem;
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 600;
+            font-size: 1rem;
+            color: var(--texto);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+            user-select: none;
+        }
+
+        .faq-question::-webkit-details-marker { display: none; }
+
+        .faq-question::after {
+            content: '+';
+            font-size: 1.4rem;
+            color: var(--verde);
+            font-weight: 400;
+            flex-shrink: 0;
+            transition: transform 0.3s;
+        }
+
+        .faq-item[open] .faq-question::after {
+            transform: rotate(45deg);
+        }
+
+        .faq-answer {
+            padding: 0 1.5rem 1.25rem;
+            font-size: 0.95rem;
+            color: var(--suave);
+            line-height: 1.7;
+        }
+
         /* ─── ANIMACIONES ─── */
         @keyframes fadeUp {
             from { opacity: 0; transform: translateY(24px); }
@@ -1447,6 +1520,45 @@
                 <div class="stat-num" data-target="100" data-prefix="" data-suffix="%">0</div>
                 <div class="stat-label">Proyectos entregados con métricas definidas</div>
             </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" style="overflow:visible;">
+        <div class="section-header">
+            <div class="section-label">FAQ</div>
+            <h2 class="section-title tw-section" data-tw="Preguntas frecuentes">Preguntas frecuentes</h2>
+            <p class="section-desc">Todo lo que necesitas saber antes de empezar.</p>
+        </div>
+        <div class="faq-list">
+            <details class="faq-item">
+                <summary class="faq-question">¿Qué hace FlexPoint exactamente?</summary>
+                <div class="faq-answer">FlexPoint es un ecosistema de soluciones digitales para empresas chilenas. Desarrollamos herramientas SaaS de IA conversacional, automatización de WhatsApp y dashboards de negocio — todo diseñado para que tu empresa opere más rápido y venda más sin aumentar el equipo.</div>
+            </details>
+            <details class="faq-item">
+                <summary class="faq-question">¿Puedo usar FLEXIA sin tener equipo técnico?</summary>
+                <div class="faq-answer">Sí. FLEXIA se configura en una reunión de 30 minutos. Nosotros integramos la IA con tu proceso comercial actual — sin código, sin instalaciones. Solo necesitas un número de WhatsApp y una agenda de prospectos.</div>
+            </details>
+            <details class="faq-item">
+                <summary class="faq-question">¿FLEXWA MASIVO puede banear mi número de WhatsApp?</summary>
+                <div class="faq-answer">Existe riesgo si se envía muy rápido a muchos contactos sin cuidado. Por eso FLEXWA MASIVO incluye una calculadora de riesgo en tiempo real que te muestra el nivel de exposición antes de lanzar cada campaña. Tú decides la velocidad y el riesgo aceptable.</div>
+            </details>
+            <details class="faq-item">
+                <summary class="faq-question">¿Necesito contratar Meta Business API para usar WhatsApp masivo?</summary>
+                <div class="faq-answer">No. FLEXWA MASIVO y FLEXWACHAT funcionan con tu número de WhatsApp actual — sin aprobación de Meta, sin templates pre-aprobados, sin esperas de 7 a 14 días. Conectas hoy y envías hoy.</div>
+            </details>
+            <details class="faq-item">
+                <summary class="faq-question">¿En qué industrias funciona mejor FlexPoint?</summary>
+                <div class="faq-answer">Nuestros productos están optimizados para inmobiliarias, centros de salud, retail, educación, seguros y empresas B2B en Chile. Cualquier negocio que tenga prospectos, clientes recurrentes o procesos repetitivos puede beneficiarse.</div>
+            </details>
+            <details class="faq-item">
+                <summary class="faq-question">¿Cuánto tiempo tarda la implementación?</summary>
+                <div class="faq-answer">Depende del producto. FLEXIA y FLEXWA MASIVO se activan el mismo día. Proyectos de automatización a medida o dashboards personalizados toman entre 1 y 3 semanas según complejidad.</div>
+            </details>
+            <details class="faq-item">
+                <summary class="faq-question">¿Tienen soporte en español y en Chile?</summary>
+                <div class="faq-answer">Sí. Todo nuestro equipo está en Chile, con soporte en horario hábil por WhatsApp y reuniones por video. Sin tickets internacionales ni soporte en inglés obligatorio.</div>
+            </details>
         </div>
     </section>
 
