@@ -615,9 +615,41 @@
 
         .hero-actions {
             display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
+            flex-direction: column;
+            gap: 0.75rem;
+            align-items: center;
+            width: 100%;
+            max-width: 480px;
+            margin: 0 auto;
+        }
+
+        .btn-full {
+            width: 100%;
+            text-align: center;
+        }
+
+        .hero-actions-row {
+            display: flex;
+            gap: 0.75rem;
+            width: 100%;
             justify-content: center;
+        }
+
+        .hero-actions-row .btn-calendly,
+        .hero-actions-row .btn-secondary,
+        .hero-actions-row .btn-primary {
+            flex: 1;
+            text-align: center;
+        }
+
+        .contact-options {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            align-items: center;
+            width: 100%;
+            max-width: 480px;
+            margin: 0 auto;
         }
 
         /* Un solo estilo base para TODOS los botones */
@@ -907,13 +939,6 @@
             line-height: 1.6;
             white-space: nowrap;
             margin-top: -0.75rem;
-        }
-
-        .contact-options {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            flex-wrap: wrap;
         }
 
         /* ─── FOOTER ─── */
@@ -1264,17 +1289,6 @@
                 font-size: clamp(1.6rem, 7vw, 2.2rem);
             }
 
-            .contact-options {
-                flex-direction: column;
-                gap: 0.75rem;
-            }
-
-            .contact-options .btn-primary,
-            .contact-options .btn-secondary {
-                width: 100%;
-                text-align: center;
-            }
-
             footer {
                 flex-direction: column;
                 text-align: center;
@@ -1353,9 +1367,11 @@
                 FlexPoint es el ecosistema de soluciones digitales que transforma la forma en que tu empresa opera, decide y crece — con tecnología real, no promesas.
             </p>
             <div class="hero-actions">
-                <button onclick="openCalendly()" class="btn-calendly" aria-label="Agendar reunión en Calendly">📅 Agendar reunión</button>
-                <a href="https://flexpointcl.github.io/roi" target="_blank" rel="noopener noreferrer" class="btn-secondary" aria-label="Calcular mi ahorro automatizando">📊 Calcular mi ahorro automatizando</a>
-                <a href="https://wa.me/56985835922?text=Hola%20FlexPoint,%20quiero%20saber%20más." target="_blank" rel="noopener noreferrer" class="btn-secondary">Hablar por WhatsApp</a>
+                <a href="https://flexpointcl.github.io/roi" target="_blank" rel="noopener noreferrer" class="btn-secondary btn-full" aria-label="Calcular mi ahorro automatizando">📊 Calcular mi ahorro automatizando</a>
+                <div class="hero-actions-row">
+                    <button onclick="openCalendly()" class="btn-calendly" aria-label="Agendar reunión en Calendly">📅 Agendar reunión</button>
+                    <a href="https://wa.me/56985835922?text=Hola%20FlexPoint,%20quiero%20saber%20más." target="_blank" rel="noopener noreferrer" class="btn-secondary">Hablar por WhatsApp</a>
+                </div>
             </div>
         </div>
     </section>
@@ -1612,10 +1628,11 @@
             <div class="brand-tagline tw-section" data-tw="Listo para crecer más allá de los límites">Listo para crecer más allá de los límites</div>
             <p class="brand-desc">Cuéntanos dónde está el cuello de botella en tu operación y te mostramos cómo FlexPoint puede resolverlo.</p>
             <div class="contact-options">
-                <button onclick="openCalendly()" class="btn-primary" aria-label="Agendar reunión gratis en Calendly">📅 Agendar reunión gratis</button>
-                <a href="https://flexpointcl.github.io/roi" target="_blank" rel="noopener noreferrer" class="btn-secondary">📊 Calculadora ROI</a>
-                <a href="https://wa.me/56985835922?text=Hola%20FlexPoint,%20quiero%20saber%20más%20sobre%20sus%20servicios." target="_blank" rel="noopener noreferrer" class="btn-secondary">WhatsApp</a>
-                <a href="mailto:hola@flexpoint.cl" class="btn-secondary">Email</a>
+                <a href="https://flexpointcl.github.io/roi" target="_blank" rel="noopener noreferrer" class="btn-secondary btn-full">📊 Calcular mi ahorro automatizando</a>
+                <div class="hero-actions-row">
+                    <button onclick="openCalendly()" class="btn-primary" aria-label="Agendar reunión gratis en Calendly">📅 Agendar reunión gratis</button>
+                    <a href="https://wa.me/56985835922?text=Hola%20FlexPoint,%20quiero%20saber%20más%20sobre%20sus%20servicios." target="_blank" rel="noopener noreferrer" class="btn-secondary">WhatsApp</a>
+                </div>
             </div>
         </div>
     </section>
