@@ -24,6 +24,7 @@
     <meta name="twitter:image" content="https://flexpoint.cl/logo-azul.png">
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
     <meta http-equiv="Pragma" content="no-cache">
+    <script defer data-domain="flexpoint.cl" src="https://plausible.io/js/script.js"></script>
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -197,6 +198,62 @@
         .nav-cta:hover {
             opacity: 0.85;
             color: #4f8bff !important;
+        }
+
+        /* ─── MODO CLARO ─── */
+        body.light-mode {
+            --fondo: #f1f5f9;
+            --card: #ffffff;
+            --borde: #dde3f0;
+            --texto: #0f172a;
+            --suave: #64748b;
+            --verde: #2563eb;
+        }
+        body.light-mode nav {
+            background: rgba(241,245,249,0.92);
+        }
+        body.light-mode .nav-links a:not(.nav-cta) {
+            color: #1e3a6e;
+            background: rgba(37,99,235,0.07);
+            text-shadow: none;
+        }
+        body.light-mode .nav-links a:not(.nav-cta):hover {
+            background: rgba(37,99,235,0.14);
+            color: #1e3a6e;
+            text-shadow: none;
+        }
+        body.light-mode .nav-dropdown {
+            background: rgba(241,245,249,0.98);
+        }
+
+        /* ─── CONTROLES NAV ─── */
+        .nav-controls {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            flex-shrink: 0;
+        }
+        .nav-ctrl-btn {
+            background: rgba(79,139,255,0.1);
+            border: 1px solid rgba(79,139,255,0.2);
+            color: #c8d8ff;
+            border-radius: 8px;
+            padding: 0.3rem 0.6rem;
+            font-size: 0.78rem;
+            font-weight: 600;
+            font-family: 'Space Grotesk', sans-serif;
+            cursor: pointer;
+            transition: background 0.2s, color 0.2s;
+            white-space: nowrap;
+        }
+        .nav-ctrl-btn:hover {
+            background: rgba(79,139,255,0.22);
+            color: #fff;
+        }
+        body.light-mode .nav-ctrl-btn {
+            background: rgba(37,99,235,0.08);
+            border-color: rgba(37,99,235,0.2);
+            color: #1e3a6e;
         }
 
         /* ─── NAV DROPDOWN ─── */
@@ -1115,6 +1172,16 @@
                 font-size: 0.75rem !important;
                 padding: 0.45rem 0.9rem !important;
             }
+            .nav-controls {
+                gap: 0.25rem;
+            }
+            .nav-ctrl-btn {
+                font-size: 0.7rem;
+                padding: 0.25rem 0.45rem;
+            }
+            #btn-font-down, #btn-font-up {
+                display: none;
+            }
 
             #hero {
                 padding: 70px 1.25rem 2rem;
@@ -1260,10 +1327,16 @@
                 <img src="logo-azul.png" alt="FlexPoint" loading="eager" fetchpriority="high" decoding="async" width="160" height="48" />
             </picture>
         </a>
+        <div class="nav-controls">
+            <button class="nav-ctrl-btn" id="btn-theme" onclick="toggleTheme()" title="Modo claro/oscuro">🌙</button>
+            <button class="nav-ctrl-btn" id="btn-font-down" onclick="changeFontSize(-1)" title="Reducir texto">A-</button>
+            <button class="nav-ctrl-btn" id="btn-font-up" onclick="changeFontSize(1)" title="Aumentar texto">A+</button>
+            <button class="nav-ctrl-btn" id="btn-lang" onclick="toggleLang()" title="Cambiar idioma">ES</button>
+        </div>
         <ul class="nav-links">
-            <li><a href="#servicios">Servicios</a></li>
-            <li><a href="#porque">Por qué FlexPoint</a></li>
-            <li><a href="#contacto">Contacto</a></li>
+            <li><a href="#servicios" data-es="Servicios" data-en="Services">Servicios</a></li>
+            <li><a href="#porque" data-es="Por qué FlexPoint" data-en="Why FlexPoint">Por qué FlexPoint</a></li>
+            <li><a href="#contacto" data-es="Contacto" data-en="Contact">Contacto</a></li>
             <li class="nav-dropdown-wrap">
                 <a href="#productos" class="nav-dropdown-toggle" aria-haspopup="true" aria-expanded="false">Apps ▾</a>
                 <ul class="nav-dropdown">
@@ -1868,6 +1941,51 @@
             }, { threshold: 0.05, rootMargin: '0px 0px -40px 0px' });
             document.querySelectorAll('.tw-section').forEach(el => obs.observe(el));
         })();
+
+        /* ─── TEMA CLARO/OSCURO ─── */
+        function toggleTheme() {
+            const light = document.body.classList.toggle('light-mode');
+            document.getElementById('btn-theme').textContent = light ? '☀️' : '🌙';
+            localStorage.setItem('fp-theme', light ? 'light' : 'dark');
+        }
+        (function() {
+            if (localStorage.getItem('fp-theme') === 'light') {
+                document.body.classList.add('light-mode');
+                const btn = document.getElementById('btn-theme');
+                if (btn) btn.textContent = '☀️';
+            }
+        })();
+
+        /* ─── TAMAÑO DE FUENTE ─── */
+        let fontSize = parseInt(localStorage.getItem('fp-fontsize') || '16');
+        document.documentElement.style.fontSize = fontSize + 'px';
+        function changeFontSize(delta) {
+            fontSize = Math.min(22, Math.max(13, fontSize + delta));
+            document.documentElement.style.fontSize = fontSize + 'px';
+            localStorage.setItem('fp-fontsize', fontSize);
+        }
+
+        /* ─── IDIOMA ES/EN ─── */
+        const TRANSLATIONS = {
+            '.hero-badge':          { es: 'Soluciones Empresariales Inteligentes', en: 'Intelligent Business Solutions' },
+            '.section-label':       null,
+            '[data-es]':            null,
+            '.nav-cta':             { es: 'Hablar con un asesor', en: 'Talk to an advisor' },
+            '.nd-desc:nth-child(1)':null,
+        };
+        let currentLang = localStorage.getItem('fp-lang') || 'es';
+        function applyLang(lang) {
+            document.querySelectorAll('[data-es][data-en]').forEach(el => {
+                el.textContent = el.getAttribute('data-' + lang);
+            });
+            document.getElementById('btn-lang').textContent = lang === 'es' ? 'ES' : 'EN';
+            localStorage.setItem('fp-lang', lang);
+            currentLang = lang;
+        }
+        function toggleLang() {
+            applyLang(currentLang === 'es' ? 'en' : 'es');
+        }
+        if (currentLang === 'en') applyLang('en');
     </script>
 </body>
 </html>
