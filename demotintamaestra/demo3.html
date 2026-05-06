@@ -1,0 +1,1179 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Tinta Maestra — Soluciones Gráficas de Alto Impacto</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    /* ─── Tokens ─────────────────────────────────────────────── */
+    :root {
+      --bg:       #ffffff;
+      --surface:  #f7f7f5;
+      --border:   rgba(0,0,0,0.08);
+      --text:     #18181b;
+      --muted:    #62646c;
+      --cyan:     #00C8E8;
+      --magenta:  #E8186A;
+      --yellow:   #FFD600;
+      --green:    #2AE09A;
+      font-family: 'DM Sans', system-ui, sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    /* ─── Ambient blob ────────────────────────────────────────── */
+    .ambient {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+    }
+    .ambient::before {
+      content: '';
+      position: absolute;
+      width: 700px; height: 700px;
+      top: -200px; right: -200px;
+      background: radial-gradient(circle, rgba(0,200,232,0.07) 0%, transparent 70%);
+      animation: drift 22s ease-in-out infinite alternate;
+    }
+    .ambient::after {
+      content: '';
+      position: absolute;
+      width: 600px; height: 600px;
+      bottom: -100px; left: -150px;
+      background: radial-gradient(circle, rgba(232,24,106,0.06) 0%, transparent 70%);
+      animation: drift 18s ease-in-out infinite alternate-reverse;
+    }
+    @keyframes drift {
+      from { transform: translate(0,0); }
+      to   { transform: translate(40px, 30px); }
+    }
+
+    /* ─── Drop SVG decorators ─────────────────────────────────── */
+    .drops-deco {
+      position: absolute;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ─── Layout shell ────────────────────────────────────────── */
+    .shell {
+      width: min(1140px, calc(100% - 40px));
+      margin-inline: auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ─── Nav ─────────────────────────────────────────────────── */
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 1px solid var(--border);
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(20px);
+    }
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 72px;
+      gap: 24px;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-family: 'Playfair Display', serif;
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+    }
+    .logo-drops {
+      display: flex;
+      gap: 4px;
+    }
+    .logo-drops span {
+      display: block;
+      width: 8px; height: 11px;
+      border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+    }
+    .drop-c { background: var(--cyan); }
+    .drop-m { background: var(--magenta); }
+    .drop-y { background: var(--yellow); }
+    .drop-g { background: var(--green); }
+
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 500;
+    }
+    .nav-links a { transition: color 0.2s; }
+    .nav-links a:hover { color: var(--text); }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 20px;
+      border-radius: 6px;
+      font-size: 14px;
+      font-weight: 600;
+      border: 1px solid var(--border);
+      background: rgba(0,0,0,0.05);
+      color: var(--text);
+      cursor: pointer;
+      transition: background 0.2s, transform 0.15s;
+      white-space: nowrap;
+    }
+    .btn:hover { background: rgba(0,0,0,0.1); }
+    .btn:active { transform: scale(0.97); }
+    .btn-primary {
+      background: #18181b;
+      color: #ffffff;
+      border-color: transparent;
+      font-weight: 700;
+    }
+    .btn-primary:hover { background: #d8d8d4; }
+
+    .btn-wa {
+      background: #25D366;
+      color: #fff;
+      border-color: transparent;
+      padding: 10px 18px;
+    }
+    .btn-wa:hover { background: #1ebe5d; }
+
+    /* ─── Hero ────────────────────────────────────────────────── */
+    .hero-wrap {
+      position: relative;
+      overflow: hidden;
+      padding: 110px 0 90px;
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+    }
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 12px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      margin-bottom: 28px;
+    }
+    .tag-dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--cyan);
+      animation: pulse 2s ease-in-out infinite;
+    }
+    @keyframes pulse {
+      0%,100% { opacity: 1; }
+      50%      { opacity: 0.3; }
+    }
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(52px, 7vw, 96px);
+      font-weight: 900;
+      line-height: 0.95;
+      letter-spacing: -0.02em;
+      margin-bottom: 26px;
+    }
+    h1 em {
+      font-style: italic;
+      background: linear-gradient(135deg, var(--cyan), var(--magenta));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .lead {
+      color: var(--muted);
+      font-size: 18px;
+      line-height: 1.7;
+      max-width: 520px;
+      margin-bottom: 36px;
+    }
+    .hero-ctas {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    /* Hero visual: print board */
+    .print-canvas {
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      background: var(--surface);
+      overflow: hidden;
+      box-shadow: 0 40px 120px rgba(0,0,0,0.5);
+    }
+    .canvas-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 18px;
+      border-bottom: 1px solid var(--border);
+    }
+    .canvas-dots { display: flex; gap: 7px; }
+    .canvas-dots span {
+      width: 10px; height: 10px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.12);
+    }
+    .canvas-label { color: var(--muted); font-size: 12px; font-family: 'DM Mono', monospace; }
+    .canvas-body { padding: 20px; display: grid; gap: 14px; }
+    .print-item {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 18px;
+      background: rgba(255,255,255,0.02);
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .print-item .pill {
+      flex-shrink: 0;
+      padding: 4px 10px;
+      border-radius: 999px;
+      font-size: 11px;
+      font-weight: 700;
+      font-family: 'DM Mono', monospace;
+      letter-spacing: 0.05em;
+    }
+    .pill-c { background: rgba(0,200,232,0.15);  color: var(--cyan); }
+    .pill-m { background: rgba(232,24,106,0.15); color: var(--magenta); }
+    .pill-y { background: rgba(255,214,0,0.15);  color: var(--yellow); }
+    .pill-g { background: rgba(42,224,154,0.15); color: var(--green); }
+    .print-item-text strong {
+      display: block;
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 3px;
+    }
+    .print-item-text span {
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    /* ─── Section base ────────────────────────────────────────── */
+    section {
+      padding: 96px 0;
+      border-top: 1px solid var(--border);
+      position: relative;
+    }
+    .section-tag {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 14px;
+    }
+    h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(36px, 5vw, 62px);
+      font-weight: 900;
+      line-height: 1.0;
+      letter-spacing: -0.02em;
+      margin-bottom: 20px;
+    }
+    .section-lead {
+      color: var(--muted);
+      font-size: 17px;
+      line-height: 1.7;
+      max-width: 640px;
+    }
+
+    /* ─── Historia ────────────────────────────────────────────── */
+    .historia-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: start;
+      margin-top: 56px;
+    }
+    .historia-text p {
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.8;
+      margin-bottom: 18px;
+    }
+    .historia-text p:last-child { margin-bottom: 0; }
+    .historia-stat-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+    .stat-card {
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 24px 22px;
+      background: var(--surface);
+    }
+    .stat-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 42px;
+      font-weight: 900;
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+    .stat-label {
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 500;
+      line-height: 1.4;
+    }
+
+    /* ─── Misión / Visión ─────────────────────────────────────── */
+    .mv-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      margin-top: 56px;
+    }
+    .mv-card {
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 40px 36px;
+      background: var(--surface);
+      position: relative;
+      overflow: hidden;
+    }
+    .mv-card::before {
+      content: '';
+      position: absolute;
+      width: 180px; height: 180px;
+      top: -60px; right: -60px;
+      border-radius: 50%;
+      opacity: 0.07;
+    }
+    .mv-card.mision::before { background: var(--cyan); }
+    .mv-card.vision::before  { background: var(--magenta); }
+    .mv-icon {
+      width: 44px; height: 44px;
+      border-radius: 10px;
+      display: grid;
+      place-items: center;
+      margin-bottom: 22px;
+      font-size: 22px;
+    }
+    .mv-card.mision .mv-icon { background: rgba(0,200,232,0.12); }
+    .mv-card.vision  .mv-icon { background: rgba(232,24,106,0.12); }
+    .mv-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 28px;
+      font-weight: 700;
+      margin-bottom: 18px;
+      letter-spacing: -0.01em;
+    }
+    .mv-card p {
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.75;
+    }
+
+    /* ─── Servicios ───────────────────────────────────────────── */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+      margin-top: 56px;
+    }
+    .service-card {
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 28px 24px;
+      background: var(--surface);
+      transition: border-color 0.25s, transform 0.2s;
+      opacity: 0;
+      transform: translateY(18px);
+    }
+    .service-card.visible {
+      opacity: 1;
+      transform: translateY(0);
+      transition: opacity 0.5s cubic-bezier(0.16,1,0.3,1), transform 0.5s cubic-bezier(0.16,1,0.3,1), border-color 0.25s;
+    }
+    .service-card:hover { border-color: rgba(255,255,255,0.18); transform: translateY(-3px); }
+    .svc-num {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      color: var(--muted);
+      margin-bottom: 18px;
+    }
+    .svc-icon {
+      width: 38px; height: 38px;
+      border-radius: 8px;
+      display: grid;
+      place-items: center;
+      margin-bottom: 16px;
+      font-size: 18px;
+    }
+    .service-card h3 {
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: 10px;
+      line-height: 1.3;
+    }
+    .service-card p {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.65;
+    }
+
+    /* ─── Proceso ─────────────────────────────────────────────── */
+    .process-steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0;
+      margin-top: 56px;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+    .process-step {
+      padding: 36px 32px;
+      border-right: 1px solid var(--border);
+      position: relative;
+    }
+    .process-step:last-child { border-right: none; }
+    .step-num {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      color: var(--muted);
+      margin-bottom: 20px;
+    }
+    .process-step h3 {
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+    .process-step p {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.65;
+    }
+    .step-line {
+      position: absolute;
+      top: 50%;
+      right: -1px;
+      width: 1px;
+      height: 50%;
+      transform: translateY(-50%);
+    }
+
+    /* ─── Trabajos / Galería ──────────────────────────────────── */
+    .gallery-head {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      margin-bottom: 32px;
+      gap: 24px;
+    }
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: 1.3fr 0.85fr 1fr;
+      grid-template-rows: 220px 220px;
+      gap: 14px;
+    }
+    .gallery-item {
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      background: var(--surface);
+      overflow: hidden;
+      position: relative;
+      display: flex;
+      align-items: flex-end;
+      padding: 18px;
+      transition: border-color 0.25s;
+    }
+    .gallery-item:hover { border-color: rgba(255,255,255,0.2); }
+    .gallery-item:first-child { grid-row: 1 / 3; }
+    .gallery-item .overlay {
+      position: absolute;
+      inset: 0;
+      opacity: 0.12;
+    }
+    .gi-1 .overlay { background: linear-gradient(135deg, var(--cyan), var(--green)); }
+    .gi-2 .overlay { background: linear-gradient(135deg, var(--magenta), var(--yellow)); }
+    .gi-3 .overlay { background: linear-gradient(135deg, var(--yellow), var(--cyan)); }
+    .gi-4 .overlay { background: linear-gradient(135deg, var(--green), var(--magenta)); }
+    .gi-5 .overlay { background: linear-gradient(135deg, var(--cyan), var(--magenta)); }
+
+    .gallery-label {
+      position: relative;
+      z-index: 1;
+    }
+    .gallery-label strong {
+      display: block;
+      font-size: 15px;
+      font-weight: 700;
+      margin-bottom: 3px;
+    }
+    .gallery-label span {
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    /* Video upload area */
+    .upload-note {
+      margin-top: 18px;
+      padding: 18px 22px;
+      border: 1px dashed rgba(255,255,255,0.15);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .upload-icon {
+      flex-shrink: 0;
+      width: 36px; height: 36px;
+      border-radius: 8px;
+      background: rgba(255,214,0,0.12);
+      display: grid;
+      place-items: center;
+      font-size: 16px;
+    }
+
+    /* ─── Clientes / sectores ─────────────────────────────────── */
+    .clients-row {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 18px;
+    }
+    .client-tag {
+      padding: 8px 16px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--muted);
+    }
+
+    /* ─── Contacto ────────────────────────────────────────────── */
+    .contact-wrap {
+      display: grid;
+      grid-template-columns: 0.85fr 1.15fr;
+      gap: 24px;
+      margin-top: 56px;
+      align-items: start;
+    }
+    .contact-info {
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 36px 32px;
+      background: var(--surface);
+    }
+    .contact-info h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 26px;
+      font-weight: 700;
+      margin-bottom: 14px;
+      letter-spacing: -0.01em;
+    }
+    .contact-info p {
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.7;
+      margin-bottom: 28px;
+    }
+    .contact-channels { display: grid; gap: 12px; }
+    .channel {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 14px;
+      color: var(--muted);
+    }
+    .ch-icon {
+      width: 34px; height: 34px;
+      border-radius: 7px;
+      border: 1px solid var(--border);
+      display: grid;
+      place-items: center;
+      font-size: 15px;
+      flex-shrink: 0;
+    }
+
+    .contact-form-wrap {
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 36px 32px;
+      background: var(--surface);
+    }
+    form { display: grid; gap: 14px; }
+    .field-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+    label {
+      display: grid;
+      gap: 7px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--muted);
+    }
+    input, textarea {
+      width: 100%;
+      background: rgba(0,0,0,0.03);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 12px 14px;
+      color: var(--text);
+      font: inherit;
+      font-size: 15px;
+      transition: border-color 0.2s;
+      outline: none;
+    }
+    input:focus, textarea:focus { border-color: rgba(255,255,255,0.25); }
+    textarea { min-height: 130px; resize: vertical; }
+    .form-actions {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .form-note {
+      font-size: 12px;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    /* ─── Floating WhatsApp ───────────────────────────────────── */
+    .wa-float {
+      position: fixed;
+      bottom: 28px;
+      right: 28px;
+      z-index: 200;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 20px;
+      background: #25D366;
+      color: #fff;
+      border-radius: 999px;
+      font-size: 14px;
+      font-weight: 700;
+      box-shadow: 0 8px 32px rgba(37,211,102,0.35);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .wa-float:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 40px rgba(37,211,102,0.45);
+    }
+    .wa-float svg { flex-shrink: 0; }
+
+    /* ─── Footer ──────────────────────────────────────────────── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 40px 0 48px;
+    }
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+    .footer-right {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .ig-link {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      color: var(--muted);
+      font-size: 13px;
+      transition: color 0.2s;
+    }
+    .ig-link:hover { color: var(--text); }
+
+    /* ─── Drop decorators scattered ──────────────────────────── */
+    .drop-scatter {
+      position: absolute;
+      pointer-events: none;
+      z-index: 0;
+    }
+    .drop-svg {
+      opacity: 0.55;
+    }
+
+    /* ─── Responsive ──────────────────────────────────────────── */
+    @media (max-width: 1000px) {
+      .hero-grid,
+      .historia-grid,
+      .mv-grid,
+      .contact-wrap { grid-template-columns: 1fr; }
+      .services-grid { grid-template-columns: 1fr 1fr; }
+      .gallery-grid {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto;
+      }
+      .gallery-item:first-child { grid-row: auto; }
+    }
+    @media (max-width: 720px) {
+      .nav-links { display: none; }
+      .process-steps { grid-template-columns: 1fr; }
+      .process-step { border-right: none; border-bottom: 1px solid var(--border); }
+      .process-step:last-child { border-bottom: none; }
+      .services-grid { grid-template-columns: 1fr; }
+      .gallery-grid { grid-template-columns: 1fr; }
+      .field-row { grid-template-columns: 1fr; }
+      .wa-float span { display: none; }
+      .wa-float { padding: 14px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Ambient lighting -->
+  <div class="ambient" aria-hidden="true"></div>
+
+  <!-- Floating WhatsApp -->
+  <a class="wa-float" href="https://wa.me/56912345678?text=Hola%20Tinta%20Maestra%2C%20quisiera%20cotizar%20un%20trabajo." target="_blank" rel="noreferrer" aria-label="Contactar por WhatsApp">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+      <path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.126 1.532 5.858L.054 23.447a.5.5 0 00.61.61l5.629-1.49A11.95 11.95 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.6a9.549 9.549 0 01-4.9-1.349l-.35-.208-3.637.963.973-3.55-.23-.365A9.6 9.6 0 012.4 12C2.4 6.698 6.698 2.4 12 2.4S21.6 6.698 21.6 12 17.302 21.6 12 21.6z"/>
+    </svg>
+    <span>Cotizar por WhatsApp</span>
+  </a>
+
+  <!-- Nav -->
+  <nav class="nav">
+    <div class="shell nav-inner">
+      <a class="logo" href="#">
+        <div class="logo-drops" aria-hidden="true">
+          <span class="drop-c"></span>
+          <span class="drop-m"></span>
+          <span class="drop-y"></span>
+          <span class="drop-g"></span>
+        </div>
+        TINTA MAESTRA
+      </a>
+      <div class="nav-links">
+        <a href="#nosotros">Nosotros</a>
+        <a href="#servicios">Servicios</a>
+        <a href="#trabajos">Trabajos</a>
+        <a href="#contacto">Contacto</a>
+      </div>
+      <a class="btn btn-primary" href="#contacto">Solicitar cotización</a>
+    </div>
+  </nav>
+
+  <main>
+    <!-- ── HERO ──────────────────────────────────────────────── -->
+    <div class="hero-wrap">
+      <!-- Drop decorators -->
+      <svg class="drop-scatter" style="top:60px;right:18%;opacity:0.18" width="48" height="64" viewBox="0 0 48 64">
+        <path d="M24 0 C24 0 48 28 48 42 C48 56 37.3 64 24 64 C10.7 64 0 56 0 42 C0 28 24 0 24 0Z" fill="#00C8E8"/>
+      </svg>
+      <svg class="drop-scatter" style="bottom:40px;left:8%;opacity:0.13" width="32" height="44" viewBox="0 0 48 64">
+        <path d="M24 0 C24 0 48 28 48 42 C48 56 37.3 64 24 64 C10.7 64 0 56 0 42 C0 28 24 0 24 0Z" fill="#E8186A"/>
+      </svg>
+      <svg class="drop-scatter" style="top:30%;left:45%;opacity:0.10" width="20" height="28" viewBox="0 0 48 64">
+        <path d="M24 0 C24 0 48 28 48 42 C48 56 37.3 64 24 64 C10.7 64 0 56 0 42 C0 28 24 0 24 0Z" fill="#FFD600"/>
+      </svg>
+
+      <div class="shell hero-grid">
+        <div>
+          <div class="tag">
+            <span class="tag-dot"></span>
+            Soluciones gráficas de alto impacto
+          </div>
+          <h1>Tu marca,<br /><em>visible</em> al máximo.</h1>
+          <p class="lead">
+            Producimos piezas impresas para comunicación, punto de venta, señalética y campañas. Calidad, rapidez y asesoría técnica en cada proyecto.
+          </p>
+          <div class="hero-ctas">
+            <a class="btn btn-primary" href="#contacto">Solicitar cotización</a>
+            <a class="btn" href="https://www.instagram.com/tintamaestra.cl/" target="_blank" rel="noreferrer">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+              Ver Instagram
+            </a>
+          </div>
+        </div>
+        <div class="print-canvas">
+          <div class="canvas-bar">
+            <div class="canvas-dots"><span></span><span></span><span></span></div>
+            <span class="canvas-label">produccion.gráfica</span>
+          </div>
+          <div class="canvas-body">
+            <div class="print-item">
+              <span class="pill pill-c">GRAN FORMATO</span>
+              <div class="print-item-text">
+                <strong>Gigantografías y lienzos</strong>
+                <span>Pendones, lonas y estructuras de alto impacto</span>
+              </div>
+            </div>
+            <div class="print-item">
+              <span class="pill pill-m">ADHESIVOS</span>
+              <div class="print-item-text">
+                <strong>Vinilos, PVC y one vision</strong>
+                <span>Vitrinas, vehículos y gráfica decorativa</span>
+              </div>
+            </div>
+            <div class="print-item">
+              <span class="pill pill-y">SOPORTES</span>
+              <div class="print-item-text">
+                <strong>Trovicel y material rígido</strong>
+                <span>Señalética, POP y material corporativo</span>
+              </div>
+            </div>
+            <div class="print-item">
+              <span class="pill pill-g">TERMINACIONES</span>
+              <div class="print-item-text">
+                <strong>Laminados, troquelado y emplacado</strong>
+                <span>Corte digital e instalación profesional</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── NOSOTROS / HISTORIA ────────────────────────────────── -->
+    <section id="nosotros">
+      <div class="shell">
+        <p class="section-tag">// 01 — Nuestra historia</p>
+        <h2>Nacimos para hacer<br />visible lo importante.</h2>
+
+        <div class="historia-grid">
+          <div class="historia-text">
+            <p>
+              Tinta Maestra nace el <strong>16 de enero de 2025</strong> con un objetivo claro: ofrecer soluciones ágiles y de alta calidad en impresión gráfica, respondiendo a las exigencias de un mercado que requiere rapidez, precisión y versatilidad.
+            </p>
+            <p>
+              Desde el primer día nos especializamos en impresión en múltiples formatos y sustratos, desarrollando soluciones en materiales como adhesivos, PVC, trovicel, one vision y soportes rígidos, adaptándonos a las necesidades específicas de cada cliente.
+            </p>
+            <p>
+              Hoy trabajamos como un aliado estratégico para nuestros clientes, aportando soluciones gráficas que no solo cumplen una función visual, sino que también generan impacto y valor en sus proyectos.
+            </p>
+            <p>
+              Miramos hacia el futuro con el compromiso de seguir creciendo, incorporando nuevas tecnologías y ampliando nuestra oferta para consolidarnos como referente en soluciones de impresión gráfica.
+            </p>
+          </div>
+          <div>
+            <div class="historia-stat-grid">
+              <div class="stat-card">
+                <div class="stat-num" style="color:var(--cyan)">2025</div>
+                <div class="stat-label">Año de fundación,<br/>con visión de futuro</div>
+              </div>
+              <div class="stat-card">
+                <div class="stat-num" style="color:var(--magenta)">100%</div>
+                <div class="stat-label">Compromiso con la calidad y el plazo</div>
+              </div>
+              <div class="stat-card">
+                <div class="stat-num" style="color:var(--yellow)">4+</div>
+                <div class="stat-label">Rubros atendidos: retail, inmobiliaria, eventos y más</div>
+              </div>
+              <div class="stat-card">
+                <div class="stat-num" style="color:var(--green)">∞</div>
+                <div class="stat-label">Formatos y sustratos posibles</div>
+              </div>
+            </div>
+            <div class="clients-row" style="margin-top:18px">
+              <span class="client-tag">Retail</span>
+              <span class="client-tag">Inmobiliarias</span>
+              <span class="client-tag">Eventos</span>
+              <span class="client-tag">Proyectos corporativos</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── MISIÓN / VISIÓN ────────────────────────────────────── -->
+    <section>
+      <div class="shell">
+        <p class="section-tag">// 02 — Misión y visión</p>
+        <h2>Lo que nos mueve<br />y hacia dónde vamos.</h2>
+        <div class="mv-grid">
+          <div class="mv-card mision">
+            <div class="mv-icon">🎯</div>
+            <h3>Misión</h3>
+            <p>Impulsar la comunicación visual de nuestros clientes a través de soluciones gráficas innovadoras, combinando tecnología de alto rendimiento y un enfoque creativo para producir piezas impresas de gran formato y alto impacto, con estándares superiores de calidad y terminación.</p>
+          </div>
+          <div class="mv-card vision">
+            <div class="mv-icon">🔭</div>
+            <h3>Visión</h3>
+            <p>Consolidarnos como un referente en soluciones de impresión gráfica, reconocidos por nuestra versatilidad, innovación en materiales y tecnologías, y por ser un aliado estratégico confiable para empresas de distintos rubros.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── SERVICIOS ──────────────────────────────────────────── -->
+    <section id="servicios">
+      <div class="shell">
+        <p class="section-tag">// 03 — Servicios</p>
+        <h2>Producción gráfica<br />de punta a punta.</h2>
+        <div class="services-grid">
+          <article class="service-card" style="--delay:0ms">
+            <div class="svc-num">01</div>
+            <div class="svc-icon" style="background:rgba(0,200,232,0.1)">🖨️</div>
+            <h3>Gran formato</h3>
+            <p>Gigantografías, lienzos y pendones con impresión de alta resolución para máximo impacto visual.</p>
+          </article>
+          <article class="service-card" style="--delay:80ms">
+            <div class="svc-num">02</div>
+            <div class="svc-icon" style="background:rgba(232,24,106,0.1)">📦</div>
+            <h3>Adhesivos y vinilos</h3>
+            <p>Gráfica adhesiva para vitrinas, vehículos, pisos y superficies especiales con materiales durables.</p>
+          </article>
+          <article class="service-card" style="--delay:160ms">
+            <div class="svc-num">03</div>
+            <div class="svc-icon" style="background:rgba(255,214,0,0.1)">🏷️</div>
+            <h3>Material POP y señalética</h3>
+            <p>Soportes rígidos en trovicel, PVC y más para punto de venta, eventos y señalización corporativa.</p>
+          </article>
+          <article class="service-card" style="--delay:240ms">
+            <div class="svc-num">04</div>
+            <div class="svc-icon" style="background:rgba(42,224,154,0.1)">✂️</div>
+            <h3>Terminaciones</h3>
+            <p>Laminados, corte digital, troquelado, emplacado e instalación profesional en terreno.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── PROCESO ────────────────────────────────────────────── -->
+    <section id="proceso">
+      <div class="shell">
+        <p class="section-tag">// 04 — Cómo trabajamos</p>
+        <h2>Simple, rápido<br />y sin sorpresas.</h2>
+        <div class="process-steps">
+          <article class="process-step">
+            <div class="step-num">PASO 01</div>
+            <h3>Envía tu idea o archivo</h3>
+            <p>Comparte medidas, referencia, material o el archivo base. Sin archivo final, igual te orientamos.</p>
+          </article>
+          <article class="process-step">
+            <div class="step-num">PASO 02</div>
+            <h3>Cotización clara y rápida</h3>
+            <p>Proponemos la mejor solución según formato, material, terminación y plazo. Sin letra chica.</p>
+          </article>
+          <article class="process-step">
+            <div class="step-num">PASO 03</div>
+            <h3>Producción y entrega</h3>
+            <p>Producimos con estándares profesionales y coordinamos el retiro o despacho donde lo necesites.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── TRABAJOS ───────────────────────────────────────────── -->
+    <section id="trabajos">
+      <div class="shell">
+        <div class="gallery-head">
+          <div>
+            <p class="section-tag">// 05 — Trabajos</p>
+            <h2>Lo que hacemos,<br />habla por sí solo.</h2>
+          </div>
+          <a class="btn" href="https://www.instagram.com/tintamaestra.cl/" target="_blank" rel="noreferrer">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+            Ver Instagram
+          </a>
+        </div>
+        <div class="gallery-grid">
+          <div class="gallery-item gi-1">
+            <div class="overlay"></div>
+            <div class="gallery-label">
+              <strong>Aplicaciones comerciales</strong>
+              <span>Retail y punto de venta</span>
+            </div>
+          </div>
+          <div class="gallery-item gi-2">
+            <div class="overlay"></div>
+            <div class="gallery-label">
+              <strong>Señalética corporativa</strong>
+              <span>Empresas y oficinas</span>
+            </div>
+          </div>
+          <div class="gallery-item gi-3">
+            <div class="overlay"></div>
+            <div class="gallery-label">
+              <strong>Gran formato</strong>
+              <span>Eventos y campañas</span>
+            </div>
+          </div>
+          <div class="gallery-item gi-4">
+            <div class="overlay"></div>
+            <div class="gallery-label">
+              <strong>Vinilos y adhesivos</strong>
+              <span>Vitrinas y vehículos</span>
+            </div>
+          </div>
+          <div class="gallery-item gi-5">
+            <div class="overlay"></div>
+            <div class="gallery-label">
+              <strong>Material POP</strong>
+              <span>Inmobiliarias y proyectos</span>
+            </div>
+          </div>
+        </div>
+        <div class="upload-note">
+          <div class="upload-icon">📹</div>
+          <div>
+            <strong style="display:block;font-size:14px;margin-bottom:3px;color:var(--text)">Sección de videos propios</strong>
+            <span>Esta sección está preparada para que puedas subir y mostrar videos de tus trabajos cuando quieras actualizarla.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── CONTACTO ───────────────────────────────────────────── -->
+    <section id="contacto">
+      <div class="shell">
+        <p class="section-tag">// 06 — Contacto</p>
+        <h2>¿Tienes un proyecto?<br />Cuéntanos.</h2>
+        <div class="contact-wrap">
+          <div class="contact-info">
+            <h3>Hablemos de tu proyecto.</h3>
+            <p>Completa el formulario o escríbenos directamente. Te respondemos rápido con orientación y cotización según lo que necesites imprimir.</p>
+            <div class="contact-channels">
+              <div class="channel">
+                <div class="ch-icon">📧</div>
+                <span>administracion@tintamaestra.cl</span>
+              </div>
+              <div class="channel">
+                <div class="ch-icon">📱</div>
+                <span>WhatsApp: disponible en el botón flotante</span>
+              </div>
+              <div class="channel">
+                <div class="ch-icon">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                </div>
+                <a href="https://www.instagram.com/tintamaestra.cl/" target="_blank" rel="noreferrer" style="color:var(--muted);transition:color 0.2s" onmouseover="this.style.color='#f5f5f0'" onmouseout="this.style.color=''">@tintamaestra.cl en Instagram</a>
+              </div>
+            </div>
+          </div>
+          <div class="contact-form-wrap">
+            <form id="contact-form" action="https://formspree.io/f/XXXXXXXX" method="POST">
+              <input type="hidden" name="_subject" value="Nueva cotización desde tintamaestra.cl" />
+              <input type="hidden" name="_to" value="administracion@tintamaestra.cl" />
+              <div class="field-row">
+                <label>
+                  Nombre
+                  <input type="text" name="nombre" autocomplete="given-name" placeholder="Tu nombre" required />
+                </label>
+                <label>
+                  Apellido
+                  <input type="text" name="apellido" autocomplete="family-name" placeholder="Tu apellido" required />
+                </label>
+              </div>
+              <label>
+                Email
+                <input type="email" name="email" autocomplete="email" placeholder="tucorreo@ejemplo.com" required />
+              </label>
+              <label>
+                Mensaje / Descripción del proyecto
+                <textarea name="mensaje" placeholder="Cuéntanos qué necesitas imprimir: medidas, cantidad, material, plazo estimado..." required></textarea>
+              </label>
+              <div class="form-actions">
+                <button class="btn btn-primary" type="submit">Enviar solicitud →</button>
+                <p class="form-note">Te respondemos en menos de 24 horas hábiles.</p>
+              </div>
+              <div id="form-msg" style="display:none;padding:12px 14px;border-radius:8px;font-size:14px;margin-top:6px"></div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="shell footer-inner">
+      <a class="logo" href="#">
+        <div class="logo-drops" aria-hidden="true">
+          <span class="drop-c"></span>
+          <span class="drop-m"></span>
+          <span class="drop-y"></span>
+          <span class="drop-g"></span>
+        </div>
+        TINTA MAESTRA
+      </a>
+      <div class="footer-right">
+        <a class="ig-link" href="https://www.instagram.com/tintamaestra.cl/" target="_blank" rel="noreferrer">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+          @tintamaestra.cl
+        </a>
+        <span>© 2025 GHS Soluciones Gráficas Spa.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Scroll reveal for service cards
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          const delay = parseInt(entry.target.style.getPropertyValue('--delay')) || 0;
+          setTimeout(() => entry.target.classList.add('visible'), delay);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.service-card').forEach(el => observer.observe(el));
+
+    // Form submission feedback
+    const form = document.getElementById('contact-form');
+    const msg  = document.getElementById('form-msg');
+
+    form.addEventListener('submit', async (e) => {
+      const btn = form.querySelector('button[type=submit]');
+      btn.textContent = 'Enviando…';
+      btn.disabled = true;
+
+      // If Formspree is not yet configured, show a demo message
+      const action = form.action;
+      if (action.includes('XXXXXXXX')) {
+        e.preventDefault();
+        setTimeout(() => {
+          msg.style.display = 'block';
+          msg.style.background = 'rgba(42,224,154,0.12)';
+          msg.style.border = '1px solid rgba(42,224,154,0.25)';
+          msg.style.color = '#2AE09A';
+          msg.textContent = '✓ Demo: formulario listo. En producción se conecta al email de Tinta Maestra.';
+          btn.textContent = 'Enviado';
+        }, 800);
+      }
+    });
+  </script>
+</body>
+</html>
