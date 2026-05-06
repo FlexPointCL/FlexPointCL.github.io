@@ -32,18 +32,14 @@
     }
     a { color: inherit; text-decoration: none; }
 
-    /* ── Drips hero bg ───────────────────────────────────────── */
-    .hero-wrap {
-      position: relative;
-    }
-    .drips-top {
-      position: absolute;
-      top: 0; left: 0; right: 0;
-      width: 100%;
-      height: 100%;
+    /* ── Drips full page bg ──────────────────────────────────── */
+    .drips-bg {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
       object-fit: cover;
       object-position: top center;
-      opacity: 0.18;
+      opacity: 0.07;
       pointer-events: none;
       z-index: 0;
     }
@@ -605,9 +601,11 @@
 
   <main>
 
+    <!-- Gotas fondo completo -->
+    <img src="gotas.png" class="drips-bg" alt="" aria-hidden="true" />
+
     <!-- HERO -->
     <div class="hero-wrap">
-      <img src="gotas.png" class="drips-top" alt="" aria-hidden="true" />
       <div class="shell hero-grid" style="position:relative;z-index:1">
         <div>
           <div class="eyebrow">
