@@ -1,0 +1,45 @@
+# FlexPoint — Inteligencia Artificial para Empresas en Chile
+
+> FlexPoint es una empresa chilena de tecnología especializada en inteligencia artificial, automatización de procesos y soluciones de comunicación masiva para empresas en Chile.
+
+## Qué hace FlexPoint
+
+FlexPoint desarrolla y opera tres productos principales de inteligencia artificial para empresas en Chile:
+
+- **FLEXIA**: Agente de IA conversacional con voz humana que llama a prospectos, agenda reuniones, califica leads y maneja objeciones de forma autónoma 24/7. Funciona por teléfono con voz real, sin intervención humana.
+- **FLEXWA MASIVO**: Plataforma de envío masivo de WhatsApp sin necesidad de Meta Business API. Permite campañas de miles de mensajes con el número de WhatsApp del cliente, con calculadora de riesgo en tiempo real.
+- **FLEXWACHAT**: Bot de atención inbound por WhatsApp que responde clientes, agenda citas y procesa cobros automáticamente, sin Meta ni Twilio.
+
+## Servicios a medida
+
+- Agentes IA conversacionales para WhatsApp, web y telefónico
+- Calculadoras de ROI interactivas para prospección B2B
+- Automatización de procesos con flujos inteligentes
+- Dashboards y Business Intelligence en tiempo real
+- Integraciones entre CRM, ERP, WhatsApp y plataformas de pago
+- Desarrollo de software a medida para operaciones internas
+
+## Industrias objetivo
+
+Inmobiliarias, centros de salud, retail, educación, seguros y empresas B2B en Chile.
+
+## Resultados comprobados
+
+- +40% reducción promedio en tiempos operacionales
+- +3x mayor velocidad de conversión de prospectos
+- Disponibilidad 24/7 de agentes de IA desplegados
+- 100% de proyectos entregados con métricas definidas
+
+## Contacto
+
+- Web: https://flexpoint.cl
+- WhatsApp: +56985835922
+- Email: hola@flexpoint.cl
+- Agendar reunión: https://calendar.app.google/fqu3U8FbReQNwwWR6
+- Calculadora ROI: https://flexpointcl.github.io/roi
+
+## Aplicaciones
+
+- FLEXIA: https://flexia.flexpoint.cl
+- FLEXWA MASIVO: https://flexwamasivo.flexpoint.cl
+- FLEXWACHAT: https://flexwachat.flexpoint.cl

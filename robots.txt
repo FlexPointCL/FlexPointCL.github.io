@@ -1,3 +1,31 @@
+# robots.txt — FlexPoint Chile
+# https://flexpoint.cl
+
+# Content usage signals
+# search=yes | ai-train=no | ai-input=no
+
+User-agent: Amazonbot
+Disallow: /
+
+User-agent: Applebot-Extended
+Disallow: /
+
+User-agent: Bytespider
+Disallow: /
+
+User-agent: CCBot
+Disallow: /
+
+User-agent: CloudflareBrowserRenderingCrawler
+Disallow: /
+
+User-agent: GPTBot
+Disallow: /
+
+User-agent: meta-externalagent
+Disallow: /
+
+# Permitir: Googlebot, Google-Extended (AI Overviews), ClaudeBot (Anthropic)
 User-agent: *
 Allow: /
 
