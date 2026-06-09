@@ -1,0 +1,109 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: #020617;
+  --card: #0f172a;
+  --card-border: #1e293b;
+  --text: #f8fafc;
+  --text-muted: #94a3b8;
+  --primary: #2563eb;
+  --primary-hover: #1d4ed8;
+  --accent: #0ea5e9;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: 'Inter', system-ui, sans-serif;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Outfit', 'Inter', sans-serif;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #0f172a;
+}
+::-webkit-scrollbar-thumb {
+  background: #334155;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #475569;
+}
+
+/* Input focus styles */
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+}
+
+/* Remove number input arrows */
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+@layer components {
+  .input-field {
+    @apply w-full bg-[#1e293b] border border-[#334155] text-[#f8fafc] rounded-lg px-4 py-3 text-sm
+    focus:border-[#2563eb] focus:ring-2 focus:ring-[#2563eb]/20 transition-all duration-200
+    placeholder-[#64748b] disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  .input-label {
+    @apply block text-sm font-medium text-[#cbd5e1] mb-2;
+  }
+
+  .btn-primary {
+    @apply bg-[#2563eb] hover:bg-[#1d4ed8] text-white font-semibold px-6 py-3 rounded-lg
+    transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed
+    flex items-center justify-center gap-2 text-sm;
+  }
+
+  .section-card {
+    @apply bg-[#0f172a] border border-[#1e293b] rounded-2xl p-6 md:p-8 space-y-6;
+  }
+
+  .section-title {
+    @apply text-lg font-semibold text-[#f8fafc] font-heading flex items-center gap-3;
+  }
+
+  .required-mark {
+    @apply text-[#ef4444] ml-1;
+  }
+}
+
+/* Spinner animation */
+@keyframes spinner-border {
+  to { transform: rotate(360deg); }
+}
+.animate-spinner {
+  animation: spinner-border 0.75s linear infinite;
+}
+
+/* Progress bar gradient */
+.progress-fill {
+  background: linear-gradient(90deg, #2563eb, #0ea5e9);
+  transition: width 0.5s ease-in-out;
+}
