@@ -149,6 +149,7 @@
             --borde: #1a1a30;
             --texto: #eaeaf5;
             --suave: #7878a8;
+            --dot-color: rgba(79, 139, 255, 0.16);
         }
 
         *, *::before, *::after {
@@ -164,6 +165,8 @@
         body {
             font-family: 'Inter', sans-serif;
             background-color: var(--fondo);
+            background-image: radial-gradient(var(--dot-color) 1px, transparent 1px);
+            background-size: 28px 28px;
             color: var(--texto);
             min-height: 100vh;
             overflow-x: hidden;
@@ -206,6 +209,12 @@
             width: auto;
             object-fit: contain;
             mix-blend-mode: screen;
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
         }
 
         .nav-links {
@@ -257,9 +266,13 @@
             --texto: #0f172a;
             --suave: #64748b;
             --verde: #2563eb;
+            --dot-color: rgba(37, 99, 235, 0.12);
         }
         body.light-mode nav {
             background: rgba(241,245,249,0.92);
+        }
+        body.light-mode .nav-logo img {
+            mix-blend-mode: normal;
         }
         body.light-mode .nav-links a:not(.nav-cta) {
             color: #1e3a6e;
@@ -306,92 +319,10 @@
         }
 
 
-        /* ─── SECCIÓN PRODUCTOS ─── */
-        #productos {
-            border-top: 1px solid var(--borde);
-            position: relative;
-            z-index: 1;
-        }
-
-        .productos-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1.5rem;
-            margin-top: 3rem;
-        }
-
-        .producto-card {
-            background: var(--card);
-            border: 1px solid var(--borde);
-            border-radius: 16px;
-            padding: 2rem;
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-            transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
-            text-decoration: none;
-            color: inherit;
-        }
-
-        .producto-card:hover {
-            border-color: var(--verde);
-            transform: translateY(-4px);
-            box-shadow: 0 12px 40px rgba(79,139,255,0.15);
-        }
-
-        .producto-badge {
-            display: inline-block;
-            font-size: 0.72rem;
-            font-weight: 600;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-            color: var(--verde);
-            background: rgba(79,139,255,0.1);
-            border: 1px solid rgba(79,139,255,0.25);
-            border-radius: 999px;
-            padding: 0.25rem 0.75rem;
-            width: fit-content;
-        }
-
-        .producto-card h3 {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 1.4rem;
-            font-weight: 700;
-            color: #ffffff;
-            margin: 0;
-        }
-
-        .producto-card p {
-            font-size: 0.95rem;
-            color: var(--suave);
-            line-height: 1.6;
-            flex: 1;
-        }
-
-        .producto-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.4rem;
-            font-size: 0.9rem;
-            font-weight: 600;
-            color: var(--verde);
-            font-family: 'Space Grotesk', sans-serif;
-            margin-top: 0.5rem;
-        }
-
-        .producto-link svg {
-            transition: transform 0.2s;
-        }
-
-        .producto-card:hover .producto-link svg {
-            transform: translateX(4px);
-        }
 
         /* ─── HERO ─── */
         /* Reset para elementos <button> con clases personalizadas */
-        button.btn-primary,
-        button.btn-secondary,
-        button.btn-calendly {
+        button.btn-secondary {
             font-family: 'Space Grotesk', sans-serif;
             -webkit-appearance: none;
             appearance: none;
@@ -428,16 +359,6 @@
             padding-right: 2rem;
             padding-bottom: 2rem;
             overflow: hidden;
-        }
-
-        #trailCanvas {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 0;
         }
 
         .hero-content {
@@ -495,74 +416,6 @@
             height: 6px;
             border-radius: 50%;
             background: var(--verde);
-            animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% { opacity: 1; transform: scale(1); }
-            50% { opacity: 0.4; transform: scale(0.85); }
-        }
-
-        .hero-logo {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            margin-bottom: 1.25rem;
-            position: relative;
-        }
-        .hero-logo::after {
-            content: '';
-            position: absolute;
-            bottom: -22px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 85%;
-            height: 50px;
-            background: radial-gradient(ellipse at center, rgba(79,139,255,0.95) 0%, rgba(79,139,255,0.55) 35%, rgba(79,139,255,0.15) 65%, transparent 80%);
-            filter: blur(14px);
-            border-radius: 50%;
-            animation: logoUnderGlow 2.5s ease-in-out infinite;
-            pointer-events: none;
-        }
-        @keyframes logoUnderGlow {
-            0%, 100% { opacity: 0.85; transform: translateX(-50%) scaleX(1);    filter: blur(14px); }
-            50%       { opacity: 1;    transform: translateX(-50%) scaleX(1.18); filter: blur(18px); }
-        }
-        .hero-logo .logo-icon-big {
-            width: 44px;
-            height: 44px;
-            background: #4f8bff;
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-family: 'Space Grotesk', sans-serif;
-            font-weight: 800;
-            font-size: 1.1rem;
-            color: #090912;
-            flex-shrink: 0;
-            box-shadow: 0 0 20px rgba(79,139,255,0.5), 0 0 50px rgba(79,139,255,0.2);
-            animation: iconGlow 4s ease-in-out infinite;
-        }
-        @keyframes iconGlow {
-            0%, 100% { box-shadow: 0 0 15px rgba(79,139,255,0.4), 0 0 40px rgba(79,139,255,0.15); }
-            50%       { box-shadow: 0 0 35px rgba(79,139,255,0.75), 0 0 80px rgba(79,139,255,0.3); }
-        }
-        .hero-logo .logo-text-big {
-            font-family: 'Space Grotesk', sans-serif;
-            font-weight: 800;
-            font-size: clamp(2rem, 5vw, 3rem);
-            color: var(--texto);
-            letter-spacing: -0.05em;
-            line-height: 1;
-        }
-        .hero-logo .logo-text-big span {
-            color: #4f8bff;
-        }
-
-        @keyframes heroGlow {
-            0%, 100% { filter: drop-shadow(0 0 30px rgba(79,139,255,0.3)) drop-shadow(0 0 60px rgba(79,139,255,0.12)); }
-            50%       { filter: drop-shadow(0 0 70px rgba(79,139,255,0.6)) drop-shadow(0 0 140px rgba(79,139,255,0.28)); }
         }
 
         .hero-headline {
@@ -572,25 +425,10 @@
             letter-spacing: -0.02em;
             margin-bottom: 1.5rem;
             color: var(--texto);
-            opacity: 0;
         }
 
         .hero-headline span {
             color: var(--texto);
-        }
-
-        /* cursor parpadeante typewriter */
-        .tw-cursor {
-            display: inline-block;
-            width: 3px;
-            background: var(--verde);
-            margin-left: 4px;
-            vertical-align: baseline;
-            animation: twBlink 0.75s step-end infinite;
-        }
-        @keyframes twBlink {
-            0%, 100% { opacity: 1; }
-            50%       { opacity: 0; }
         }
 
         .hero-sub {
@@ -617,34 +455,8 @@
             text-align: center;
         }
 
-        .hero-actions-row {
-            display: flex;
-            gap: 0.75rem;
-            width: 100%;
-            justify-content: center;
-        }
-
-        .hero-actions-row .btn-calendly,
-        .hero-actions-row .btn-secondary,
-        .hero-actions-row .btn-primary {
-            flex: 1;
-            text-align: center;
-        }
-
-        .contact-options {
-            display: flex;
-            flex-direction: column;
-            gap: 0.75rem;
-            align-items: center;
-            width: 100%;
-            max-width: 480px;
-            margin: 0 auto;
-        }
-
-        /* Un solo estilo base para TODOS los botones */
-        .btn-primary,
-        .btn-secondary,
-        .btn-calendly {
+        /* Un solo estilo base para los botones */
+        .btn-secondary {
             display: inline-flex;
             align-items: center;
             justify-content: center;
@@ -664,9 +476,7 @@
             -webkit-backdrop-filter: blur(8px);
         }
 
-        .btn-primary:hover,
-        .btn-secondary:hover,
-        .btn-calendly:hover {
+        .btn-secondary:hover {
             background: rgba(79,139,255,0.18);
             border-color: rgba(79,139,255,0.7);
             color: #ffffff;
@@ -674,9 +484,7 @@
             transform: translateY(-1px);
         }
 
-        .btn-primary svg,
-        .btn-secondary svg,
-        .btn-calendly svg {
+        .btn-secondary svg {
             width: 18px;
             height: 18px;
             flex-shrink: 0;
@@ -702,23 +510,6 @@
                 0 0 20px rgba(79,139,255,0.8),
                 0 0 45px rgba(79,139,255,0.5),
                 0 0 80px rgba(79,139,255,0.2);
-            animation: labelPulse 3s ease-in-out infinite;
-        }
-        @keyframes labelPulse {
-            0%, 100% {
-                text-shadow:
-                    0 0 8px  rgba(79,139,255,1),
-                    0 0 20px rgba(79,139,255,0.8),
-                    0 0 45px rgba(79,139,255,0.5),
-                    0 0 80px rgba(79,139,255,0.2);
-            }
-            50% {
-                text-shadow:
-                    0 0 12px rgba(120,180,255,1),
-                    0 0 30px rgba(79,139,255,1),
-                    0 0 65px rgba(79,139,255,0.7),
-                    0 0 120px rgba(79,139,255,0.35);
-            }
         }
 
         .section-title {
@@ -897,14 +688,6 @@
             font-weight: 500;
         }
 
-        /* ─── SECTION TYPEWRITER HEADLINES ─── */
-        .tw-section {
-            opacity: 0;
-        }
-        .tw-section.tw-done {
-            opacity: 1;
-        }
-
         /* ─── CTA / CONTACTO — BRAND HERO ─── */
         #contacto {
             border-top: 1px solid var(--borde);
@@ -1005,7 +788,31 @@
             color: var(--texto);
         }
 
-        /* modal removed — Calendly opens in new tab */
+        /* ─── WHATSAPP FLOTANTE ─── */
+        .wa-float {
+            position: fixed;
+            bottom: 1.5rem;
+            right: 1.5rem;
+            z-index: 600;
+            width: 56px;
+            height: 56px;
+            background: #25D366;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.3);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .wa-float:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.35);
+        }
+        .wa-float svg {
+            width: 28px;
+            height: 28px;
+            fill: #ffffff;
+        }
 
         /* ─── TESTIMONIOS ─── */
         #testimonios {
@@ -1169,9 +976,6 @@
             .testimonios-grid {
                 grid-template-columns: 1fr 1fr;
             }
-            .productos-grid {
-                grid-template-columns: 1fr 1fr;
-            }
         }
 
         /* ─── RESPONSIVE MOBILE ─── */
@@ -1182,6 +986,21 @@
 
             .nav-logo img {
                 height: 38px;
+            }
+
+            .wa-float {
+                width: 48px;
+                height: 48px;
+                bottom: 1rem;
+                right: 1rem;
+            }
+            .wa-float svg {
+                width: 24px;
+                height: 24px;
+            }
+
+            .nav-right {
+                gap: 0.5rem;
             }
 
             .nav-links {
@@ -1214,20 +1033,6 @@
                 justify-content: flex-start;
             }
 
-            .hero-logo {
-                gap: 0.6rem;
-                margin-bottom: 1rem;
-            }
-            .hero-logo .logo-icon-big {
-                width: 36px;
-                height: 36px;
-                font-size: 0.9rem;
-                border-radius: 8px;
-            }
-            .hero-logo .logo-text-big {
-                font-size: clamp(1.3rem, 5vw, 1.8rem);
-            }
-
             .hero-badge {
                 font-size: 0.62rem;
                 padding: 0.35rem 0.85rem;
@@ -1249,9 +1054,7 @@
                 gap: 0.75rem;
             }
 
-            .btn-primary,
-            .btn-secondary,
-            .btn-calendly {
+            .btn-secondary {
                 width: 100%;
                 text-align: center;
                 padding: 1rem 1.5rem;
@@ -1319,12 +1122,6 @@
         }
 
         @media (max-width: 380px) {
-            .hero-logo .logo-icon-big {
-                width: 40px;
-                height: 40px;
-                font-size: 1.2rem;
-            }
-
             .stat-num {
                 font-size: 2rem;
             }
@@ -1335,91 +1132,52 @@
 
     <!-- NAV -->
     <nav>
-        <div class="nav-controls">
-            <button class="nav-ctrl-btn" id="btn-theme" onclick="toggleTheme()" title="Modo claro/oscuro">🌙</button>
-            <button class="nav-ctrl-btn" id="btn-font-down" onclick="changeFontSize(-1)" title="Reducir texto">A-</button>
-            <button class="nav-ctrl-btn" id="btn-font-up" onclick="changeFontSize(1)" title="Aumentar texto">A+</button>
-            <button class="nav-ctrl-btn" id="btn-lang" onclick="toggleLang()" title="Cambiar idioma">ES</button>
+        <a href="#hero" class="nav-logo" aria-label="FlexPoint">
+            <picture>
+                <source srcset="logo-azul.webp" type="image/webp">
+                <img src="logo-azul.png" alt="FlexPoint" loading="eager" decoding="async">
+            </picture>
+        </a>
+        <div class="nav-right">
+            <div class="nav-controls">
+                <button class="nav-ctrl-btn" id="btn-theme" onclick="toggleTheme()" title="Modo claro/oscuro">🌙</button>
+                <button class="nav-ctrl-btn" id="btn-font-down" onclick="changeFontSize(-1)" title="Reducir texto">A-</button>
+                <button class="nav-ctrl-btn" id="btn-font-up" onclick="changeFontSize(1)" title="Aumentar texto">A+</button>
+                <button class="nav-ctrl-btn" id="btn-lang" onclick="toggleLang()" title="Cambiar idioma">ES</button>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#servicios" data-es="Servicios" data-en="Services">Servicios</a></li>
+                <li><a href="#porque" data-es="Por qué FlexPoint" data-en="Why FlexPoint">Por qué FlexPoint</a></li>
+                <li><a href="#contacto" data-es="Contacto" data-en="Contact">Contacto</a></li>
+                <li><a href="https://wa.me/56985835922?text=Hola%20FlexPoint,%20quiero%20saber%20más." target="_blank" rel="noopener noreferrer" class="nav-cta" data-es="Hablar con un asesor" data-en="Talk to an advisor">Hablar con un asesor</a></li>
+            </ul>
         </div>
-        <ul class="nav-links">
-            <li><a href="#servicios" data-es="Servicios" data-en="Services">Servicios</a></li>
-            <li><a href="#porque" data-es="Por qué FlexPoint" data-en="Why FlexPoint">Por qué FlexPoint</a></li>
-            <li><a href="#contacto" data-es="Contacto" data-en="Contact">Contacto</a></li>
-            <li><a href="https://wa.me/56985835922?text=Hola%20FlexPoint,%20quiero%20saber%20más." target="_blank" rel="noopener noreferrer" class="nav-cta" data-es="Hablar con un asesor" data-en="Talk to an advisor">Hablar con un asesor</a></li>
-        </ul>
     </nav>
 
-    <!-- CANVAS GLOBAL -->
-    <canvas id="trailCanvas"></canvas>
-
+    <!-- WHATSAPP FLOTANTE -->
+    <a href="https://wa.me/56985835922?text=Hola%20FlexPoint,%20quiero%20saber%20m%C3%A1s." target="_blank" rel="noopener noreferrer" class="wa-float" aria-label="Hablar por WhatsApp">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.117.549 4.107 1.51 5.833L.057 23.215a.75.75 0 00.921.921l5.382-1.453A11.95 11.95 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.9 0-3.68-.523-5.2-1.432l-.374-.22-3.876 1.046 1.046-3.876-.22-.374A9.95 9.95 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+    </a>
 
     <!-- HERO -->
     <section id="hero">
         <div class="hero-content">
             <div class="hero-badge" data-es="IA para empresas en Chile — sin código, sin esperas" data-en="AI for companies in Chile — no code, no waiting">IA para empresas en Chile — sin código, sin esperas</div>
-            <div class="hero-logo">
-                <picture>
-                    <source srcset="logo-azul.webp" type="image/webp">
-                    <img src="logo-azul.png" alt="FlexPoint" loading="eager" fetchpriority="high" decoding="async" width="680" height="209" style="width:min(680px,90vw);height:auto;mix-blend-mode:screen;" />
-                </picture>
-            </div>
             <h1 class="hero-headline" data-es="IA que llama, responde y vende por ti — 24/7" data-en="AI That Calls, Responds and Sells for You — 24/7">IA que llama, responde y vende por ti — 24/7</h1>
             <p class="hero-sub" data-es="Automatiza lo que hoy consume tiempo de tu equipo: llamadas de prospección, WhatsApp, reportes. FlexPoint lo hace por ti — implementado en días, no meses." data-en="Automate what consumes your team's time today: prospecting calls, WhatsApp, reports. FlexPoint does it for you — implemented in days, not months.">
                 Automatiza lo que hoy consume tiempo de tu equipo: llamadas de prospección, WhatsApp, reportes. FlexPoint lo hace por ti — implementado en días, no meses.
             </p>
             <div class="hero-actions">
                 <a href="https://flexpointcl.github.io/roi" target="_blank" rel="noopener noreferrer" class="btn-secondary btn-full" aria-label="Calcular mi ahorro automatizando con IA" data-es="Calcular mi ahorro automatizando" data-en="Calculate my automation savings"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/><path d="M7 8h2m2 0h2m2 0h2M7 12h2m4 0h2"/></svg>Calcular mi ahorro automatizando</a>
-                <div class="hero-actions-row">
-                    <button onclick="openCalendly()" class="btn-primary" aria-label="Agendar reunión gratis con FlexPoint" data-es="Agendar reunión gratis" data-en="Book a free meeting"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>Agendar reunión gratis</button>
-                    <a href="https://wa.me/56985835922?text=Hola%20FlexPoint,%20quiero%20saber%20m%C3%A1s%20sobre%20inteligencia%20artificial%20para%20mi%20empresa." target="_blank" rel="noopener noreferrer" class="btn-secondary" data-es="Hablar por WhatsApp" data-en="Chat on WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.117.549 4.107 1.51 5.833L.057 23.215a.75.75 0 00.921.921l5.382-1.453A11.95 11.95 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.9 0-3.68-.523-5.2-1.432l-.374-.22-3.876 1.046 1.046-3.876-.22-.374A9.95 9.95 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>Hablar por WhatsApp</a>
-                </div>
             </div>
         </div>
-    </section>
-
-    <!-- PRODUCTOS -->
-    <section id="productos" style="overflow:visible;">
-        <div class="section-header">
-                <div class="section-label" data-es="Nuestras Apps" data-en="Our Apps">Nuestras Apps</div>
-                <h2 class="section-title tw-section" data-tw="Software de IA para empresas chilenas" data-tw-en="AI Software for Chilean Businesses">Software de IA para empresas chilenas</h2>
-                <p class="section-desc" data-es="Productos de inteligencia artificial construidos por FlexPoint, disponibles hoy. Cada uno resuelve un problema concreto de tu operación comercial en Chile." data-en="AI products built by FlexPoint, available today. Each one solves a concrete problem in your business operations in Chile.">Productos de inteligencia artificial construidos por FlexPoint, disponibles hoy. Cada uno resuelve un problema concreto de tu operación comercial en Chile.</p>
-            </div>
-            <div class="productos-grid">
-                <a href="https://flexia.flexpoint.cl/" target="_blank" rel="noopener noreferrer" class="producto-card">
-                    <span class="producto-badge" data-es="IA Conversacional" data-en="Conversational AI">IA Conversacional</span>
-                    <h3>FLEXIA</h3>
-                    <p data-es="Nuestra IA llama a tus prospectos en segundos con voz humana real. María agenda reuniones, maneja objeciones y califica leads 24/7 sin intervención humana." data-en="Our AI calls your prospects in seconds with a real human voice. María schedules meetings, handles objections and qualifies leads 24/7 without human intervention.">Nuestra IA llama a tus prospectos en segundos con voz humana real. María agenda reuniones, maneja objeciones y califica leads 24/7 sin intervención humana.</p>
-                    <span class="producto-link">
-                        <span data-es="Ver FLEXIA" data-en="View FLEXIA">Ver FLEXIA</span>
-                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                    </span>
-                </a>
-                <a href="https://flexwamasivo.flexpoint.cl/" target="_blank" rel="noopener noreferrer" class="producto-card">
-                    <span class="producto-badge" data-es="WhatsApp Masivo" data-en="Bulk WhatsApp">WhatsApp Masivo</span>
-                    <h3>FLEXWA MASIVO</h3>
-                    <p data-es="Envía WhatsApp masivo con tu número actual, sin aprobación de Meta, sin templates, sin trámites. Campañas listas en minutos con reportes automáticos." data-en="Send bulk WhatsApp messages with your current number, no Meta approval, no templates, no paperwork. Campaigns ready in minutes with automatic reports.">Envía WhatsApp masivo con tu número actual, sin aprobación de Meta, sin templates, sin trámites. Campañas listas en minutos con reportes automáticos.</p>
-                    <span class="producto-link">
-                        <span data-es="Ver FLEXWA MASIVO" data-en="View FLEXWA MASIVO">Ver FLEXWA MASIVO</span>
-                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                    </span>
-                </a>
-                <a href="https://flexwachat.flexpoint.cl/" target="_blank" rel="noopener noreferrer" class="producto-card">
-                    <span class="producto-badge" data-es="WhatsApp Inbound" data-en="WhatsApp Inbound">WhatsApp Inbound</span>
-                    <h3>FLEXWACHAT</h3>
-                    <p data-es="Bot de atención automática por WhatsApp para tu negocio. Responde clientes, agenda citas y procesa cobros con tu propio número, sin Meta ni Twilio." data-en="Automatic WhatsApp support bot for your business. Responds to customers, schedules appointments and processes payments with your own number, no Meta or Twilio.">Bot de atención automática por WhatsApp para tu negocio. Responde clientes, agenda citas y procesa cobros con tu propio número, sin Meta ni Twilio.</p>
-                    <span class="producto-link">
-                        <span data-es="Ver FLEXWACHAT" data-en="View FLEXWACHAT">Ver FLEXWACHAT</span>
-                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                    </span>
-                </a>
-            </div>
     </section>
 
     <!-- SERVICIOS -->
     <section id="servicios" style="overflow:visible;">
         <div class="section-header">
             <div class="section-label" data-es="Servicios" data-en="Services">Servicios</div>
-            <h2 class="section-title tw-section" data-tw="Automatización con IA para empresas en Chile" data-tw-en="AI Automation for Businesses in Chile">Automatización con IA para empresas en Chile</h2>
+            <h2 class="section-title" data-es="Automatización con IA para empresas en Chile" data-en="AI Automation for Businesses in Chile">Automatización con IA para empresas en Chile</h2>
             <p class="section-desc" data-es="Desde inteligencia artificial conversacional hasta dashboards de negocio, diseñamos soluciones a medida que eliminan la fricción y aceleran tus resultados." data-en="From conversational AI to business dashboards, we design custom solutions that eliminate friction and accelerate your results.">Desde inteligencia artificial conversacional hasta dashboards de negocio, diseñamos soluciones a medida que eliminan la fricción y aceleran tus resultados.</p>
         </div>
 
@@ -1472,7 +1230,7 @@
     <section id="porque">
         <div class="section-header">
             <div class="section-label" data-es="Por qué FlexPoint" data-en="Why FlexPoint">Por qué FlexPoint</div>
-            <h2 class="section-title tw-section" data-tw="La empresa de IA que trabaja contigo en Chile" data-tw-en="The AI Company That Works With You in Chile">La empresa de IA que trabaja contigo en Chile</h2>
+            <h2 class="section-title" data-es="La empresa de IA que trabaja contigo en Chile" data-en="The AI Company That Works With You in Chile">La empresa de IA que trabaja contigo en Chile</h2>
             <p class="section-desc" data-es="No somos una agencia de marketing ni un proveedor de software genérico. Somos el equipo de inteligencia artificial que se mete en la operación contigo." data-en="We are not a marketing agency or a generic software vendor. We are the AI team that gets into the operation with you.">No somos una agencia de marketing ni un proveedor de software genérico. Somos el equipo de inteligencia artificial que se mete en la operación contigo.</p>
         </div>
 
@@ -1534,7 +1292,7 @@
     <section id="testimonios">
         <div class="section-header">
             <div class="section-label" data-es="Clientes" data-en="Clients">Clientes</div>
-            <h2 class="section-title tw-section" data-tw="Empresas chilenas que ya automatizaron con IA" data-tw-en="Chilean Companies That Already Automated with AI">Empresas chilenas que ya automatizaron con IA</h2>
+            <h2 class="section-title" data-es="Empresas chilenas que ya automatizaron con IA" data-en="Chilean Companies That Already Automated with AI">Empresas chilenas que ya automatizaron con IA</h2>
             <p class="section-desc" data-es="Empresas reales en Chile, resultados concretos. Sin adornos." data-en="Real companies in Chile, concrete results. No fluff.">Empresas reales en Chile, resultados concretos. Sin adornos.</p>
         </div>
 
@@ -1587,7 +1345,7 @@
     <section id="faq" style="overflow:visible;">
         <div class="section-header">
             <div class="section-label" data-es="FAQ" data-en="FAQ">FAQ</div>
-            <h2 class="section-title tw-section" data-tw="Preguntas sobre IA y automatización en Chile" data-tw-en="Questions About AI and Automation in Chile">Preguntas sobre IA y automatización en Chile</h2>
+            <h2 class="section-title" data-es="Preguntas sobre IA y automatización en Chile" data-en="Questions About AI and Automation in Chile">Preguntas sobre IA y automatización en Chile</h2>
             <p class="section-desc" data-es="Todo lo que necesitas saber sobre inteligencia artificial para empresas antes de empezar." data-en="Everything you need to know about artificial intelligence for businesses before getting started.">Todo lo que necesitas saber sobre inteligencia artificial para empresas antes de empezar.</p>
         </div>
         <div class="faq-list">
@@ -1638,14 +1396,8 @@
     <section id="contacto">
         <div class="brand-hero">
             <div class="section-label" style="margin-bottom:0;" data-es="Conversemos" data-en="Let's Talk">Conversemos</div>
-            <div class="brand-tagline tw-section" data-tw="Muéstranos el problema. Te traemos la solución en 24h." data-tw-en="Show us the problem. We'll bring the solution in 24h.">Muéstranos el problema. Te traemos la solución en 24h.</div>
+            <div class="brand-tagline" data-es="Muéstranos el problema. Te traemos la solución en 24h." data-en="Show us the problem. We'll bring the solution in 24h.">Muéstranos el problema. Te traemos la solución en 24h.</div>
             <p class="brand-desc" data-es="Cuéntanos dónde está el cuello de botella en tu operación y te mostramos exactamente cómo FlexPoint puede resolverlo — sin venderle humo a nadie." data-en="Tell us where the bottleneck is in your operation and we'll show you exactly how FlexPoint can solve it — no smoke and mirrors.">Cuéntanos dónde está el cuello de botella en tu operación y te mostramos exactamente cómo FlexPoint puede resolverlo — sin venderle humo a nadie.</p>
-            <div class="contact-options">
-                <div class="hero-actions-row">
-                    <button onclick="openCalendly()" class="btn-primary" aria-label="Agendar reunión gratis en Google Calendar" data-es="Agendar reunión gratis" data-en="Book a free meeting"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>Agendar reunión gratis</button>
-                    <a href="https://wa.me/56985835922?text=Hola%20FlexPoint,%20quiero%20saber%20m%C3%A1s%20sobre%20sus%20servicios." target="_blank" rel="noopener noreferrer" class="btn-secondary" data-es="Hablar por WhatsApp" data-en="Chat on WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.117.549 4.107 1.51 5.833L.057 23.215a.75.75 0 00.921.921l5.382-1.453A11.95 11.95 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.9 0-3.68-.523-5.2-1.432l-.374-.22-3.876 1.046 1.046-3.876-.22-.374A9.95 9.95 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>Hablar por WhatsApp</a>
-                </div>
-            </div>
         </div>
     </section>
 
@@ -1666,131 +1418,8 @@
 
 
     <script>
-        /* ─── CONSTELLATION PARTICLES ─── */
-        const canvas = document.getElementById('trailCanvas');
-        const ctx    = canvas.getContext('2d');
-        const particles = [];
-        const PCOUNT   = window.innerWidth < 768 ? 55 : 100;
-        const LINK_DIST = 180;
-        const DOT_COLORS = ['#4f8bff', '#3a6ee8', '#4f8bff99', '#4f8bff44'];
-
-        let mouse    = { x: -9999, y: -9999 };
-        let hasMouse = false;
-
-        function resize() {
-            canvas.width  = window.innerWidth;
-            canvas.height = window.innerHeight;
-        }
-        window.addEventListener('resize', resize);
-        resize();
-
-        window.addEventListener('mousemove', e => {
-            mouse.x = e.clientX; mouse.y = e.clientY; hasMouse = true;
-        });
-        window.addEventListener('mouseleave', () => { hasMouse = false; });
-        window.addEventListener('touchmove', e => {
-            mouse.x = e.touches[0].clientX; mouse.y = e.touches[0].clientY; hasMouse = true;
-        }, { passive: true });
-        window.addEventListener('touchend', () => { hasMouse = false; });
-
-        class Particle {
-            constructor() { this.init(); }
-            init() {
-                this.x    = Math.random() * canvas.width;
-                this.y    = Math.random() * canvas.height;
-                this.vx   = (Math.random() - 0.5) * 0.45;
-                this.vy   = (Math.random() - 0.5) * 0.45;
-                this.size = Math.random() * 1.8 + 0.5;
-                this.alpha = Math.random() * 0.6 + 0.55;
-                this.col  = DOT_COLORS[Math.floor(Math.random() * DOT_COLORS.length)];
-            }
-            update() {
-                // Atracción suave hacia el cursor
-                if (hasMouse) {
-                    const dx = mouse.x - this.x;
-                    const dy = mouse.y - this.y;
-                    const d2 = dx * dx + dy * dy;
-                    if (d2 < 300 * 300) {
-                        const f = 0.09 / Math.sqrt(d2);
-                        this.vx += dx * f;
-                        this.vy += dy * f;
-                    }
-                }
-                // Límite de velocidad
-                const spd = Math.sqrt(this.vx * this.vx + this.vy * this.vy);
-                if (spd > 5) { this.vx *= 0.88; this.vy *= 0.88; }
-                // Mover
-                this.x += this.vx;
-                this.y += this.vy;
-                // Wrap en los bordes
-                if (this.x < -12) this.x = canvas.width  + 12;
-                if (this.x > canvas.width  + 12) this.x = -12;
-                if (this.y < -12) this.y = canvas.height + 12;
-                if (this.y > canvas.height + 12) this.y = -12;
-            }
-            draw() {
-                ctx.globalAlpha = this.alpha;
-                ctx.fillStyle   = this.col;
-                ctx.beginPath();
-                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-                ctx.fill();
-            }
-        }
-
-        for (let i = 0; i < PCOUNT; i++) particles.push(new Particle());
-
-        function drawLinks() {
-            const d2max = LINK_DIST * LINK_DIST;
-            ctx.strokeStyle = '#4f8bff';
-            ctx.lineWidth   = 0.6;
-            for (let i = 0; i < particles.length; i++) {
-                for (let j = i + 1; j < particles.length; j++) {
-                    const dx = particles[i].x - particles[j].x;
-                    const dy = particles[i].y - particles[j].y;
-                    const d2 = dx * dx + dy * dy;
-                    if (d2 < d2max) {
-                        ctx.globalAlpha = (1 - Math.sqrt(d2) / LINK_DIST) * 0.6;
-                        ctx.beginPath();
-                        ctx.moveTo(particles[i].x, particles[i].y);
-                        ctx.lineTo(particles[j].x, particles[j].y);
-                        ctx.stroke();
-                    }
-                }
-                if (hasMouse) {
-                    const dx = particles[i].x - mouse.x;
-                    const dy = particles[i].y - mouse.y;
-                    const d2 = dx * dx + dy * dy;
-                    if (d2 < 170 * 170) {
-                        ctx.lineWidth   = 0.8;
-                        ctx.globalAlpha = (1 - Math.sqrt(d2) / 170) * 0.4;
-                        ctx.beginPath();
-                        ctx.moveTo(particles[i].x, particles[i].y);
-                        ctx.lineTo(mouse.x, mouse.y);
-                        ctx.stroke();
-                        ctx.lineWidth = 0.6;
-                    }
-                }
-            }
-        }
-
-        function animate() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            drawLinks();
-            particles.forEach(p => { p.update(); p.draw(); });
-            requestAnimationFrame(animate);
-        }
-        if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-            animate();
-        }
-
-
-        /* ─── CALENDLY ─── */
-        function openCalendly() {
-            window.open('https://calendar.app.google/fqu3U8FbReQNwwWR6', '_blank', 'noopener,noreferrer');
-        }
-
         /* ─── BOTONES: hover y press via clases CSS ─── */
-        document.querySelectorAll('.btn-primary, .btn-secondary, .btn-calendly').forEach(btn => {
+        document.querySelectorAll('.btn-secondary').forEach(btn => {
             btn.addEventListener('mouseenter',  () => { btn.classList.add('btn-hover'); });
             btn.addEventListener('mouseleave',  () => { btn.classList.remove('btn-hover', 'btn-press'); });
             btn.addEventListener('mousedown',   () => { btn.classList.remove('btn-hover'); btn.classList.add('btn-press'); });
@@ -1849,79 +1478,12 @@
             });
         }, { threshold: 0.1 });
 
-        document.querySelectorAll('.service-card, .why-item, .stat-card, .testimonio-card, .producto-card').forEach(el => {
+        document.querySelectorAll('.service-card, .why-item, .stat-card, .testimonio-card').forEach(el => {
             el.style.opacity = '0';
             el.style.transform = 'translateY(20px)';
             el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
             revealObserver.observe(el);
         });
-
-        /* ─── TYPEWRITER HERO ─── */
-        (function () {
-            const h1 = document.querySelector('.hero-headline');
-            if (!h1 || h1.dataset.twInit) return;
-            h1.dataset.twInit = '1';
-
-            const TEXT  = h1.textContent.trim() || 'IA y Automatización para tu Empresa';
-            const SPEED = 52;
-
-            h1.innerHTML = '';
-            h1.style.opacity = '1';
-
-            const wrap = document.createElement('span');
-            wrap.style.cssText = 'color:#eaeaf5;';
-            const cursor = document.createElement('span');
-            cursor.className = 'tw-cursor';
-            cursor.style.height = '0.85em';
-            h1.appendChild(wrap);
-            h1.appendChild(cursor);
-
-            let i = 0;
-            function type() {
-                if (i < TEXT.length) {
-                    wrap.textContent += TEXT[i++];
-                    setTimeout(type, SPEED);
-                }
-            }
-            setTimeout(type, 500);
-        })();
-
-        /* ─── SECTION TYPEWRITER TITLES ─── */
-        (function () {
-            const SPEED = 38;
-            function twSection(el) {
-                const text = (el.dataset.tw || el.textContent.trim()).trim();
-                el.innerHTML = '';
-                el.classList.add('tw-done');
-                // Wrap in explicit white span so it never inherits green
-                const wrap = document.createElement('span');
-                wrap.style.cssText = 'color:#e0e0e0;';
-                el.appendChild(wrap);
-                const cur = document.createElement('span');
-                cur.className = 'tw-cursor';
-                cur.style.height = '0.8em';
-                el.appendChild(cur);
-                let i = 0;
-                function type() {
-                    if (i < text.length) {
-                        wrap.textContent += text[i++];
-                        setTimeout(type, SPEED);
-                    }
-                    // cursor queda parpadeando indefinidamente
-                }
-                type();
-            }
-            const obs = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting && !entry.target.dataset.twDone) {
-                        entry.target.dataset.twDone = '1';
-                        obs.unobserve(entry.target);
-                        twSection(entry.target);
-                    }
-                });
-            }, { threshold: 0.05, rootMargin: '0px 0px -40px 0px' });
-            document.querySelectorAll('.tw-section').forEach(el => obs.observe(el));
-        })();
 
         /* ─── TEMA CLARO/OSCURO ─── */
         function toggleTheme() {
@@ -1953,24 +1515,6 @@
             document.querySelectorAll('[data-es][data-en]').forEach(el => {
                 el.textContent = el.getAttribute('data-' + lang);
             });
-            // Elementos typewriter: actualizar data-tw y reescribir si ya fueron animados
-            document.querySelectorAll('.tw-section[data-tw-en]').forEach(el => {
-                const text = lang === 'en' ? el.getAttribute('data-tw-en') : el.getAttribute('data-tw');
-                el.setAttribute('data-tw', text);
-                if (el.classList.contains('tw-done')) {
-                    el.textContent = text;
-                }
-            });
-            // H1 typewriter (hero-headline)
-            const h1 = document.querySelector('.hero-headline');
-            if (h1) {
-                const esText = 'Inteligencia Artificial para tu Empresa';
-                const enText = 'Artificial Intelligence for Your Business';
-                const target = lang === 'en' ? enText : esText;
-                h1.setAttribute('data-es', esText);
-                h1.setAttribute('data-en', enText);
-                if (h1.textContent.trim()) h1.textContent = target;
-            }
             document.getElementById('btn-lang').textContent = lang === 'es' ? 'ES' : 'EN';
             localStorage.setItem('fp-lang', lang);
             currentLang = lang;
