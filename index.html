@@ -1329,6 +1329,46 @@
                 font-size: 2rem;
             }
         }
+        /* ─── MODAL FLEXMUNDIAL ─── */
+        .fm-overlay {
+            position: fixed; inset: 0;
+            background: rgba(0,0,0,0.65);
+            backdrop-filter: blur(4px);
+            display: none; align-items: center; justify-content: center;
+            z-index: 700; padding: 1.5rem;
+        }
+        .fm-overlay.open { display: flex; }
+        .fm-box {
+            position: relative;
+            background: linear-gradient(135deg, #0a1a3f 0%, #1e3a6e 55%, #2563eb 100%);
+            border-radius: 1.25rem; padding: 2.5rem 2rem;
+            max-width: 440px; width: 100%; text-align: center;
+            box-shadow: 0 24px 60px rgba(0,0,0,0.6);
+        }
+        .fm-close {
+            position: absolute; top: 1rem; right: 1.25rem;
+            background: none; border: none; font-size: 1.5rem; line-height: 1;
+            color: rgba(255,255,255,0.6); cursor: pointer;
+        }
+        .fm-close:hover { color: #fff; }
+        .fm-emoji { display: block; font-size: 2.5rem; margin-bottom: 1rem; }
+        .fm-box h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.4rem; font-weight: 800; color: #fff;
+            margin-bottom: 1rem; line-height: 1.25;
+        }
+        .fm-highlight { font-style: italic; color: #9db8ff; }
+        .fm-box p { font-size: 0.9rem; color: rgba(255,255,255,0.8); margin-bottom: 0.5rem; line-height: 1.6; }
+        .fm-product { color: #9db8ff !important; font-weight: 700; margin-bottom: 1.5rem !important; }
+        .fm-btn {
+            display: inline-block; padding: 0.75rem 1.75rem;
+            border-radius: 0.75rem; border: 1.5px solid rgba(255,255,255,0.4);
+            background: rgba(255,255,255,0.08); color: #fff;
+            font-weight: 700; font-size: 0.9rem;
+            font-family: 'Space Grotesk', sans-serif; text-decoration: none;
+            transition: background 0.2s, border-color 0.2s;
+        }
+        .fm-btn:hover { background: rgba(255,255,255,0.22); border-color: rgba(255,255,255,0.8); }
     </style>
 </head>
 <body>
@@ -1354,6 +1394,18 @@
 
 
     <!-- HERO -->
+    <!-- MODAL FLEXMUNDIAL -->
+    <div class="fm-overlay" id="fm-modal" onclick="if(event.target.id==='fm-modal')closeFM()">
+        <div class="fm-box">
+            <button class="fm-close" onclick="closeFM()" aria-label="Cerrar">×</button>
+            <span class="fm-emoji">⚽</span>
+            <h3>¿Ya estás en modo <span class="fm-highlight">Mundial</span>?</h3>
+            <p>Resultados, partidos y novedades del Mundial al día, directo desde WhatsApp.</p>
+            <p class="fm-product">FLEXMUNDIAL — gratis, desde WhatsApp</p>
+            <a class="fm-btn" href="https://flexmundial.flexpoint.cl" target="_blank" rel="noopener noreferrer" onclick="closeFM()">Pruébalo aquí ⚽</a>
+        </div>
+    </div>
+
     <section id="hero">
         <div class="hero-content">
             <div class="hero-badge" data-es="IA para empresas en Chile — sin código, sin esperas" data-en="AI for companies in Chile — no code, no waiting">IA para empresas en Chile — sin código, sin esperas</div>
@@ -1979,6 +2031,19 @@
             applyLang(currentLang === 'es' ? 'en' : 'es');
         }
         if (currentLang === 'en') applyLang('en');
+
+        // Modal FLEXMUNDIAL — aparece 1.5s después de entrar, una vez por sesión
+        function closeFM() {
+            document.getElementById('fm-modal').classList.remove('open');
+            document.body.style.overflow = '';
+            sessionStorage.setItem('fm-seen', '1');
+        }
+        if (!sessionStorage.getItem('fm-seen')) {
+            setTimeout(function() {
+                document.getElementById('fm-modal').classList.add('open');
+                document.body.style.overflow = 'hidden';
+            }, 1500);
+        }
     </script>
 </body>
 </html>
