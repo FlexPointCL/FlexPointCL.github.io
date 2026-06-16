@@ -1332,43 +1332,43 @@
         /* ─── MODAL FLEXMUNDIAL ─── */
         .fm-overlay {
             position: fixed; inset: 0;
-            background: rgba(0,0,0,0.65);
-            backdrop-filter: blur(4px);
+            background: rgba(0,0,0,0.75);
+            backdrop-filter: blur(6px);
             display: none; align-items: center; justify-content: center;
             z-index: 700; padding: 1.5rem;
         }
         .fm-overlay.open { display: flex; }
         .fm-box {
             position: relative;
-            background: linear-gradient(135deg, #0a1a3f 0%, #1e3a6e 55%, #2563eb 100%);
+            background: #ffffff;
             border-radius: 1.25rem; padding: 2.5rem 2rem;
-            max-width: 440px; width: 100%; text-align: center;
-            box-shadow: 0 24px 60px rgba(0,0,0,0.6);
+            max-width: 420px; width: 100%; text-align: center;
+            box-shadow: 0 24px 60px rgba(0,0,0,0.5);
         }
         .fm-close {
             position: absolute; top: 1rem; right: 1.25rem;
             background: none; border: none; font-size: 1.5rem; line-height: 1;
-            color: rgba(255,255,255,0.6); cursor: pointer;
+            color: #94a3b8; cursor: pointer;
         }
-        .fm-close:hover { color: #fff; }
+        .fm-close:hover { color: #0f172a; }
         .fm-emoji { display: block; font-size: 2.5rem; margin-bottom: 1rem; }
         .fm-box h3 {
             font-family: 'Space Grotesk', sans-serif;
-            font-size: 1.4rem; font-weight: 800; color: #fff;
-            margin-bottom: 1rem; line-height: 1.25;
+            font-size: 1.35rem; font-weight: 800; color: #0f172a;
+            margin-bottom: 0.75rem; line-height: 1.25;
         }
-        .fm-highlight { font-style: italic; color: #9db8ff; }
-        .fm-box p { font-size: 0.9rem; color: rgba(255,255,255,0.8); margin-bottom: 0.5rem; line-height: 1.6; }
-        .fm-product { color: #9db8ff !important; font-weight: 700; margin-bottom: 1.5rem !important; }
+        .fm-highlight { color: #4f8bff; font-style: italic; }
+        .fm-box p { font-size: 0.9rem; color: #64748b; margin-bottom: 0.5rem; line-height: 1.6; }
+        .fm-product { color: #4f8bff !important; font-weight: 700; margin-bottom: 1.5rem !important; }
         .fm-btn {
             display: inline-block; padding: 0.75rem 1.75rem;
-            border-radius: 0.75rem; border: 1.5px solid rgba(255,255,255,0.4);
-            background: rgba(255,255,255,0.08); color: #fff;
+            border-radius: 0.75rem; border: 1.5px solid #4f8bff;
+            background: #4f8bff; color: #ffffff;
             font-weight: 700; font-size: 0.9rem;
             font-family: 'Space Grotesk', sans-serif; text-decoration: none;
-            transition: background 0.2s, border-color 0.2s;
+            transition: background 0.2s;
         }
-        .fm-btn:hover { background: rgba(255,255,255,0.22); border-color: rgba(255,255,255,0.8); }
+        .fm-btn:hover { background: #3a74e8; }
     </style>
 </head>
 <body>
@@ -1402,7 +1402,7 @@
             <h3>¿Ya estás en modo <span class="fm-highlight">Mundial</span>?</h3>
             <p>Resultados, partidos y novedades del Mundial al día, directo desde WhatsApp.</p>
             <p class="fm-product">FLEXMUNDIAL — gratis, desde WhatsApp</p>
-            <a class="fm-btn" href="https://flexmundial.flexpoint.cl" target="_blank" rel="noopener noreferrer" onclick="closeFM()">Pruébalo aquí ⚽</a>
+            <a class="fm-btn" href="https://mundial.flexpoint.cl/" target="_blank" rel="noopener noreferrer" onclick="closeFM()">Pruébalo aquí ⚽</a>
         </div>
     </div>
 
