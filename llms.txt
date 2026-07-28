@@ -6,9 +6,9 @@
 
 FlexPoint desarrolla y opera tres productos principales de inteligencia artificial para empresas en Chile:
 
-- **FLEXIA**: Agente de IA conversacional con voz humana que llama a prospectos, agenda reuniones, califica leads y maneja objeciones de forma autónoma 24/7. Funciona por teléfono con voz real, sin intervención humana.
-- **FLEXWA MASIVO**: Plataforma de envío masivo de WhatsApp sin necesidad de Meta Business API. Permite campañas de miles de mensajes con el número de WhatsApp del cliente, con calculadora de riesgo en tiempo real.
-- **FLEXWACHAT**: Bot de atención inbound por WhatsApp que responde clientes, agenda citas y procesa cobros automáticamente, sin Meta ni Twilio.
+- **FLEXLEY21**: Evaluación online de cumplimiento con la Ley 21.719 de Protección de Datos Personales de Chile. Entrega un Compliance Score en 15 minutos, sin registro previo, identificando brechas críticas y un roadmap de remediación.
+- **FLEXAGENT**: Agentes de IA que atienden, cotizan, agendan y cobran por WhatsApp 24/7, con memoria real de cada cliente y sin costos por conversación de Meta Business.
+- **FLEXCALLCENTER**: Agentes de voz IA para telefonía. Automatiza llamadas entrantes y salientes 24/7 con respuesta en menos de 1 segundo y tasas de conversión de hasta 45%.
 
 ## Servicios a medida
 
@@ -40,6 +40,6 @@ Inmobiliarias, centros de salud, retail, educación, seguros y empresas B2B en C
 
 ## Aplicaciones
 
-- FLEXIA: https://flexia.flexpoint.cl
-- FLEXWA MASIVO: https://flexwamasivo.flexpoint.cl
-- FLEXWACHAT: https://flexwachat.flexpoint.cl
+- FLEXLEY21: https://flexley21.flexpoint.cl
+- FLEXAGENT: https://flexagent.flexpoint.cl
+- FLEXCALLCENTER: https://flexcallcenter.flexpoint.cl
