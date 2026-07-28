@@ -4,11 +4,15 @@
 
 ## Qué hace FlexPoint
 
-FlexPoint desarrolla y opera tres productos principales de inteligencia artificial para empresas en Chile:
+FlexPoint desarrolla y opera un ecosistema de productos de inteligencia artificial para empresas y familias en Chile:
 
 - **FLEXLEY21**: Evaluación online de cumplimiento con la Ley 21.719 de Protección de Datos Personales de Chile. Entrega un Compliance Score en 15 minutos, sin registro previo, identificando brechas críticas y un roadmap de remediación.
 - **FLEXAGENT**: Agentes de IA que atienden, cotizan, agendan y cobran por WhatsApp 24/7, con memoria real de cada cliente y sin costos por conversación de Meta Business.
 - **FLEXCALLCENTER**: Agentes de voz IA para telefonía. Automatiza llamadas entrantes y salientes 24/7 con respuesta en menos de 1 segundo y tasas de conversión de hasta 45%.
+- **FLEXAHORRO**: Compara precios de supermercados, descubre beneficios bancarios y corporativos, y ahorra con el aporte de una comunidad colaborativa. Gratis para familias chilenas.
+- **FUTURIA**: Orientación universitaria inteligente. Test vocacional, compatibilidad por carrera y simulador de ingreso PAES en menos de 60 segundos, gratis para estudiantes de 3° y 4° medio.
+- **FLEXREVIEW**: Captura reseñas reales, filtra experiencias negativas antes de que lleguen a Google y gestiona la reputación del negocio desde un panel inteligente, 24/7.
+- **FLEXPROSPECTA**: Extrae leads de 7 fuentes, los califica con FlexScore™ en 5 pilares usando IA y genera mensajes de contacto humanizados, sin intervención manual.
 
 ## Servicios a medida
 
@@ -43,3 +47,12 @@ Inmobiliarias, centros de salud, retail, educación, seguros y empresas B2B en C
 - FLEXLEY21: https://flexley21.flexpoint.cl
 - FLEXAGENT: https://flexagent.flexpoint.cl
 - FLEXCALLCENTER: https://flexcallcenter.flexpoint.cl
+- FLEXAHORRO: https://flexahorro.flexpoint.cl
+- FUTURIA: https://futuria.flexpoint.cl
+- FLEXREVIEW: https://flexreview.flexpoint.cl
+- FLEXPROSPECTA: https://flexprospeccion.flexpoint.cl
+
+## Legal
+
+- Política de Privacidad: https://flexpoint.cl/privacidad.html
+- Términos y Condiciones: https://flexpoint.cl/terminos.html
