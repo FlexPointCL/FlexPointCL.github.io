@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inteligencia Artificial para Empresas en Chile | FlexPoint — IA, WhatsApp y Automatización</title>
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%23090912'/><rect x='7' y='6' width='17' height='3.5' rx='1.75' fill='%234f8bff'/><rect x='7' y='6' width='3.5' height='20' rx='1.75' fill='%234f8bff'/><rect x='7' y='14' width='12' height='3.5' rx='1.75' fill='%234f8bff'/><circle cx='23.5' cy='24.5' r='3.2' fill='%234f8bff'/></svg>">
-    <meta name="theme-color" content="#090912">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%23F1F1EC'/><rect x='7' y='6' width='17' height='3.5' rx='1.75' fill='%232F6E5C'/><rect x='7' y='6' width='3.5' height='20' rx='1.75' fill='%232F6E5C'/><rect x='7' y='14' width='12' height='3.5' rx='1.75' fill='%232F6E5C'/><circle cx='23.5' cy='24.5' r='3.2' fill='%232F6E5C'/></svg>">
+    <meta name="theme-color" content="#F1F1EC">
     <meta name="description" content="FlexPoint: inteligencia artificial y automatización para empresas en Chile. IA que llama prospectos con voz humana, WhatsApp masivo sin Meta, agentes conversacionales y dashboards a medida. Empieza hoy.">
     <meta name="robots" content="index, follow">
     <meta name="author" content="FlexPoint">
@@ -190,1264 +190,543 @@
       ]
     }
     </script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700;800&display=swap" rel="stylesheet">
     <style>
-        :root {
-            --verde: #4f8bff;
-            --fondo: #090912;
-            --card: #0f0f1c;
-            --borde: #1a1a30;
-            --texto: #eaeaf5;
-            --suave: #7878a8;
+        @font-face {
+            font-family:'Fraunces Display';
+            font-style:italic; font-weight:300; font-display:swap;
+            src:url('fonts/fraunces-300i.woff2') format('woff2');
+        }
+        @font-face {
+            font-family:'Fraunces Display';
+            font-style:normal; font-weight:600; font-display:swap;
+            src:url('fonts/fraunces-600.woff2') format('woff2');
+        }
+        @font-face {
+            font-family:'Work Sans';
+            font-style:normal; font-weight:400; font-display:swap;
+            src:url('fonts/worksans-400.woff2') format('woff2');
+        }
+        @font-face {
+            font-family:'Work Sans';
+            font-style:normal; font-weight:500; font-display:swap;
+            src:url('fonts/worksans-500.woff2') format('woff2');
+        }
+        @font-face {
+            font-family:'Work Sans';
+            font-style:normal; font-weight:600; font-display:swap;
+            src:url('fonts/worksans-600.woff2') format('woff2');
+        }
+        @font-face {
+            font-family:'JetBrains Mono';
+            font-style:normal; font-weight:400; font-display:swap;
+            src:url('fonts/jbmono-400.woff2') format('woff2');
+        }
+        @font-face {
+            font-family:'JetBrains Mono';
+            font-style:normal; font-weight:500; font-display:swap;
+            src:url('fonts/jbmono-500.woff2') format('woff2');
         }
 
-        *, *::before, *::after {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        :root{
+            --paper:#F1F1EC;
+            --paper-raised:#FBFBF8;
+            --ink:#171A17;
+            --ink-soft:#54584F;
+            --ink-faint:#8B8F84;
+            --line:#DBDACF;
+            --line-strong:#C6C5B8;
+            --signal:#2F6E5C;
+            --signal-ink:#1E463A;
+            --signal-soft:#E3EDE7;
+            --amber:#B87326;
+
+            --font-display:'Fraunces Display', ui-serif, Georgia, serif;
+            --font-body:'Work Sans', ui-sans-serif, system-ui, sans-serif;
+            --font-mono:'JetBrains Mono', ui-monospace, 'SF Mono', monospace;
+            color-scheme: light;
         }
 
-        html {
-            scroll-behavior: smooth;
+        @media (prefers-color-scheme: dark){
+            :root{
+                --paper:#141613;
+                --paper-raised:#1B1E1A;
+                --ink:#EDEEE8;
+                --ink-soft:#AFB3A7;
+                --ink-faint:#767A70;
+                --line:#2C2F29;
+                --line-strong:#3B3E37;
+                --signal:#7FC4A9;
+                --signal-ink:#B7E0CC;
+                --signal-soft:#1E2924;
+                --amber:#E3A65E;
+                color-scheme: dark;
+            }
         }
 
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: var(--fondo);
-            color: var(--texto);
-            min-height: 100vh;
-            overflow-x: hidden;
+        *,*::before,*::after{ box-sizing:border-box; }
+        html{ -webkit-text-size-adjust:100%; scroll-behavior:smooth; }
+        body{
+            margin:0;
+            background:var(--paper);
+            color:var(--ink);
+            font-family:var(--font-body);
+            font-size:16px;
+            line-height:1.55;
+            -webkit-font-smoothing:antialiased;
+        }
+        img,svg{ display:block; max-width:100%; }
+        a{ color:inherit; }
+        ::selection{ background:var(--signal); color:var(--paper-raised); }
+
+        .wrap{
+            max-width:1180px;
+            margin:0 auto;
+            padding:0 clamp(1.25rem, 4vw, 3rem);
         }
 
-        h1, h2, h3, h4,
-        .hero-headline,
-        .section-title,
-        .brand-tagline,
-        .service-card h3,
-        .why-text h4 {
-            font-family: 'Space Grotesk', sans-serif;
+        .section-label{
+            font-family:var(--font-mono);
+            font-size:0.72rem;
+            font-weight:500;
+            letter-spacing:0.09em;
+            text-transform:uppercase;
+            color:var(--signal);
+            display:inline-flex;
+            align-items:center;
+            gap:0.5em;
         }
+        .section-label::before{
+            content:"";
+            width:6px; height:6px;
+            border-radius:50%;
+            background:var(--signal);
+            flex:0 0 auto;
+        }
+
+        h1,h2,h3,h4{
+            font-family:var(--font-display);
+            font-weight:600;
+            letter-spacing:-0.01em;
+            text-wrap:balance;
+            margin:0;
+            color:var(--ink);
+        }
+        p{ margin:0; color:var(--ink-soft); }
 
         /* ─── NAV ─── */
-        nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 500;
-            height: 70px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0 2rem;
-            background: rgba(9, 9, 18, 0.92);
-            backdrop-filter: blur(14px);
-            border-bottom: 1px solid var(--borde);
+        nav{
+            position:sticky; top:0; z-index:500;
+            background:color-mix(in srgb, var(--paper) 88%, transparent);
+            backdrop-filter:blur(10px);
+            border-bottom:1px solid var(--line);
+            display:flex; align-items:center; justify-content:space-between;
+            padding:1.1rem clamp(1.25rem, 4vw, 3rem);
         }
-
-        .nav-logo {
-            display: flex;
-            align-items: center;
-            text-decoration: none;
-            flex-shrink: 0;
+        .nav-brand{
+            font-family:var(--font-display);
+            font-weight:600; font-size:1.15rem;
+            letter-spacing:-0.01em;
+            text-decoration:none;
+            display:flex; align-items:center; gap:0.55rem;
+            color:var(--ink);
         }
-        .nav-logo img {
-            height: 48px;
-            width: auto;
-            object-fit: contain;
-            mix-blend-mode: screen;
+        .nav-brand .dot{
+            width:9px; height:9px; border-radius:50%;
+            background:var(--signal);
         }
-
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-            list-style: none;
+        .nav-controls{ display:flex; align-items:center; gap:0.4rem; }
+        .nav-ctrl-btn{
+            font-family:var(--font-mono);
+            font-size:0.72rem;
+            border:1px solid var(--line-strong);
+            background:var(--paper-raised);
+            color:var(--ink-soft);
+            padding:0.4rem 0.6rem;
+            cursor:pointer;
+            transition:border-color .15s, color .15s;
         }
-
-        .nav-links a {
-            color: #c8d8ff;
-            text-decoration: none;
-            font-size: 1.05rem;
-            font-weight: 700;
-            letter-spacing: 0.02em;
-            transition: color 0.25s, text-shadow 0.25s, background 0.25s;
-            text-shadow: 0 0 10px rgba(79,139,255,0.7), 0 0 22px rgba(79,139,255,0.35);
-            padding: 5px 12px;
-            border-radius: 8px;
-            position: relative;
-            background: rgba(79,139,255,0.07);
+        .nav-ctrl-btn:hover{ border-color:var(--signal); color:var(--signal); }
+        .nav-links{
+            display:flex; align-items:center; gap:1.75rem;
+            list-style:none; margin:0; padding:0;
         }
-        .nav-links a:not(.nav-cta):hover {
-            color: #ffffff;
-            background: rgba(79,139,255,0.16);
-            text-shadow: 0 0 14px rgba(120,170,255,1), 0 0 35px rgba(79,139,255,0.7), 0 0 60px rgba(79,139,255,0.3);
+        .nav-links a{
+            font-family:var(--font-mono);
+            font-size:0.78rem;
+            letter-spacing:0.03em;
+            text-transform:uppercase;
+            text-decoration:none;
+            color:var(--ink-soft);
+            transition:color .15s;
         }
-
-        .nav-cta {
-            background: #ffffff;
-            color: #4f8bff !important;
-            padding: 0.5rem 1.25rem;
-            border-radius: 0.5rem;
-            font-weight: 700 !important;
-            font-size: 0.8rem !important;
-            font-family: 'Space Grotesk', sans-serif;
-            transition: opacity 0.2s !important;
+        .nav-links a:hover{ color:var(--signal); }
+        .nav-right{ display:flex; align-items:center; gap:1.5rem; }
+        .btn{
+            font-family:var(--font-mono);
+            font-size:0.78rem;
+            letter-spacing:0.03em;
+            text-transform:uppercase;
+            text-decoration:none;
+            display:inline-flex; align-items:center; gap:0.5em;
+            padding:0.7em 1.15em;
+            border:1px solid var(--ink);
+            color:var(--ink);
+            background:transparent;
+            cursor:pointer;
+            transition:background .15s, color .15s, border-color .15s;
         }
-
-        .nav-cta:hover {
-            opacity: 0.85;
-            color: #4f8bff !important;
+        .btn:hover{ background:var(--ink); color:var(--paper); }
+        .btn-solid{
+            background:var(--signal);
+            border-color:var(--signal);
+            color:var(--paper-raised);
         }
-
-        /* ─── MODO CLARO ─── */
-        body.light-mode {
-            --fondo: #f1f5f9;
-            --card: #ffffff;
-            --borde: #dde3f0;
-            --texto: #0f172a;
-            --suave: #64748b;
-            --verde: #2563eb;
+        .btn-solid:hover{ background:var(--signal-ink); border-color:var(--signal-ink); color:var(--paper-raised); }
+        .btn svg{ width:16px; height:16px; }
+        @media (max-width:900px){
+            .nav-links{ display:none; }
         }
-        body.light-mode nav {
-            background: rgba(241,245,249,0.92);
-        }
-        body.light-mode .nav-links a:not(.nav-cta) {
-            color: #1e3a6e;
-            background: rgba(37,99,235,0.07);
-            text-shadow: none;
-        }
-        body.light-mode .nav-links a:not(.nav-cta):hover {
-            background: rgba(37,99,235,0.14);
-            color: #1e3a6e;
-            text-shadow: none;
-        }
-        body.light-mode .nav-dropdown {
-            background: rgba(241,245,249,0.98);
-        }
-
-        /* ─── CONTROLES NAV ─── */
-        .nav-controls {
-            display: flex;
-            align-items: center;
-            gap: 0.4rem;
-            flex-shrink: 0;
-        }
-        .nav-ctrl-btn {
-            background: rgba(79,139,255,0.1);
-            border: 1px solid rgba(79,139,255,0.2);
-            color: #c8d8ff;
-            border-radius: 8px;
-            padding: 0.3rem 0.6rem;
-            font-size: 0.78rem;
-            font-weight: 600;
-            font-family: 'Space Grotesk', sans-serif;
-            cursor: pointer;
-            transition: background 0.2s, color 0.2s;
-            white-space: nowrap;
-        }
-        .nav-ctrl-btn:hover {
-            background: rgba(79,139,255,0.22);
-            color: #fff;
-        }
-        body.light-mode .nav-ctrl-btn {
-            background: rgba(37,99,235,0.08);
-            border-color: rgba(37,99,235,0.2);
-            color: #1e3a6e;
-        }
-
-
-        /* ─── SECCIÓN PRODUCTOS ─── */
-        #productos {
-            border-top: 1px solid var(--borde);
-            position: relative;
-            z-index: 1;
-        }
-
-        .productos-carousel {
-            position: relative;
-            margin-top: 3rem;
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 4%, #000 96%, transparent 100%);
-            mask-image: linear-gradient(90deg, transparent 0, #000 4%, #000 96%, transparent 100%);
-        }
-
-        .productos-track {
-            display: flex;
-            gap: 1.5rem;
-            overflow-x: auto;
-            scroll-behavior: auto;
-            cursor: grab;
-            padding: 1.25rem 0 1.75rem;
-            flex: 1;
-            -webkit-overflow-scrolling: touch;
-            scrollbar-width: none;
-        }
-
-        .productos-track::-webkit-scrollbar {
-            display: none;
-        }
-
-        .productos-track.dragging {
-            cursor: grabbing;
-        }
-
-        .productos-nav {
-            flex: 0 0 auto;
-            width: 42px;
-            height: 42px;
-            border-radius: 50%;
-            background: var(--card);
-            border: 1px solid var(--borde);
-            color: var(--texto);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: border-color 0.2s, color 0.2s, transform 0.2s;
-            z-index: 2;
-        }
-
-        .productos-nav:hover {
-            border-color: var(--verde);
-            color: var(--verde);
-            transform: scale(1.06);
-        }
-
-        @keyframes cardFloat {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-8px); }
-        }
-
-        .producto-card {
-            background: var(--card);
-            border: 1px solid var(--borde);
-            border-radius: 16px;
-            padding: 2rem;
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-            transition: border-color 0.3s, box-shadow 0.3s;
-            text-decoration: none;
-            color: inherit;
-            flex: 0 0 clamp(260px, 32%, 340px);
-            user-select: none;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.35);
-            animation: cardFloat 5s ease-in-out infinite;
-            animation-delay: calc(var(--float-i, 0) * -0.6s);
-            will-change: transform;
-        }
-
-        .producto-card:hover {
-            border-color: var(--verde);
-            animation-play-state: paused;
-            transform: translateY(-8px);
-            box-shadow: 0 16px 44px rgba(79,139,255,0.2);
-            transition: border-color 0.3s, box-shadow 0.3s, transform 0.3s;
-        }
-
-        .producto-badge {
-            display: inline-block;
-            font-size: 0.72rem;
-            font-weight: 600;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-            color: var(--verde);
-            background: rgba(79,139,255,0.1);
-            border: 1px solid rgba(79,139,255,0.25);
-            border-radius: 999px;
-            padding: 0.25rem 0.75rem;
-            width: fit-content;
-        }
-
-        .producto-card h3 {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 1.4rem;
-            font-weight: 700;
-            color: #ffffff;
-            margin: 0;
-        }
-
-        .producto-card p {
-            font-size: 0.95rem;
-            color: var(--suave);
-            line-height: 1.6;
-            flex: 1;
-        }
-
-        .producto-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.4rem;
-            font-size: 0.9rem;
-            font-weight: 600;
-            color: var(--verde);
-            font-family: 'Space Grotesk', sans-serif;
-            margin-top: 0.5rem;
-        }
-
-        .producto-link svg {
-            transition: transform 0.2s;
-        }
-
-        .producto-card:hover .producto-link svg {
-            transform: translateX(4px);
+        @media (max-width:640px){
+            nav{ flex-wrap:wrap; gap:0.75rem; padding:1rem clamp(1.25rem,4vw,3rem); }
+            .nav-right{ width:100%; justify-content:space-between; }
+            .nav-right .btn{ flex:1; text-align:center; justify-content:center; }
         }
 
         /* ─── HERO ─── */
-        /* Reset para elementos <button> con clases personalizadas */
-        button.btn-primary,
-        button.btn-secondary,
-        button.btn-calendly {
-            font-family: 'Space Grotesk', sans-serif;
-            -webkit-appearance: none;
-            appearance: none;
-            outline: none;
-            line-height: 1.2;
+        #hero{
+            padding:clamp(3.5rem,8vw,6rem) 0 clamp(3rem,6vw,5rem);
+            border-bottom:1px solid var(--line);
+        }
+        .hero-grid{
+            display:grid;
+            grid-template-columns:1.15fr 0.85fr;
+            gap:clamp(2rem,5vw,4rem);
+            align-items:end;
+        }
+        .hero-headline{
+            font-size:clamp(2.2rem, 4.6vw, 3.6rem);
+            line-height:1.06;
+            margin:1.1rem 0 1.4rem;
+        }
+        .hero-headline em{
+            font-style:italic;
+            font-weight:300;
+            color:var(--signal);
+        }
+        .hero-sub{
+            font-size:1.08rem;
+            max-width:46ch;
+            margin-bottom:2rem;
+        }
+        .hero-actions{ display:flex; gap:0.9rem; flex-wrap:wrap; }
+
+        .signal-panel{
+            border:1px solid var(--line-strong);
+            background:var(--paper-raised);
+            padding:1.5rem;
+        }
+        .signal-panel-head{
+            display:flex; justify-content:space-between; align-items:center;
+            font-family:var(--font-mono);
+            font-size:0.7rem;
+            letter-spacing:0.08em;
+            text-transform:uppercase;
+            color:var(--ink-faint);
+            padding-bottom:1rem;
+            margin-bottom:1rem;
+            border-bottom:1px dashed var(--line-strong);
+        }
+        .signal-panel-head .live{ color:var(--amber); display:flex; align-items:center; gap:0.4em; }
+        .signal-panel-head .live::before{
+            content:""; width:6px; height:6px; border-radius:50%; background:var(--amber);
+        }
+        .readout{
+            display:grid; grid-template-columns:1fr 1fr; gap:1.4rem 1rem;
+        }
+        .readout-item .num{
+            font-family:var(--font-mono);
+            font-variant-numeric:tabular-nums;
+            font-size:1.9rem;
+            font-weight:500;
+            color:var(--ink);
+            line-height:1;
+        }
+        .readout-item .lbl{
+            font-family:var(--font-mono);
+            font-size:0.66rem;
+            color:var(--ink-faint);
+            letter-spacing:0.03em;
+            text-transform:uppercase;
+            margin-top:0.45rem;
+        }
+        @media (max-width:900px){
+            .hero-grid{ grid-template-columns:1fr; }
         }
 
-        /* ─── ESTADOS HOVER/ACTIVE DE BOTONES VÍA CLASE JS ─── */
-        .btn-hover {
-            background: #e8f0ff !important;
-            border-color: #e8f0ff !important;
-            color: #3a6ee8 !important;
-            box-shadow: 0 0 30px rgba(79,139,255,0.5), 0 4px 20px rgba(0,0,0,0.4) !important;
-            transform: translateY(-3px) !important;
+        /* ─── SECTIONS ─── */
+        section{
+            padding:clamp(3.5rem,7vw,5.5rem) 0;
+            border-bottom:1px solid var(--line);
         }
-        .btn-press {
-            background: #ffffff !important;
-            border-color: #ffffff !important;
-            color: #4f8bff !important;
-            box-shadow: none !important;
-            transform: scale(0.97) !important;
+        .section-header{
+            margin-bottom:clamp(2rem,4vw,3rem);
+            max-width:62ch;
         }
-
-        #hero {
-            position: relative;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: flex-start;
-            text-align: center;
-            padding-top: 80px; /* igual al alto del nav */
-            padding-left: 2rem;
-            padding-right: 2rem;
-            padding-bottom: 2rem;
-            overflow: hidden;
+        .section-title{
+            font-size:clamp(1.7rem,3vw,2.3rem);
+            margin-top:0.6rem;
+        }
+        .section-desc{
+            font-size:0.98rem;
+            margin-top:0.9rem;
+            max-width:56ch;
         }
 
-        #trailCanvas {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 0;
+        /* ─── PRODUCTOS (ficha técnica, grid estático) ─── */
+        .productos-grid{
+            display:grid;
+            grid-template-columns:repeat(auto-fill, minmax(260px,1fr));
+            gap:1px;
+            background:var(--line);
+            border:1px solid var(--line);
         }
-
-        .hero-content {
-            position: relative;
-            z-index: 1;
-            max-width: 720px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+        .producto-card{
+            background:var(--paper-raised);
+            padding:1.75rem;
+            text-decoration:none;
+            color:inherit;
+            display:flex; flex-direction:column; gap:0.9rem;
+            transition:background .15s;
         }
-
-        /* El canvas tiene pointer-events:none y z-index:0 — no necesita override en el resto */
-
-        .btn-roi {
-            display: inline-block;
-            padding: 0.75rem 2rem;
-            background: #ffffff;
-            color: #4f8bff;
-            text-decoration: none;
-            border-radius: 0.625rem;
-            font-weight: 700;
-            font-size: 1rem;
-            font-family: 'Space Grotesk', sans-serif;
-            border: 2px solid #ffffff;
-            margin-bottom: 1.25rem;
-            box-shadow: 0 0 30px rgba(79,139,255,0.35), 0 4px 20px rgba(0,0,0,0.3);
-            transition: transform 0.15s, box-shadow 0.15s;
+        .producto-card:hover{ background:var(--signal-soft); }
+        .producto-card:hover .producto-link svg{ transform:translateX(3px); }
+        .producto-icon{
+            width:26px; height:26px;
+            color:var(--ink-faint);
+            stroke:currentColor;
+            fill:none;
+            stroke-width:1.6;
+            stroke-linecap:round;
+            stroke-linejoin:round;
+            transition:color .15s;
         }
-        .btn-roi:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 0 50px rgba(79,139,255,0.55), 0 8px 30px rgba(0,0,0,0.4);
+        .producto-card:hover .producto-icon{ color:var(--signal); }
+        .producto-code{
+            font-family:var(--font-mono);
+            font-size:0.68rem;
+            letter-spacing:0.04em;
+            color:var(--ink-faint);
+            display:flex; justify-content:space-between;
         }
-
-        .hero-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0.4rem 1rem;
-            background: rgba(79, 139, 255, 0.09);
-            border: 1px solid rgba(79, 139, 255, 0.22);
-            border-radius: 2rem;
-            font-size: 0.7rem;
-            font-weight: 700;
-            letter-spacing: 0.12em;
-            text-transform: uppercase;
-            color: var(--verde);
-            margin-bottom: 0.75rem;
-            margin-top: 0.75rem;
+        .producto-card h3{
+            font-size:1.15rem;
         }
-
-        .hero-badge::before {
-            content: '';
-            display: inline-block;
-            width: 6px;
-            height: 6px;
-            border-radius: 50%;
-            background: var(--verde);
-            animation: pulse 2s infinite;
+        .producto-card p{ font-size:0.92rem; flex:1; }
+        .producto-link{
+            font-family:var(--font-mono);
+            font-size:0.74rem;
+            text-transform:uppercase;
+            letter-spacing:0.04em;
+            color:var(--signal);
+            display:inline-flex; align-items:center; gap:0.4em;
         }
-
-        @keyframes pulse {
-            0%, 100% { opacity: 1; transform: scale(1); }
-            50% { opacity: 0.4; transform: scale(0.85); }
-        }
-
-        .hero-logo {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            margin-bottom: 1.25rem;
-            position: relative;
-        }
-        .hero-logo::after {
-            content: '';
-            position: absolute;
-            bottom: -22px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 85%;
-            height: 50px;
-            background: radial-gradient(ellipse at center, rgba(79,139,255,0.95) 0%, rgba(79,139,255,0.55) 35%, rgba(79,139,255,0.15) 65%, transparent 80%);
-            filter: blur(14px);
-            border-radius: 50%;
-            animation: logoUnderGlow 2.5s ease-in-out infinite;
-            pointer-events: none;
-        }
-        @keyframes logoUnderGlow {
-            0%, 100% { opacity: 0.85; transform: translateX(-50%) scaleX(1);    filter: blur(14px); }
-            50%       { opacity: 1;    transform: translateX(-50%) scaleX(1.18); filter: blur(18px); }
-        }
-        .hero-logo .logo-icon-big {
-            width: 44px;
-            height: 44px;
-            background: #4f8bff;
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-family: 'Space Grotesk', sans-serif;
-            font-weight: 800;
-            font-size: 1.1rem;
-            color: #090912;
-            flex-shrink: 0;
-            box-shadow: 0 0 20px rgba(79,139,255,0.5), 0 0 50px rgba(79,139,255,0.2);
-            animation: iconGlow 4s ease-in-out infinite;
-        }
-        @keyframes iconGlow {
-            0%, 100% { box-shadow: 0 0 15px rgba(79,139,255,0.4), 0 0 40px rgba(79,139,255,0.15); }
-            50%       { box-shadow: 0 0 35px rgba(79,139,255,0.75), 0 0 80px rgba(79,139,255,0.3); }
-        }
-        .hero-logo .logo-text-big {
-            font-family: 'Space Grotesk', sans-serif;
-            font-weight: 800;
-            font-size: clamp(2rem, 5vw, 3rem);
-            color: var(--texto);
-            letter-spacing: -0.05em;
-            line-height: 1;
-        }
-        .hero-logo .logo-text-big span {
-            color: #4f8bff;
-        }
-
-        @keyframes heroGlow {
-            0%, 100% { filter: drop-shadow(0 0 30px rgba(79,139,255,0.3)) drop-shadow(0 0 60px rgba(79,139,255,0.12)); }
-            50%       { filter: drop-shadow(0 0 70px rgba(79,139,255,0.6)) drop-shadow(0 0 140px rgba(79,139,255,0.28)); }
-        }
-
-        .hero-headline {
-            font-size: clamp(2.2rem, 6vw, 4rem);
-            font-weight: 800;
-            line-height: 1.1;
-            letter-spacing: -0.02em;
-            margin-bottom: 1.5rem;
-            color: var(--texto);
-            opacity: 0;
-        }
-
-        .hero-headline span {
-            color: var(--texto);
-        }
-
-        /* cursor parpadeante typewriter */
-        .tw-cursor {
-            display: inline-block;
-            width: 3px;
-            background: var(--verde);
-            margin-left: 4px;
-            vertical-align: baseline;
-            animation: twBlink 0.75s step-end infinite;
-        }
-        @keyframes twBlink {
-            0%, 100% { opacity: 1; }
-            50%       { opacity: 0; }
-        }
-
-        .hero-sub {
-            font-size: 1rem;
-            line-height: 1.7;
-            color: #4f8bff;
-            font-weight: 400;
-            max-width: 680px;
-            margin-bottom: 1.75rem;
-        }
-
-        .hero-actions {
-            display: flex;
-            flex-direction: column;
-            gap: 0.75rem;
-            align-items: center;
-            width: 100%;
-            max-width: 480px;
-            margin: 0 auto;
-        }
-
-        .btn-full {
-            width: 100%;
-            text-align: center;
-        }
-
-        .hero-actions-row {
-            display: flex;
-            gap: 0.75rem;
-            width: 100%;
-            justify-content: center;
-        }
-
-        .hero-actions-row .btn-calendly,
-        .hero-actions-row .btn-secondary,
-        .hero-actions-row .btn-primary {
-            flex: 1;
-            text-align: center;
-        }
-
-        .contact-options {
-            display: flex;
-            flex-direction: column;
-            gap: 0.75rem;
-            align-items: center;
-            width: 100%;
-            max-width: 480px;
-            margin: 0 auto;
-        }
-
-        /* Un solo estilo base para TODOS los botones */
-        .btn-primary,
-        .btn-secondary,
-        .btn-calendly {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.55rem;
-            padding: 0.85rem 1.8rem;
-            background: rgba(79,139,255,0.08);
-            color: #a8c8ff;
-            text-decoration: none;
-            border-radius: 2rem;
-            font-weight: 700;
-            font-size: 0.9rem;
-            font-family: 'Space Grotesk', sans-serif;
-            border: 1.5px solid rgba(79,139,255,0.35);
-            cursor: pointer;
-            transition: background 0.18s, box-shadow 0.18s, transform 0.12s, border-color 0.18s, color 0.18s;
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
-        }
-
-        .btn-primary:hover,
-        .btn-secondary:hover,
-        .btn-calendly:hover {
-            background: rgba(79,139,255,0.18);
-            border-color: rgba(79,139,255,0.7);
-            color: #ffffff;
-            box-shadow: 0 0 18px rgba(79,139,255,0.25);
-            transform: translateY(-1px);
-        }
-
-        .btn-primary svg,
-        .btn-secondary svg,
-        .btn-calendly svg {
-            width: 18px;
-            height: 18px;
-            flex-shrink: 0;
-        }
-
-        /* ─── SECCIONES ─── */
-        section {
-            padding: 6rem 2rem;
-            max-width: 1100px;
-            margin: 0 auto;
-        }
-
-        .section-label {
-            font-size: 1.2rem;
-            font-weight: 800;
-            letter-spacing: 0.18em;
-            text-transform: uppercase;
-            color: #7ab8ff;
-            margin-bottom: 1rem;
-            font-family: 'Space Grotesk', sans-serif;
-            text-shadow:
-                0 0 8px  rgba(79,139,255,1),
-                0 0 20px rgba(79,139,255,0.8),
-                0 0 45px rgba(79,139,255,0.5),
-                0 0 80px rgba(79,139,255,0.2);
-            animation: labelPulse 3s ease-in-out infinite;
-        }
-        @keyframes labelPulse {
-            0%, 100% {
-                text-shadow:
-                    0 0 8px  rgba(79,139,255,1),
-                    0 0 20px rgba(79,139,255,0.8),
-                    0 0 45px rgba(79,139,255,0.5),
-                    0 0 80px rgba(79,139,255,0.2);
-            }
-            50% {
-                text-shadow:
-                    0 0 12px rgba(120,180,255,1),
-                    0 0 30px rgba(79,139,255,1),
-                    0 0 65px rgba(79,139,255,0.7),
-                    0 0 120px rgba(79,139,255,0.35);
-            }
-        }
-
-        .section-title {
-            font-size: clamp(1.3rem, 5.5vw, 2.4rem);
-            font-weight: 800;
-            line-height: 1.15;
-            letter-spacing: -0.02em;
-            color: var(--texto);
-            margin-bottom: 1rem;
-        }
-
-        .section-desc {
-            font-size: 1rem;
-            color: #4f8bff;
-            line-height: 1.7;
-            max-width: 540px;
-        }
-
-        .section-header {
-            margin-bottom: 3.5rem;
-        }
+        .producto-link svg{ transition:transform .15s; }
 
         /* ─── SERVICIOS ─── */
-        #servicios {
-            border-top: 1px solid var(--borde);
+        .services-grid{
+            display:grid;
+            grid-template-columns:repeat(3,1fr);
+            gap:1px;
+            background:var(--line);
+            border:1px solid var(--line);
         }
-
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1.25rem;
-            overflow: visible;
+        .service-card{
+            background:var(--paper-raised);
+            padding:1.75rem;
+            display:flex; flex-direction:column; gap:0.8rem;
         }
-
-        .service-card {
-            background: var(--card);
-            border: 1px solid var(--borde);
-            border-radius: 1rem;
-            padding: 2rem;
-            transition: transform 0.28s cubic-bezier(0.34, 1.3, 0.64, 1), box-shadow 0.28s ease, border-color 0.28s ease, background 0.2s;
-            cursor: default;
-            position: relative;
-            z-index: 1;
-            will-change: transform;
+        .service-icon{
+            font-size:1.4rem;
+            width:2.2rem; height:2.2rem;
+            display:flex; align-items:center; justify-content:center;
+            border:1px solid var(--line-strong);
+            background:var(--paper);
         }
-
-        .service-card:hover {
-            transform: scale(1.7) translateZ(0);
-            z-index: 300;
-            background: #14142a;
-            border-color: rgba(79, 139, 255, 0.4);
-            box-shadow: 0 0 60px rgba(79,139,255,0.22), 0 32px 80px rgba(0,0,0,0.85);
+        .service-card h3{ font-size:1.05rem; }
+        .service-card p{ font-size:0.9rem; flex:1; }
+        .service-tag{
+            font-family:var(--font-mono);
+            font-size:0.68rem;
+            letter-spacing:0.04em;
+            text-transform:uppercase;
+            color:var(--signal);
         }
-
-        .service-icon {
-            width: 44px;
-            height: 44px;
-            background: rgba(79, 139, 255, 0.1);
-            border-radius: 0.625rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 1.25rem;
-            font-size: 1.25rem;
-        }
-
-        .service-card h3 {
-            font-size: 1.05rem;
-            font-weight: 700;
-            color: var(--texto);
-            margin-bottom: 0.625rem;
-        }
-
-        .service-card p {
-            font-size: 0.875rem;
-            color: var(--suave);
-            line-height: 1.65;
-        }
-
-        .service-tag {
-            display: inline-block;
-            margin-top: 1.25rem;
-            padding: 0.3rem 0.75rem;
-            background: rgba(79, 139, 255, 0.07);
-            border: 1px solid rgba(79, 139, 255, 0.18);
-            border-radius: 2rem;
-            font-size: 0.7rem;
-            font-weight: 600;
-            color: var(--verde);
-            letter-spacing: 0.05em;
-        }
+        @media (max-width:900px){ .services-grid{ grid-template-columns:1fr 1fr; } }
+        @media (max-width:600px){ .services-grid{ grid-template-columns:1fr; } }
 
         /* ─── POR QUÉ FLEXPOINT ─── */
-        #porque {
-            border-top: 1px solid var(--borde);
+        .why-grid{
+            display:grid;
+            grid-template-columns:repeat(2,1fr);
+            gap:0;
+            border-top:1px solid var(--line);
+            border-left:1px solid var(--line);
         }
-
-        .why-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1.25rem;
+        .why-item{
+            padding:1.75rem;
+            border-right:1px solid var(--line);
+            border-bottom:1px solid var(--line);
+            display:flex; gap:1rem;
         }
-
-        .why-item {
-            background: var(--card);
-            border: 1px solid var(--borde);
-            border-radius: 1rem;
-            padding: 1.75rem;
-            display: flex;
-            gap: 1rem;
-            align-items: flex-start;
-            transition: background 0.2s;
+        .why-num{
+            font-family:var(--font-mono);
+            font-size:0.85rem;
+            color:var(--ink-faint);
+            flex:0 0 auto;
         }
-
-        .why-item:hover {
-            background: #14142a;
-        }
-
-        .why-item:first-child {
-            grid-column: 1 / -1;
-        }
-
-        .why-num {
-            font-size: 0.7rem;
-            font-weight: 800;
-            color: var(--verde);
-            min-width: 28px;
-            padding-top: 0.15rem;
-        }
-
-        .why-text h4 {
-            font-size: 0.95rem;
-            font-weight: 700;
-            color: var(--texto);
-            margin-bottom: 0.4rem;
-        }
-
-        .why-text p {
-            font-size: 0.85rem;
-            color: var(--suave);
-            line-height: 1.6;
-        }
+        .why-text h4{ font-size:1.05rem; margin-bottom:0.5rem; }
+        .why-text p{ font-size:0.92rem; }
+        @media (max-width:700px){ .why-grid{ grid-template-columns:1fr; } }
 
         /* ─── STATS ─── */
-        #stats {
-            border-top: 1px solid var(--borde);
-            padding-top: 4rem;
-            padding-bottom: 4rem;
+        .stats-grid{
+            display:grid;
+            grid-template-columns:repeat(4,1fr);
+            gap:0;
+            border-top:1px solid var(--line);
+            border-left:1px solid var(--line);
         }
-
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 1.25rem;
+        .stat-card{
+            padding:1.75rem;
+            border-right:1px solid var(--line);
+            border-bottom:1px solid var(--line);
         }
-
-        .stat-card {
-            background: var(--card);
-            border: 1px solid var(--borde);
-            border-radius: 1rem;
-            padding: 2rem 1.5rem;
-            text-align: center;
+        .stat-num{
+            font-family:var(--font-mono);
+            font-variant-numeric:tabular-nums;
+            font-size:clamp(1.8rem,3vw,2.4rem);
+            font-weight:500;
+            color:var(--ink);
+            line-height:1;
         }
-
-        .stat-num {
-            font-size: 2.4rem;
-            font-weight: 800;
-            color: var(--verde);
-            line-height: 1;
-            margin-bottom: 0.5rem;
+        .stat-label{
+            font-size:0.85rem;
+            margin-top:0.7rem;
         }
-
-        .stat-label {
-            font-size: 0.8rem;
-            color: var(--suave);
-            font-weight: 500;
-        }
-
-        /* ─── SECTION TYPEWRITER HEADLINES ─── */
-        .tw-section {
-            opacity: 0;
-        }
-        .tw-section.tw-done {
-            opacity: 1;
-        }
-
-        /* ─── CTA / CONTACTO — BRAND HERO ─── */
-        #contacto {
-            border-top: 1px solid var(--borde);
-            text-align: center;
-            padding: 6rem 2rem;
-            max-width: none;
-            overflow: visible;
-        }
-
-        .brand-hero {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 1.5rem;
-            max-width: 1300px;
-            margin: 0 auto;
-        }
-
-
-        .brand-tagline {
-            font-size: clamp(1.4rem, 3vw, 2.2rem);
-            font-weight: 800;
-            line-height: 1.1;
-            color: var(--texto);
-            letter-spacing: -0.02em;
-            white-space: nowrap;
-        }
-
-        .brand-desc {
-            font-size: 1rem;
-            color: #4f8bff;
-            max-width: none;
-            line-height: 1.6;
-            white-space: nowrap;
-            margin-top: -0.75rem;
-        }
-
-        /* ─── FOOTER ─── */
-        footer {
-            border-top: 1px solid var(--borde);
-            padding: 2.5rem 2rem;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 1rem;
-            max-width: 1100px;
-            margin: 0 auto;
-        }
-
-        .footer-logo {
-            display: flex;
-            align-items: center;
-            gap: 0.4rem;
-            text-decoration: none;
-            opacity: 0.7;
-        }
-        .footer-logo .logo-icon {
-            width: 22px;
-            height: 22px;
-            background: #4f8bff;
-            border-radius: 5px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-family: 'Space Grotesk', sans-serif;
-            font-weight: 800;
-            font-size: 0.7rem;
-            color: #090912;
-        }
-        .footer-logo .logo-text {
-            font-family: 'Space Grotesk', sans-serif;
-            font-weight: 700;
-            font-size: 0.9rem;
-            color: var(--suave);
-            letter-spacing: -0.02em;
-        }
-
-        .footer-text {
-            font-size: 0.75rem;
-            color: var(--suave);
-            line-height: 1.6;
-        }
-
-        .footer-links {
-            display: flex;
-            gap: 1.5rem;
-        }
-
-        .footer-links a {
-            font-size: 0.75rem;
-            color: var(--suave);
-            text-decoration: none;
-            transition: color 0.2s;
-        }
-
-        .footer-links a:hover {
-            color: var(--texto);
-        }
-
-        /* modal removed — Calendly opens in new tab */
+        @media (max-width:900px){ .stats-grid{ grid-template-columns:1fr 1fr; } }
+        @media (max-width:600px){ .stats-grid{ grid-template-columns:1fr; } }
 
         /* ─── TESTIMONIOS ─── */
-        #testimonios {
-            border-top: 1px solid var(--borde);
+        .testimonios-grid{
+            display:grid;
+            grid-template-columns:repeat(3,1fr);
+            gap:1px;
+            background:var(--line);
+            border:1px solid var(--line);
         }
-
-        .testimonios-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1.25rem;
+        .testimonio-card{
+            background:var(--paper-raised);
+            padding:1.75rem;
+            display:flex; flex-direction:column; gap:1rem;
         }
-
-        .testimonio-card {
-            background: var(--card);
-            border: 1px solid var(--borde);
-            border-radius: 1rem;
-            padding: 1.75rem;
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-            transition: background 0.2s, border-color 0.2s, transform 0.2s;
+        .testimonio-stars{ color:var(--amber); font-size:0.85rem; letter-spacing:0.1em; }
+        .testimonio-quote{
+            font-family:var(--font-body);
+            font-style:italic;
+            font-size:0.98rem;
+            color:var(--ink);
+            flex:1;
         }
-
-        .testimonio-card:hover {
-            background: #14142a;
-            border-color: rgba(79, 139, 255, 0.25);
-            transform: translateY(-3px);
+        .testimonio-author{ display:flex; align-items:center; gap:0.8rem; }
+        .testimonio-avatar{
+            width:34px; height:34px;
+            border-radius:50%;
+            display:flex; align-items:center; justify-content:center;
+            color:#fff; font-family:var(--font-mono); font-size:0.85rem; font-weight:600;
+            flex:0 0 auto;
         }
-
-        .testimonio-stars {
-            display: flex;
-            gap: 2px;
-        }
-
-        .star {
-            color: var(--verde);
-            font-size: 0.9rem;
-        }
-
-        .testimonio-quote {
-            font-size: 0.9rem;
-            line-height: 1.7;
-            color: var(--texto);
-            font-style: italic;
-            flex: 1;
-        }
-
-        .testimonio-quote::before {
-            content: '"';
-            font-size: 1.8rem;
-            color: var(--verde);
-            line-height: 0;
-            vertical-align: -0.4rem;
-            margin-right: 0.2rem;
-            font-style: normal;
-        }
-
-        .testimonio-author {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            padding-top: 0.75rem;
-            border-top: 1px solid var(--borde);
-        }
-
-        .testimonio-avatar {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.8rem;
-            font-weight: 800;
-            color: #090912;
-            flex-shrink: 0;
-        }
-
-        .testimonio-info strong {
-            display: block;
-            font-size: 0.875rem;
-            font-weight: 700;
-            color: var(--texto);
-        }
-
-        .testimonio-info span {
-            font-size: 0.75rem;
-            color: var(--suave);
-        }
+        .testimonio-info{ display:flex; flex-direction:column; font-size:0.85rem; }
+        .testimonio-info strong{ font-weight:600; }
+        .testimonio-info span{ color:var(--ink-faint); font-size:0.8rem; }
+        @media (max-width:900px){ .testimonios-grid{ grid-template-columns:1fr; } }
 
         /* ─── FAQ ─── */
-        .faq-list {
-            max-width: 780px;
-            margin: 0 auto;
-            display: flex;
-            flex-direction: column;
-            gap: 0.75rem;
+        .faq-list{ display:flex; flex-direction:column; }
+        .faq-item{
+            border-bottom:1px solid var(--line);
+            padding:1.25rem 0;
+        }
+        .faq-question{
+            font-family:var(--font-display);
+            font-weight:600;
+            font-size:1.05rem;
+            cursor:pointer;
+            list-style:none;
+            display:flex; justify-content:space-between; align-items:center;
+            gap:1rem;
+        }
+        .faq-question::-webkit-details-marker{ display:none; }
+        .faq-question::after{
+            content:"+";
+            font-family:var(--font-mono);
+            font-size:1.1rem;
+            color:var(--signal);
+            flex:0 0 auto;
+            transition:transform .2s;
+        }
+        .faq-item[open] .faq-question::after{ content:"–"; }
+        .faq-answer{
+            margin-top:0.9rem;
+            font-size:0.95rem;
+            max-width:68ch;
         }
 
-        .faq-item {
-            background: var(--card);
-            border: 1px solid var(--borde);
-            border-radius: 12px;
-            overflow: hidden;
-            transition: border-color 0.3s;
+        /* ─── CONTACTO ─── */
+        #contacto .contact-inner{
+            display:flex; justify-content:space-between; align-items:end;
+            gap:2rem; flex-wrap:wrap;
         }
-
-        .faq-item[open] {
-            border-color: var(--verde);
+        .brand-tagline{
+            font-family:var(--font-display);
+            font-size:clamp(2rem,4vw,2.8rem);
+            font-weight:600;
+            max-width:20ch;
+            margin-top:0.6rem;
         }
+        .brand-desc{ font-size:1rem; max-width:46ch; margin-top:1rem; }
+        .contact-options{ margin-top:1.75rem; }
+        .hero-actions-row{ display:flex; gap:0.9rem; flex-wrap:wrap; }
 
-        .faq-question {
-            list-style: none;
-            padding: 1.25rem 1.5rem;
-            font-family: 'Space Grotesk', sans-serif;
-            font-weight: 600;
-            font-size: 1rem;
-            color: var(--texto);
-            cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 1rem;
-            user-select: none;
+        /* ─── FOOTER ─── */
+        footer{
+            padding:2.5rem clamp(1.25rem, 4vw, 3rem);
+            display:flex; justify-content:space-between; align-items:center;
+            flex-wrap:wrap; gap:1rem;
         }
-
-        .faq-question::-webkit-details-marker { display: none; }
-
-        .faq-question::after {
-            content: '+';
-            font-size: 1.4rem;
-            color: var(--verde);
-            font-weight: 400;
-            flex-shrink: 0;
-            transition: transform 0.3s;
+        .footer-logo{
+            font-family:var(--font-display);
+            font-weight:600;
+            font-size:1.05rem;
         }
-
-        .faq-item[open] .faq-question::after {
-            transform: rotate(45deg);
+        .footer-text{
+            font-family:var(--font-mono);
+            font-size:0.75rem;
+            color:var(--ink-faint);
         }
-
-        .faq-answer {
-            padding: 0 1.5rem 1.25rem;
-            font-size: 0.95rem;
-            color: var(--suave);
-            line-height: 1.7;
+        .footer-links{ display:flex; gap:1.5rem; flex-wrap:wrap; }
+        .footer-links a{
+            font-family:var(--font-mono);
+            font-size:0.75rem;
+            text-decoration:none;
+            color:var(--ink-faint);
         }
+        .footer-links a:hover{ color:var(--signal); }
 
-        /* ─── ANIMACIONES ─── */
-        @keyframes fadeUp {
-            from { opacity: 0; transform: translateY(24px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .hero-content {
-            animation: fadeUp 0.8s ease-out both;
-        }
-
-        /* ─── RESPONSIVE TABLET ─── */
-        @media (max-width: 900px) {
-            .testimonios-grid {
-                grid-template-columns: 1fr 1fr;
-            }
-            .producto-card {
-                flex-basis: clamp(240px, 45%, 320px);
-            }
-        }
-
-        @media (max-width: 640px) {
-            .producto-card {
-                flex-basis: 82%;
-            }
-            .productos-nav {
-                width: 36px;
-                height: 36px;
-            }
-        }
-
-        /* ─── RESPONSIVE MOBILE ─── */
-        @media (max-width: 768px) {
-            nav {
-                padding: 0.75rem 1.25rem;
-            }
-
-            .nav-logo img {
-                height: 38px;
-            }
-
-            .nav-links {
-                gap: 0;
-            }
-
-            /* En móvil ocultar links del medio, solo mostrar el CTA */
-            .nav-links li:not(:last-child) {
-                display: none;
-            }
-
-            .nav-cta {
-                font-size: 0.75rem !important;
-                padding: 0.45rem 0.9rem !important;
-            }
-            .nav-controls {
-                gap: 0.25rem;
-            }
-            .nav-ctrl-btn {
-                font-size: 0.7rem;
-                padding: 0.25rem 0.45rem;
-            }
-            #btn-font-down, #btn-font-up {
-                display: none;
-            }
-
-            #hero {
-                padding: 70px 1.25rem 2rem;
-                min-height: 100svh;
-                justify-content: flex-start;
-            }
-
-            .hero-logo {
-                gap: 0.6rem;
-                margin-bottom: 1rem;
-            }
-            .hero-logo .logo-icon-big {
-                width: 36px;
-                height: 36px;
-                font-size: 0.9rem;
-                border-radius: 8px;
-            }
-            .hero-logo .logo-text-big {
-                font-size: clamp(1.3rem, 5vw, 1.8rem);
-            }
-
-            .hero-badge {
-                font-size: 0.62rem;
-                padding: 0.35rem 0.85rem;
-                margin-bottom: 1.5rem;
-            }
-
-            .hero-headline {
-                font-size: clamp(2rem, 9vw, 3rem);
-            }
-
-            .hero-sub {
-                font-size: 1rem;
-                max-width: 100%;
-            }
-
-            .hero-actions {
-                flex-direction: column;
-                width: 100%;
-                gap: 0.75rem;
-            }
-
-            .btn-primary,
-            .btn-secondary,
-            .btn-calendly {
-                width: 100%;
-                text-align: center;
-                padding: 1rem 1.5rem;
-                font-size: 0.95rem;
-            }
-
-            section {
-                padding: 3.5rem 1.25rem;
-            }
-
-            .services-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .why-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .why-item:first-child {
-                grid-column: auto;
-            }
-
-            .testimonios-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .stats-grid {
-                grid-template-columns: 1fr 1fr;
-            }
-
-            .cta-box {
-                padding: 3rem 1.5rem;
-            }
-
-            .cta-box .section-title {
-                font-size: clamp(1.6rem, 7vw, 2.2rem);
-            }
-
-            footer {
-                flex-direction: column;
-                text-align: center;
-                padding: 2rem 1.25rem;
-            }
-
-            .footer-links {
-                justify-content: center;
-            }
-
-            .brand-logo-giant {
-                width: min(320px, 85vw);
-            }
-
-            .brand-tagline {
-                font-size: clamp(1.3rem, 5vw, 1.7rem);
-                white-space: normal;
-                text-align: center;
-            }
-
-            .brand-desc {
-                font-size: 0.9rem;
-                white-space: normal;
-                text-align: center;
-                margin-top: 0;
-            }
-        }
-
-        @media (max-width: 380px) {
-            .hero-logo .logo-icon-big {
-                width: 40px;
-                height: 40px;
-                font-size: 1.2rem;
-            }
-
-            .stat-num {
-                font-size: 2rem;
-            }
+        /* ─── Reveal on scroll (single, restrained) ─── */
+        .reveal{ opacity:0; transform:translateY(10px); transition:opacity .6s ease, transform .6s ease; }
+        .reveal.in{ opacity:1; transform:none; }
+        @media (prefers-reduced-motion: reduce){
+            .reveal{ opacity:1; transform:none; transition:none; }
         }
     </style>
 </head>
@@ -1455,218 +734,209 @@
 
     <!-- NAV -->
     <nav>
-        <div class="nav-controls">
-            <button class="nav-ctrl-btn" id="btn-theme" onclick="toggleTheme()" title="Modo claro/oscuro">🌙</button>
-            <button class="nav-ctrl-btn" id="btn-font-down" onclick="changeFontSize(-1)" title="Reducir texto">A-</button>
-            <button class="nav-ctrl-btn" id="btn-font-up" onclick="changeFontSize(1)" title="Aumentar texto">A+</button>
-            <button class="nav-ctrl-btn" id="btn-lang" onclick="toggleLang()" title="Cambiar idioma">ES</button>
-        </div>
+        <a href="#" class="nav-brand"><span class="dot"></span>FlexPoint</a>
         <ul class="nav-links">
+            <li><a href="#productos" data-es="Productos" data-en="Products">Productos</a></li>
             <li><a href="#servicios" data-es="Servicios" data-en="Services">Servicios</a></li>
             <li><a href="#porque" data-es="Por qué FlexPoint" data-en="Why FlexPoint">Por qué FlexPoint</a></li>
             <li><a href="#contacto" data-es="Contacto" data-en="Contact">Contacto</a></li>
-            <li><a href="https://wa.me/56985835922?text=Hola%20FlexPoint,%20quiero%20saber%20más." target="_blank" rel="noopener noreferrer" class="nav-cta" data-es="Hablar con un asesor" data-en="Talk to an advisor">Hablar con un asesor</a></li>
         </ul>
+        <div class="nav-right">
+            <div class="nav-controls">
+                <button class="nav-ctrl-btn" id="btn-font-down" onclick="changeFontSize(-1)" title="Reducir texto">A-</button>
+                <button class="nav-ctrl-btn" id="btn-font-up" onclick="changeFontSize(1)" title="Aumentar texto">A+</button>
+                <button class="nav-ctrl-btn" id="btn-lang" onclick="toggleLang()" title="Cambiar idioma">ES</button>
+            </div>
+            <a href="https://wa.me/56985835922?text=Hola%20FlexPoint,%20quiero%20saber%20más." target="_blank" rel="noopener noreferrer" class="btn btn-solid" data-es="Hablar con un asesor" data-en="Talk to an advisor">Hablar con un asesor</a>
+        </div>
     </nav>
-
-    <!-- CANVAS GLOBAL -->
-    <canvas id="trailCanvas"></canvas>
-
 
     <!-- HERO -->
     <section id="hero">
-        <div class="hero-content">
-            <div class="hero-badge" data-es="IA para empresas en Chile — sin código, sin esperas" data-en="AI for companies in Chile — no code, no waiting">IA para empresas en Chile — sin código, sin esperas</div>
-            <div class="hero-logo">
-                <picture>
-                    <source srcset="logo-azul.webp" type="image/webp">
-                    <img src="logo-azul.png" alt="FlexPoint" loading="eager" fetchpriority="high" decoding="async" width="680" height="209" style="width:min(680px,90vw);height:auto;mix-blend-mode:screen;" />
-                </picture>
+        <div class="wrap hero-grid">
+            <div>
+                <span class="section-label" data-es="IA para empresas en Chile — sin código, sin esperas" data-en="AI for companies in Chile — no code, no waiting">IA para empresas en Chile — sin código, sin esperas</span>
+                <h1 class="hero-headline" data-es="IA que llama, responde y vende por ti — 24/7" data-en="AI that calls, responds and sells for you — 24/7">IA que llama, responde y vende por ti — 24/7</h1>
+                <p class="hero-sub" data-es="Automatiza lo que hoy consume tiempo de tu equipo: llamadas de prospección, WhatsApp, reportes. FlexPoint lo hace por ti — implementado en días, no meses." data-en="Automate what consumes your team's time today: prospecting calls, WhatsApp, reports. FlexPoint does it for you — implemented in days, not months.">Automatiza lo que hoy consume tiempo de tu equipo: llamadas de prospección, WhatsApp, reportes. FlexPoint lo hace por ti — implementado en días, no meses.</p>
+                <div class="hero-actions">
+                    <button onclick="openCalendly()" class="btn btn-solid" data-es="Agendar reunión gratis" data-en="Book a free meeting">Agendar reunión gratis</button>
+                    <a href="https://flexpointcl.github.io/roi" target="_blank" rel="noopener noreferrer" class="btn" data-es="Calcular mi ahorro automatizando" data-en="Calculate my automation savings">Calcular mi ahorro automatizando</a>
+                </div>
             </div>
-            <h1 class="hero-headline" data-es="IA que llama, responde y vende por ti — 24/7" data-en="AI That Calls, Responds and Sells for You — 24/7">IA que llama, responde y vende por ti — 24/7</h1>
-            <p class="hero-sub" data-es="Automatiza lo que hoy consume tiempo de tu equipo: llamadas de prospección, WhatsApp, reportes. FlexPoint lo hace por ti — implementado en días, no meses." data-en="Automate what consumes your team's time today: prospecting calls, WhatsApp, reports. FlexPoint does it for you — implemented in days, not months.">
-                Automatiza lo que hoy consume tiempo de tu equipo: llamadas de prospección, WhatsApp, reportes. FlexPoint lo hace por ti — implementado en días, no meses.
-            </p>
-            <div class="hero-actions">
-                <a href="https://flexpointcl.github.io/roi" target="_blank" rel="noopener noreferrer" class="btn-secondary btn-full" aria-label="Calcular mi ahorro automatizando con IA" data-es="Calcular mi ahorro automatizando" data-en="Calculate my automation savings"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/><path d="M7 8h2m2 0h2m2 0h2M7 12h2m4 0h2"/></svg>Calcular mi ahorro automatizando</a>
-                <div class="hero-actions-row">
-                    <button onclick="openCalendly()" class="btn-primary" aria-label="Agendar reunión gratis con FlexPoint" data-es="Agendar reunión gratis" data-en="Book a free meeting"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>Agendar reunión gratis</button>
-                    <a href="https://wa.me/56985835922?text=Hola%20FlexPoint,%20quiero%20saber%20m%C3%A1s%20sobre%20inteligencia%20artificial%20para%20mi%20empresa." target="_blank" rel="noopener noreferrer" class="btn-secondary" data-es="Hablar por WhatsApp" data-en="Chat on WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.117.549 4.107 1.51 5.833L.057 23.215a.75.75 0 00.921.921l5.382-1.453A11.95 11.95 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.9 0-3.68-.523-5.2-1.432l-.374-.22-3.876 1.046 1.046-3.876-.22-.374A9.95 9.95 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>Hablar por WhatsApp</a>
+            <div class="signal-panel">
+                <div class="signal-panel-head">
+                    <span data-es="Panel de señal — hoy" data-en="Signal panel — today">Panel de señal — hoy</span>
+                    <span class="live" data-es="en línea" data-en="online">en línea</span>
+                </div>
+                <div class="readout">
+                    <div class="readout-item">
+                        <div class="num">24/7</div>
+                        <div class="lbl" data-es="Disponibilidad" data-en="Availability">Disponibilidad</div>
+                    </div>
+                    <div class="readout-item">
+                        <div class="num" data-target="40" data-prefix="+" data-suffix="%">0</div>
+                        <div class="lbl" data-es="Reducción operativa" data-en="Operational reduction">Reducción operativa</div>
+                    </div>
+                    <div class="readout-item">
+                        <div class="num" data-target="3" data-prefix="+" data-suffix="x">0</div>
+                        <div class="lbl" data-es="Velocidad de conversión" data-en="Conversion speed">Velocidad de conversión</div>
+                    </div>
+                    <div class="readout-item">
+                        <div class="num">7</div>
+                        <div class="lbl" data-es="Productos activos" data-en="Active products">Productos activos</div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- PRODUCTOS -->
-    <section id="productos" style="overflow:visible;">
-        <div class="section-header">
-                <div class="section-label" data-es="Nuestras Apps" data-en="Our Apps">Nuestras Apps</div>
-                <h2 class="section-title tw-section" data-tw="Software de IA para empresas chilenas" data-tw-en="AI Software for Chilean Businesses">Software de IA para empresas chilenas</h2>
-                <p class="section-desc" data-es="Productos de inteligencia artificial construidos por FlexPoint, disponibles hoy. Cada uno resuelve un problema concreto de tu operación comercial en Chile." data-en="AI products built by FlexPoint, available today. Each one solves a concrete problem in your business operations in Chile.">Productos de inteligencia artificial construidos por FlexPoint, disponibles hoy. Cada uno resuelve un problema concreto de tu operación comercial en Chile.</p>
+    <section id="productos">
+        <div class="wrap">
+            <div class="section-header">
+                <span class="section-label" data-es="Nuestras Apps" data-en="Our Apps">Nuestras Apps</span>
+                <h2 class="section-title" data-es="Un producto por cada fricción real de tu operación" data-en="One product for every real friction in your operation">Un producto por cada fricción real de tu operación</h2>
+                <p class="section-desc" data-es="Siete productos de inteligencia artificial construidos por FlexPoint, disponibles hoy. Cada uno resuelve un problema concreto de tu operación comercial en Chile." data-en="Seven AI products built by FlexPoint, available today. Each one solves a concrete problem in your business operations in Chile.">Siete productos de inteligencia artificial construidos por FlexPoint, disponibles hoy. Cada uno resuelve un problema concreto de tu operación comercial en Chile.</p>
             </div>
-            <div class="productos-carousel">
-              <button class="productos-nav productos-nav-prev" id="productosPrev" aria-label="Anterior" data-es-label="Anterior" data-en-label="Previous">
-                <svg width="18" height="18" viewBox="0 0 16 16" fill="none"><path d="M13 8H3M7 4L3 8l4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              </button>
-              <div class="productos-track" id="productosTrack">
-                <a href="https://flexley21.flexpoint.cl/" target="_blank" rel="noopener noreferrer" class="producto-card" style="--float-i:0">
-                    <span class="producto-badge" data-es="Cumplimiento Legal" data-en="Legal Compliance">Cumplimiento Legal</span>
+            <div class="productos-grid">
+                <a href="https://flexley21.flexpoint.cl/" target="_blank" rel="noopener noreferrer" class="producto-card">
+                    <svg class="producto-icon" viewBox="0 0 32 32"><path d="M6 22a10 10 0 1 1 20 0"/><path d="M16 22 21 13"/><circle cx="16" cy="22" r="1.3" fill="currentColor" stroke="none"/></svg>
+                    <div class="producto-code"><span data-es="CUMPLIMIENTO" data-en="COMPLIANCE">CUMPLIMIENTO</span><span>01</span></div>
                     <h3>FLEXLEY21</h3>
-                    <p data-es="Evalúa el cumplimiento de tu empresa con la Ley 21.719 de Protección de Datos en 15 minutos. Obtén tu Compliance Score, detecta brechas críticas y un roadmap de remediación, 100% gratis." data-en="Evaluate your company's compliance with Chile's Law 21.719 on Data Protection in 15 minutes. Get your Compliance Score, detect critical gaps and a remediation roadmap, 100% free.">Evalúa el cumplimiento de tu empresa con la Ley 21.719 de Protección de Datos en 15 minutos. Obtén tu Compliance Score, detecta brechas críticas y un roadmap de remediación, 100% gratis.</p>
-                    <span class="producto-link">
-                        <span data-es="Ver FLEXLEY21" data-en="View FLEXLEY21">Ver FLEXLEY21</span>
-                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                    </span>
+                    <p data-es="Evalúa el cumplimiento de tu empresa con la Ley 21.719 de Protección de Datos en 15 minutos. Compliance Score y roadmap de remediación, 100% gratis." data-en="Evaluate your company's compliance with Chile's Law 21.719 on Data Protection in 15 minutes. Compliance Score and remediation roadmap, 100% free.">Evalúa el cumplimiento de tu empresa con la Ley 21.719 de Protección de Datos en 15 minutos. Compliance Score y roadmap de remediación, 100% gratis.</p>
+                    <span class="producto-link"><span data-es="Ver producto" data-en="View product">Ver producto</span><svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
                 </a>
-                <a href="https://flexagent.flexpoint.cl/" target="_blank" rel="noopener noreferrer" class="producto-card" style="--float-i:1">
-                    <span class="producto-badge" data-es="Agentes IA WhatsApp" data-en="WhatsApp AI Agents">Agentes IA WhatsApp</span>
+                <a href="https://flexagent.flexpoint.cl/" target="_blank" rel="noopener noreferrer" class="producto-card">
+                    <svg class="producto-icon" viewBox="0 0 32 32"><path d="M7 9h18a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H14l-5 4v-4H7a2 2 0 0 1-2-2v-9a2 2 0 0 1 2-2Z"/><circle cx="12.5" cy="14.5" r="0.9" fill="currentColor" stroke="none"/><circle cx="16" cy="14.5" r="0.9" fill="currentColor" stroke="none"/><circle cx="19.5" cy="14.5" r="0.9" fill="currentColor" stroke="none"/></svg>
+                    <div class="producto-code"><span>WHATSAPP</span><span>02</span></div>
                     <h3>FLEXAGENT</h3>
-                    <p data-es="Agentes de IA que atienden, cotizan, agendan y cobran por WhatsApp 24/7 con memoria real de cada cliente. Sin costos por conversación de Meta ni guiones repetidos." data-en="AI agents that assist, quote, schedule and collect payments via WhatsApp 24/7 with real memory of each customer. No Meta conversation costs or repeated scripts.">Agentes de IA que atienden, cotizan, agendan y cobran por WhatsApp 24/7 con memoria real de cada cliente. Sin costos por conversación de Meta ni guiones repetidos.</p>
-                    <span class="producto-link">
-                        <span data-es="Ver FLEXAGENT" data-en="View FLEXAGENT">Ver FLEXAGENT</span>
-                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                    </span>
+                    <p data-es="Agentes de IA que atienden, cotizan, agendan y cobran por WhatsApp 24/7 con memoria real de cada cliente. Sin costos por conversación de Meta." data-en="AI agents that assist, quote, schedule and collect payments via WhatsApp 24/7 with real memory of each customer. No Meta conversation costs.">Agentes de IA que atienden, cotizan, agendan y cobran por WhatsApp 24/7 con memoria real de cada cliente. Sin costos por conversación de Meta.</p>
+                    <span class="producto-link"><span data-es="Ver producto" data-en="View product">Ver producto</span><svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
                 </a>
-                <a href="https://flexcallcenter.flexpoint.cl/" target="_blank" rel="noopener noreferrer" class="producto-card" style="--float-i:2">
-                    <span class="producto-badge" data-es="Agentes de Voz IA" data-en="AI Voice Agents">Agentes de Voz IA</span>
+                <a href="https://flexcallcenter.flexpoint.cl/" target="_blank" rel="noopener noreferrer" class="producto-card">
+                    <svg class="producto-icon" viewBox="0 0 32 32"><line x1="6" y1="12" x2="6" y2="20"/><line x1="11" y1="8" x2="11" y2="24"/><line x1="16" y1="4" x2="16" y2="28"/><line x1="21" y1="8" x2="21" y2="24"/><line x1="26" y1="12" x2="26" y2="20"/></svg>
+                    <div class="producto-code"><span data-es="VOZ" data-en="VOICE">VOZ</span><span>03</span></div>
                     <h3>FLEXCALLCENTER</h3>
-                    <p data-es="Agentes de voz IA ultra-realistas para llamadas entrantes y salientes, 24/7 y sin límite de escala. Responden en menos de 1 segundo y elevan la conversión hasta un 45%." data-en="Ultra-realistic AI voice agents for inbound and outbound calls, 24/7 with no scale limit. They respond in under 1 second and boost conversion up to 45%.">Agentes de voz IA ultra-realistas para llamadas entrantes y salientes, 24/7 y sin límite de escala. Responden en menos de 1 segundo y elevan la conversión hasta un 45%.</p>
-                    <span class="producto-link">
-                        <span data-es="Ver FLEXCALLCENTER" data-en="View FLEXCALLCENTER">Ver FLEXCALLCENTER</span>
-                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                    </span>
+                    <p data-es="Agentes de voz IA ultra-realistas para llamadas entrantes y salientes, 24/7 y sin límite de escala. Responden en menos de 1 segundo." data-en="Ultra-realistic AI voice agents for inbound and outbound calls, 24/7 with no scale limit. They respond in under 1 second.">Agentes de voz IA ultra-realistas para llamadas entrantes y salientes, 24/7 y sin límite de escala. Responden en menos de 1 segundo.</p>
+                    <span class="producto-link"><span data-es="Ver producto" data-en="View product">Ver producto</span><svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
                 </a>
-                <a href="https://flexahorro.flexpoint.cl/" target="_blank" rel="noopener noreferrer" class="producto-card" style="--float-i:3">
-                    <span class="producto-badge" data-es="Ahorro Familiar" data-en="Family Savings">Ahorro Familiar</span>
+                <a href="https://flexahorro.flexpoint.cl/" target="_blank" rel="noopener noreferrer" class="producto-card">
+                    <svg class="producto-icon" viewBox="0 0 32 32"><path d="M18 5h7a2 2 0 0 1 2 2v7L15 26 5 16 18 5Z"/><circle cx="21.5" cy="10.5" r="1.3" fill="currentColor" stroke="none"/></svg>
+                    <div class="producto-code"><span data-es="AHORRO" data-en="SAVINGS">AHORRO</span><span>04</span></div>
                     <h3>FLEXAHORRO</h3>
-                    <p data-es="Compara precios de supermercados, descubre beneficios bancarios y corporativos, y ahorra con el aporte de tu comunidad. Gratis para empezar hoy mismo." data-en="Compare supermarket prices, discover banking and corporate benefits, and save with the help of your community. Free to start today.">Compara precios de supermercados, descubre beneficios bancarios y corporativos, y ahorra con el aporte de tu comunidad. Gratis para empezar hoy mismo.</p>
-                    <span class="producto-link">
-                        <span data-es="Ver FLEXAHORRO" data-en="View FLEXAHORRO">Ver FLEXAHORRO</span>
-                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                    </span>
+                    <p data-es="Compara precios de supermercados, descubre beneficios bancarios y corporativos, y ahorra con el aporte de tu comunidad. Gratis para empezar." data-en="Compare supermarket prices, discover banking and corporate benefits, and save with your community's input. Free to start.">Compara precios de supermercados, descubre beneficios bancarios y corporativos, y ahorra con el aporte de tu comunidad. Gratis para empezar.</p>
+                    <span class="producto-link"><span data-es="Ver producto" data-en="View product">Ver producto</span><svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
                 </a>
-                <a href="https://futuria.flexpoint.cl/" target="_blank" rel="noopener noreferrer" class="producto-card" style="--float-i:4">
-                    <span class="producto-badge" data-es="Orientación Vocacional" data-en="Vocational Guidance">Orientación Vocacional</span>
+                <a href="https://futuria.flexpoint.cl/" target="_blank" rel="noopener noreferrer" class="producto-card">
+                    <svg class="producto-icon" viewBox="0 0 32 32"><circle cx="16" cy="16" r="11"/><circle cx="16" cy="16" r="3.6"/><path d="M16 4v3.4M16 24.6V28M4 16h3.4M24.6 16H28"/></svg>
+                    <div class="producto-code"><span data-es="EDUCACIÓN" data-en="EDUCATION">EDUCACIÓN</span><span>05</span></div>
                     <h3>FUTURIA</h3>
                     <p data-es="Test vocacional, compatibilidad por carrera y simulador de ingreso PAES en menos de 60 segundos. Gratis para estudiantes de 3° y 4° medio." data-en="Vocational test, career compatibility and PAES admission simulator in under 60 seconds. Free for high school students.">Test vocacional, compatibilidad por carrera y simulador de ingreso PAES en menos de 60 segundos. Gratis para estudiantes de 3° y 4° medio.</p>
-                    <span class="producto-link">
-                        <span data-es="Ver FUTURIA" data-en="View FUTURIA">Ver FUTURIA</span>
-                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                    </span>
+                    <span class="producto-link"><span data-es="Ver producto" data-en="View product">Ver producto</span><svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
                 </a>
-                <a href="https://flexreview.flexpoint.cl/" target="_blank" rel="noopener noreferrer" class="producto-card" style="--float-i:5">
-                    <span class="producto-badge" data-es="Gestión de Reputación" data-en="Reputation Management">Gestión de Reputación</span>
+                <a href="https://flexreview.flexpoint.cl/" target="_blank" rel="noopener noreferrer" class="producto-card">
+                    <svg class="producto-icon" viewBox="0 0 32 32"><path d="M16 5l3.4 7.2 7.6.8-5.8 5.3 1.6 7.7L16 22.4 8.2 26l1.6-7.7L4 13l7.6-.8L16 5Z"/></svg>
+                    <div class="producto-code"><span data-es="REPUTACIÓN" data-en="REPUTATION">REPUTACIÓN</span><span>06</span></div>
                     <h3>FLEXREVIEW</h3>
-                    <p data-es="Captura reseñas reales, filtra experiencias negativas antes de que lleguen a Google y gestiona toda tu reputación desde un panel inteligente, 24/7." data-en="Capture real reviews, filter negative experiences before they reach Google, and manage your entire reputation from one intelligent panel, 24/7.">Captura reseñas reales, filtra experiencias negativas antes de que lleguen a Google y gestiona toda tu reputación desde un panel inteligente, 24/7.</p>
-                    <span class="producto-link">
-                        <span data-es="Ver FLEXREVIEW" data-en="View FLEXREVIEW">Ver FLEXREVIEW</span>
-                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                    </span>
+                    <p data-es="Captura reseñas reales, filtra experiencias negativas antes de que lleguen a Google y gestiona tu reputación desde un panel inteligente." data-en="Capture real reviews, filter negative experiences before they reach Google, and manage your reputation from one intelligent panel.">Captura reseñas reales, filtra experiencias negativas antes de que lleguen a Google y gestiona tu reputación desde un panel inteligente.</p>
+                    <span class="producto-link"><span data-es="Ver producto" data-en="View product">Ver producto</span><svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
                 </a>
-                <a href="https://flexprospeccion.flexpoint.cl/" target="_blank" rel="noopener noreferrer" class="producto-card" style="--float-i:6">
-                    <span class="producto-badge" data-es="Prospección con IA" data-en="AI Prospecting">Prospección con IA</span>
+                <a href="https://flexprospeccion.flexpoint.cl/" target="_blank" rel="noopener noreferrer" class="producto-card">
+                    <svg class="producto-icon" viewBox="0 0 32 32"><path d="M5 6h22l-8 10v9l-6 3v-12L5 6Z"/></svg>
+                    <div class="producto-code"><span data-es="PROSPECCIÓN" data-en="PROSPECTING">PROSPECCIÓN</span><span>07</span></div>
                     <h3>FLEXPROSPECTA</h3>
-                    <p data-es="Extrae leads de 7 fuentes, los califica con FlexScore™ en 5 pilares y genera mensajes de contacto humanizados, sin intervención manual, 24/7." data-en="Extracts leads from 7 sources, scores them with FlexScore™ across 5 pillars and generates humanized outreach messages, with no manual work, 24/7.">Extrae leads de 7 fuentes, los califica con FlexScore™ en 5 pilares y genera mensajes de contacto humanizados, sin intervención manual, 24/7.</p>
-                    <span class="producto-link">
-                        <span data-es="Ver FLEXPROSPECTA" data-en="View FLEXPROSPECTA">Ver FLEXPROSPECTA</span>
-                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                    </span>
+                    <p data-es="Extrae leads de 7 fuentes, los califica con FlexScore™ en 5 pilares y genera mensajes de contacto humanizados, sin intervención manual." data-en="Extracts leads from 7 sources, scores them with FlexScore™ across 5 pillars and generates humanized outreach messages, with no manual work.">Extrae leads de 7 fuentes, los califica con FlexScore™ en 5 pilares y genera mensajes de contacto humanizados, sin intervención manual.</p>
+                    <span class="producto-link"><span data-es="Ver producto" data-en="View product">Ver producto</span><svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
                 </a>
-              </div>
-              <button class="productos-nav productos-nav-next" id="productosNext" aria-label="Siguiente" data-es-label="Siguiente" data-en-label="Next">
-                <svg width="18" height="18" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              </button>
             </div>
+        </div>
     </section>
 
     <!-- SERVICIOS -->
-    <section id="servicios" style="overflow:visible;">
-        <div class="section-header">
-            <div class="section-label" data-es="Servicios" data-en="Services">Servicios</div>
-            <h2 class="section-title tw-section" data-tw="Automatización con IA para empresas en Chile" data-tw-en="AI Automation for Businesses in Chile">Automatización con IA para empresas en Chile</h2>
-            <p class="section-desc" data-es="Desde inteligencia artificial conversacional hasta dashboards de negocio, diseñamos soluciones a medida que eliminan la fricción y aceleran tus resultados." data-en="From conversational AI to business dashboards, we design custom solutions that eliminate friction and accelerate your results.">Desde inteligencia artificial conversacional hasta dashboards de negocio, diseñamos soluciones a medida que eliminan la fricción y aceleran tus resultados.</p>
-        </div>
-
-        <div class="services-grid">
-            <div class="service-card">
-                <div class="service-icon">🤖</div>
-                <h3 data-es="Agentes IA Conversacionales" data-en="Conversational AI Agents">Agentes IA Conversacionales</h3>
-                <p data-es="Asistentes inteligentes que atienden, califican y convierten leads en WhatsApp, web o donde estén tus clientes. Disponibles 24/7, sin intervención humana." data-en="Intelligent assistants that attend, qualify and convert leads on WhatsApp, web or wherever your customers are. Available 24/7, without human intervention.">Asistentes inteligentes que atienden, califican y convierten leads en WhatsApp, web o donde estén tus clientes. Disponibles 24/7, sin intervención humana.</p>
-                <span class="service-tag" data-es="IA · Automatización" data-en="AI · Automation">IA · Automatización</span>
+    <section id="servicios">
+        <div class="wrap">
+            <div class="section-header">
+                <span class="section-label" data-es="Servicios" data-en="Services">Servicios</span>
+                <h2 class="section-title" data-es="Automatización con IA para empresas en Chile" data-en="AI Automation for Businesses in Chile">Automatización con IA para empresas en Chile</h2>
+                <p class="section-desc" data-es="Desde inteligencia artificial conversacional hasta dashboards de negocio, diseñamos soluciones a medida que eliminan la fricción y aceleran tus resultados." data-en="From conversational AI to business dashboards, we design custom solutions that eliminate friction and accelerate your results.">Desde inteligencia artificial conversacional hasta dashboards de negocio, diseñamos soluciones a medida que eliminan la fricción y aceleran tus resultados.</p>
             </div>
-
-            <div class="service-card">
-                <div class="service-icon">📊</div>
-                <h3 data-es="Calculadoras de ROI" data-en="ROI Calculators">Calculadoras de ROI</h3>
-                <p data-es="Herramientas interactivas que muestran a tus prospectos el valor concreto de trabajar contigo antes de la primera reunión. Más conversiones, menos objeciones." data-en="Interactive tools that show your prospects the concrete value of working with you before the first meeting. More conversions, fewer objections.">Herramientas interactivas que muestran a tus prospectos el valor concreto de trabajar contigo antes de la primera reunión. Más conversiones, menos objeciones.</p>
-                <span class="service-tag" data-es="Ventas · Datos" data-en="Sales · Data">Ventas · Datos</span>
-            </div>
-
-            <div class="service-card">
-                <div class="service-icon">⚡</div>
-                <h3 data-es="Automatización de Procesos" data-en="Process Automation">Automatización de Procesos</h3>
-                <p data-es="Identificamos las tareas repetitivas que consumen tiempo de tu equipo y las automatizamos con flujos inteligentes, conectando tus herramientas existentes." data-en="We identify repetitive tasks that consume your team's time and automate them with intelligent flows, connecting your existing tools.">Identificamos las tareas repetitivas que consumen tiempo de tu equipo y las automatizamos con flujos inteligentes, conectando tus herramientas existentes.</p>
-                <span class="service-tag" data-es="Eficiencia · Ops" data-en="Efficiency · Ops">Eficiencia · Ops</span>
-            </div>
-
-            <div class="service-card">
-                <div class="service-icon">📈</div>
-                <h3 data-es="Dashboards & Business Intelligence" data-en="Dashboards & Business Intelligence">Dashboards & Business Intelligence</h3>
-                <p data-es="Centraliza la información de tu negocio en paneles visuales en tiempo real. Toma decisiones basadas en datos, no en intuición." data-en="Centralize your business information in real-time visual panels. Make data-driven decisions, not intuition-based ones.">Centraliza la información de tu negocio en paneles visuales en tiempo real. Toma decisiones basadas en datos, no en intuición.</p>
-                <span class="service-tag" data-es="Datos · Reportería" data-en="Data · Reporting">Datos · Reportería</span>
-            </div>
-
-            <div class="service-card">
-                <div class="service-icon">🔗</div>
-                <h3 data-es="Integraciones & APIs" data-en="Integrations & APIs">Integraciones & APIs</h3>
-                <p data-es="Conectamos tu CRM, ERP, WhatsApp, correo y plataformas de pago para que la información fluya sin silos ni trabajo manual entre sistemas." data-en="We connect your CRM, ERP, WhatsApp, email and payment platforms so information flows without silos or manual work between systems.">Conectamos tu CRM, ERP, WhatsApp, correo y plataformas de pago para que la información fluya sin silos ni trabajo manual entre sistemas.</p>
-                <span class="service-tag" data-es="Integración · Tech" data-en="Integration · Tech">Integración · Tech</span>
-            </div>
-
-            <div class="service-card">
-                <div class="service-icon">🛠️</div>
-                <h3 data-es="Desarrollo de Software a Medida" data-en="Custom Software Development">Desarrollo de Software a Medida</h3>
-                <p data-es="Cuando ninguna solución del mercado encaja exactamente, construimos la tuya. Plataformas web, apps internas y herramientas operacionales diseñadas para tu negocio." data-en="When no market solution fits exactly, we build yours. Web platforms, internal apps and operational tools designed for your business.">Cuando ninguna solución del mercado encaja exactamente, construimos la tuya. Plataformas web, apps internas y herramientas operacionales diseñadas para tu negocio.</p>
-                <span class="service-tag" data-es="Desarrollo · Producto" data-en="Development · Product">Desarrollo · Producto</span>
+            <div class="services-grid reveal">
+                <div class="service-card">
+                    <div class="service-icon">🤖</div>
+                    <h3 data-es="Agentes IA Conversacionales" data-en="Conversational AI Agents">Agentes IA Conversacionales</h3>
+                    <p data-es="Asistentes inteligentes que atienden, califican y convierten leads en WhatsApp, web o donde estén tus clientes. Disponibles 24/7, sin intervención humana." data-en="Intelligent assistants that attend, qualify and convert leads on WhatsApp, web or wherever your customers are. Available 24/7, without human intervention.">Asistentes inteligentes que atienden, califican y convierten leads en WhatsApp, web o donde estén tus clientes. Disponibles 24/7, sin intervención humana.</p>
+                    <span class="service-tag" data-es="IA · Automatización" data-en="AI · Automation">IA · Automatización</span>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">📊</div>
+                    <h3 data-es="Calculadoras de ROI" data-en="ROI Calculators">Calculadoras de ROI</h3>
+                    <p data-es="Herramientas interactivas que muestran a tus prospectos el valor concreto de trabajar contigo antes de la primera reunión. Más conversiones, menos objeciones." data-en="Interactive tools that show your prospects the concrete value of working with you before the first meeting. More conversions, fewer objections.">Herramientas interactivas que muestran a tus prospectos el valor concreto de trabajar contigo antes de la primera reunión. Más conversiones, menos objeciones.</p>
+                    <span class="service-tag" data-es="Ventas · Datos" data-en="Sales · Data">Ventas · Datos</span>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">⚡</div>
+                    <h3 data-es="Automatización de Procesos" data-en="Process Automation">Automatización de Procesos</h3>
+                    <p data-es="Identificamos las tareas repetitivas que consumen tiempo de tu equipo y las automatizamos con flujos inteligentes, conectando tus herramientas existentes." data-en="We identify repetitive tasks that consume your team's time and automate them with intelligent flows, connecting your existing tools.">Identificamos las tareas repetitivas que consumen tiempo de tu equipo y las automatizamos con flujos inteligentes, conectando tus herramientas existentes.</p>
+                    <span class="service-tag" data-es="Eficiencia · Ops" data-en="Efficiency · Ops">Eficiencia · Ops</span>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">📈</div>
+                    <h3 data-es="Dashboards & Business Intelligence" data-en="Dashboards & Business Intelligence">Dashboards & Business Intelligence</h3>
+                    <p data-es="Centraliza la información de tu negocio en paneles visuales en tiempo real. Toma decisiones basadas en datos, no en intuición." data-en="Centralize your business information in real-time visual panels. Make data-driven decisions, not intuition-based ones.">Centraliza la información de tu negocio en paneles visuales en tiempo real. Toma decisiones basadas en datos, no en intuición.</p>
+                    <span class="service-tag" data-es="Datos · Reportería" data-en="Data · Reporting">Datos · Reportería</span>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🔗</div>
+                    <h3 data-es="Integraciones & APIs" data-en="Integrations & APIs">Integraciones & APIs</h3>
+                    <p data-es="Conectamos tu CRM, ERP, WhatsApp, correo y plataformas de pago para que la información fluya sin silos ni trabajo manual entre sistemas." data-en="We connect your CRM, ERP, WhatsApp, email and payment platforms so information flows without silos or manual work between systems.">Conectamos tu CRM, ERP, WhatsApp, correo y plataformas de pago para que la información fluya sin silos ni trabajo manual entre sistemas.</p>
+                    <span class="service-tag" data-es="Integración · Tech" data-en="Integration · Tech">Integración · Tech</span>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🛠️</div>
+                    <h3 data-es="Desarrollo de Software a Medida" data-en="Custom Software Development">Desarrollo de Software a Medida</h3>
+                    <p data-es="Cuando ninguna solución del mercado encaja exactamente, construimos la tuya. Plataformas web, apps internas y herramientas operacionales diseñadas para tu negocio." data-en="When no market solution fits exactly, we build yours. Web platforms, internal apps and operational tools designed for your business.">Cuando ninguna solución del mercado encaja exactamente, construimos la tuya. Plataformas web, apps internas y herramientas operacionales diseñadas para tu negocio.</p>
+                    <span class="service-tag" data-es="Desarrollo · Producto" data-en="Development · Product">Desarrollo · Producto</span>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- POR QUÉ FLEXPOINT -->
     <section id="porque">
-        <div class="section-header">
-            <div class="section-label" data-es="Por qué FlexPoint" data-en="Why FlexPoint">Por qué FlexPoint</div>
-            <h2 class="section-title tw-section" data-tw="La empresa de IA que trabaja contigo en Chile" data-tw-en="The AI Company That Works With You in Chile">La empresa de IA que trabaja contigo en Chile</h2>
-            <p class="section-desc" data-es="No somos una agencia de marketing ni un proveedor de software genérico. Somos el equipo de inteligencia artificial que se mete en la operación contigo." data-en="We are not a marketing agency or a generic software vendor. We are the AI team that gets into the operation with you.">No somos una agencia de marketing ni un proveedor de software genérico. Somos el equipo de inteligencia artificial que se mete en la operación contigo.</p>
-        </div>
-
-        <div class="why-grid">
-            <div class="why-item">
-                <span class="why-num">01</span>
-                <div class="why-text">
-                    <h4 data-es="Enfoque en resultados medibles" data-en="Focus on measurable results">Enfoque en resultados medibles</h4>
-                    <p data-es='Cada proyecto arranca con un objetivo claro y métricas definidas. No entregamos "soluciones" genéricas; entregamos resultados que puedes ver en tu negocio.' data-en='Every project starts with a clear objective and defined metrics. We don't deliver generic "solutions"; we deliver results you can see in your business.'>Cada proyecto arranca con un objetivo claro y métricas definidas. No entregamos "soluciones" genéricas; entregamos resultados que puedes ver en tu negocio.</p>
-                </div>
+        <div class="wrap">
+            <div class="section-header">
+                <span class="section-label" data-es="Por qué FlexPoint" data-en="Why FlexPoint">Por qué FlexPoint</span>
+                <h2 class="section-title" data-es="La empresa de IA que trabaja contigo en Chile" data-en="The AI Company That Works With You in Chile">La empresa de IA que trabaja contigo en Chile</h2>
+                <p class="section-desc" data-es="No somos una agencia de marketing ni un proveedor de software genérico. Somos el equipo de inteligencia artificial que se mete en la operación contigo." data-en="We are not a marketing agency or a generic software vendor. We are the AI team that gets into the operation with you.">No somos una agencia de marketing ni un proveedor de software genérico. Somos el equipo de inteligencia artificial que se mete en la operación contigo.</p>
             </div>
-            <div class="why-item">
-                <span class="why-num">02</span>
-                <div class="why-text">
-                    <h4 data-es="Tecnología real, implementada hoy" data-en="Real technology, implemented today">Tecnología real, implementada hoy</h4>
-                    <p data-es="Usamos IA, automatización y datos de forma práctica, no experimental. Lo que funciona en producción, no en demos." data-en="We use AI, automation and data in a practical way, not experimental. What works in production, not in demos.">Usamos IA, automatización y datos de forma práctica, no experimental. Lo que funciona en producción, no en demos.</p>
+            <div class="why-grid reveal">
+                <div class="why-item">
+                    <span class="why-num">01</span>
+                    <div class="why-text">
+                        <h4 data-es="Enfoque en resultados medibles" data-en="Focus on measurable results">Enfoque en resultados medibles</h4>
+                        <p data-es='Cada proyecto arranca con un objetivo claro y métricas definidas. No entregamos "soluciones" genéricas; entregamos resultados que puedes ver en tu negocio.' data-en='Every project starts with a clear objective and defined metrics. We do not deliver generic "solutions"; we deliver results you can see in your business.'>Cada proyecto arranca con un objetivo claro y métricas definidas. No entregamos "soluciones" genéricas; entregamos resultados que puedes ver en tu negocio.</p>
+                    </div>
                 </div>
-            </div>
-            <div class="why-item">
-                <span class="why-num">03</span>
-                <div class="why-text">
-                    <h4 data-es="Equipo dedicado, no subcontratado" data-en="Dedicated team, not outsourced">Equipo dedicado, no subcontratado</h4>
-                    <p data-es="Tu proyecto lo trabaja nuestro equipo directo. Sin intermediarios que diluyan la visión ni retrasen la ejecución." data-en="Your project is worked on by our direct team. No intermediaries to dilute the vision or delay execution.">Tu proyecto lo trabaja nuestro equipo directo. Sin intermediarios que diluyan la visión ni retrasen la ejecución.</p>
+                <div class="why-item">
+                    <span class="why-num">02</span>
+                    <div class="why-text">
+                        <h4 data-es="Tecnología real, implementada hoy" data-en="Real technology, implemented today">Tecnología real, implementada hoy</h4>
+                        <p data-es="Usamos IA, automatización y datos de forma práctica, no experimental. Lo que funciona en producción, no en demos." data-en="We use AI, automation and data in a practical way, not experimental. What works in production, not in demos.">Usamos IA, automatización y datos de forma práctica, no experimental. Lo que funciona en producción, no en demos.</p>
+                    </div>
                 </div>
-            </div>
-            <div class="why-item">
-                <span class="why-num">04</span>
-                <div class="why-text">
-                    <h4 data-es="Iteración rápida y colaboración constante" data-en="Fast iteration and constant collaboration">Iteración rápida y colaboración constante</h4>
-                    <p data-es="Trabajamos en ciclos cortos con feedback continuo. Adaptamos, mejoramos y evolucionamos con tu negocio sin burocracia." data-en="We work in short cycles with continuous feedback. We adapt, improve and evolve with your business without bureaucracy.">Trabajamos en ciclos cortos con feedback continuo. Adaptamos, mejoramos y evolucionamos con tu negocio sin burocracia.</p>
+                <div class="why-item">
+                    <span class="why-num">03</span>
+                    <div class="why-text">
+                        <h4 data-es="Equipo dedicado, no subcontratado" data-en="Dedicated team, not outsourced">Equipo dedicado, no subcontratado</h4>
+                        <p data-es="Tu proyecto lo trabaja nuestro equipo directo. Sin intermediarios que diluyan la visión ni retrasen la ejecución." data-en="Your project is worked on by our direct team. No intermediaries to dilute the vision or delay execution.">Tu proyecto lo trabaja nuestro equipo directo. Sin intermediarios que diluyan la visión ni retrasen la ejecución.</p>
+                    </div>
+                </div>
+                <div class="why-item">
+                    <span class="why-num">04</span>
+                    <div class="why-text">
+                        <h4 data-es="Iteración rápida y colaboración constante" data-en="Fast iteration and constant collaboration">Iteración rápida y colaboración constante</h4>
+                        <p data-es="Trabajamos en ciclos cortos con feedback continuo. Adaptamos, mejoramos y evolucionamos con tu negocio sin burocracia." data-en="We work in short cycles with continuous feedback. We adapt, improve and evolve with your business without bureaucracy.">Trabajamos en ciclos cortos con feedback continuo. Adaptamos, mejoramos y evolucionamos con tu negocio sin burocracia.</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1674,73 +944,68 @@
 
     <!-- STATS -->
     <section id="stats">
-        <div class="stats-grid">
-            <div class="stat-card">
-                <div class="stat-num" data-target="40" data-prefix="+" data-suffix="%">0</div>
-                <div class="stat-label" data-es="Reducción en tiempos operacionales — empresas FlexPoint, primer mes" data-en="Reduction in operational times — FlexPoint companies, first month">Reducción en tiempos operacionales — empresas FlexPoint, primer mes</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-num" data-static="true">24/7</div>
-                <div class="stat-label" data-es="Disponibilidad de los agentes de inteligencia artificial" data-en="Availability of artificial intelligence agents">Disponibilidad de los agentes de inteligencia artificial</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-num" data-target="3" data-prefix="+" data-suffix="x">0</div>
-                <div class="stat-label" data-es="Mayor velocidad en conversión de prospectos con FLEXCALLCENTER" data-en="Faster prospect conversion speed with FLEXCALLCENTER">Mayor velocidad en conversión de prospectos con FLEXCALLCENTER</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-num" data-target="100" data-prefix="" data-suffix="%">0</div>
-                <div class="stat-label" data-es="Proyectos entregados con métricas definidas" data-en="Projects delivered with defined metrics">Proyectos entregados con métricas definidas</div>
+        <div class="wrap">
+            <div class="stats-grid reveal">
+                <div class="stat-card">
+                    <div class="stat-num" data-target="40" data-prefix="+" data-suffix="%">0</div>
+                    <div class="stat-label" data-es="Reducción en tiempos operacionales — empresas FlexPoint, primer mes" data-en="Reduction in operational times — FlexPoint companies, first month">Reducción en tiempos operacionales — empresas FlexPoint, primer mes</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-num" data-static="true">24/7</div>
+                    <div class="stat-label" data-es="Disponibilidad de los agentes de inteligencia artificial" data-en="Availability of artificial intelligence agents">Disponibilidad de los agentes de inteligencia artificial</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-num" data-target="3" data-prefix="+" data-suffix="x">0</div>
+                    <div class="stat-label" data-es="Mayor velocidad en conversión de prospectos con FLEXCALLCENTER" data-en="Faster prospect conversion speed with FLEXCALLCENTER">Mayor velocidad en conversión de prospectos con FLEXCALLCENTER</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-num" data-target="100" data-prefix="" data-suffix="%">0</div>
+                    <div class="stat-label" data-es="Proyectos entregados con métricas definidas" data-en="Projects delivered with defined metrics">Proyectos entregados con métricas definidas</div>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- TESTIMONIOS -->
     <section id="testimonios">
-        <div class="section-header">
-            <div class="section-label" data-es="Clientes" data-en="Clients">Clientes</div>
-            <h2 class="section-title tw-section" data-tw="Empresas chilenas que ya automatizaron con IA" data-tw-en="Chilean Companies That Already Automated with AI">Empresas chilenas que ya automatizaron con IA</h2>
-            <p class="section-desc" data-es="Empresas reales en Chile, resultados concretos. Sin adornos." data-en="Real companies in Chile, concrete results. No fluff.">Empresas reales en Chile, resultados concretos. Sin adornos.</p>
-        </div>
-
-        <div class="testimonios-grid">
-            <div class="testimonio-card">
-                <div class="testimonio-stars">
-                    <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
-                </div>
-                <p class="testimonio-quote" data-es="Teníamos un equipo de 3 personas respondiendo consultas por WhatsApp todo el día. Implementamos el agente IA y en dos semanas ese tiempo se liberó casi por completo. Hoy ese equipo hace trabajo real." data-en="We had a team of 3 people answering WhatsApp inquiries all day. We implemented the AI agent and in two weeks that time was almost completely freed up. Today that team does real work.">Teníamos un equipo de 3 personas respondiendo consultas por WhatsApp todo el día. Implementamos el agente IA y en dos semanas ese tiempo se liberó casi por completo. Hoy ese equipo hace trabajo real.</p>
-                <div class="testimonio-author">
-                    <div class="testimonio-avatar" style="background: #4f8bff;">V</div>
-                    <div class="testimonio-info">
-                        <strong data-es="Gerente General" data-en="General Manager">Gerente General</strong>
-                        <span data-es="Empresa · Consumo Masivo" data-en="Company · Mass Consumer">Empresa · Consumo Masivo</span>
+        <div class="wrap">
+            <div class="section-header">
+                <span class="section-label" data-es="Clientes" data-en="Clients">Clientes</span>
+                <h2 class="section-title" data-es="Empresas chilenas que ya automatizaron con IA" data-en="Chilean Companies That Already Automated with AI">Empresas chilenas que ya automatizaron con IA</h2>
+                <p class="section-desc" data-es="Empresas reales en Chile, resultados concretos. Sin adornos." data-en="Real companies in Chile, concrete results. No fluff.">Empresas reales en Chile, resultados concretos. Sin adornos.</p>
+            </div>
+            <div class="testimonios-grid reveal">
+                <div class="testimonio-card">
+                    <div class="testimonio-stars">★★★★★</div>
+                    <p class="testimonio-quote" data-es="Teníamos un equipo de 3 personas respondiendo consultas por WhatsApp todo el día. Implementamos el agente IA y en dos semanas ese tiempo se liberó casi por completo. Hoy ese equipo hace trabajo real." data-en="We had a team of 3 people answering WhatsApp inquiries all day. We implemented the AI agent and in two weeks that time was almost completely freed up. Today that team does real work.">Teníamos un equipo de 3 personas respondiendo consultas por WhatsApp todo el día. Implementamos el agente IA y en dos semanas ese tiempo se liberó casi por completo. Hoy ese equipo hace trabajo real.</p>
+                    <div class="testimonio-author">
+                        <div class="testimonio-avatar" style="background:#2F6E5C;">V</div>
+                        <div class="testimonio-info">
+                            <strong data-es="Gerente General" data-en="General Manager">Gerente General</strong>
+                            <span data-es="Empresa · Consumo Masivo" data-en="Company · Mass Consumer">Empresa · Consumo Masivo</span>
+                        </div>
                     </div>
                 </div>
-            </div>
-
-            <div class="testimonio-card">
-                <div class="testimonio-stars">
-                    <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
-                </div>
-                <p class="testimonio-quote" data-es="Les mostramos la calculadora de ROI a nuestros prospectos antes de la reunión. La conversación cambió completamente — ya no llegamos a explicar qué hacemos, llegamos a hablar de implementación." data-en="We showed the ROI calculator to our prospects before the meeting. The conversation changed completely — we no longer arrive to explain what we do, we arrive to talk about implementation.">Les mostramos la calculadora de ROI a nuestros prospectos antes de la reunión. La conversación cambió completamente — ya no llegamos a explicar qué hacemos, llegamos a hablar de implementación.</p>
-                <div class="testimonio-author">
-                    <div class="testimonio-avatar" style="background: #3a6ee8;">A</div>
-                    <div class="testimonio-info">
-                        <strong data-es="Director Comercial" data-en="Commercial Director">Director Comercial</strong>
-                        <span data-es="Empresa · Retail Nacional" data-en="Company · National Retail">Empresa · Retail Nacional</span>
+                <div class="testimonio-card">
+                    <div class="testimonio-stars">★★★★★</div>
+                    <p class="testimonio-quote" data-es="Les mostramos la calculadora de ROI a nuestros prospectos antes de la reunión. La conversación cambió completamente — ya no llegamos a explicar qué hacemos, llegamos a hablar de implementación." data-en="We showed the ROI calculator to our prospects before the meeting. The conversation changed completely — we no longer arrive to explain what we do, we arrive to talk about implementation.">Les mostramos la calculadora de ROI a nuestros prospectos antes de la reunión. La conversación cambió completamente — ya no llegamos a explicar qué hacemos, llegamos a hablar de implementación.</p>
+                    <div class="testimonio-author">
+                        <div class="testimonio-avatar" style="background:#1E463A;">A</div>
+                        <div class="testimonio-info">
+                            <strong data-es="Director Comercial" data-en="Commercial Director">Director Comercial</strong>
+                            <span data-es="Empresa · Retail Nacional" data-en="Company · National Retail">Empresa · Retail Nacional</span>
+                        </div>
                     </div>
                 </div>
-            </div>
-
-            <div class="testimonio-card">
-                <div class="testimonio-stars">
-                    <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
-                </div>
-                <p class="testimonio-quote" data-es="Nuestros reportes tardaban 3 días en generarse. Ahora el dashboard se actualiza solo cada hora. El equipo directivo toma decisiones el mismo día, no la siguiente semana." data-en="Our reports took 3 days to generate. Now the dashboard updates automatically every hour. The management team makes decisions the same day, not the following week.">Nuestros reportes tardaban 3 días en generarse. Ahora el dashboard se actualiza solo cada hora. El equipo directivo toma decisiones el mismo día, no la siguiente semana.</p>
-                <div class="testimonio-author">
-                    <div class="testimonio-avatar" style="background: #6a9fff;">C</div>
-                    <div class="testimonio-info">
-                        <strong>CEO</strong>
-                        <span data-es="Empresa · Industria Logística" data-en="Company · Logistics Industry">Empresa · Industria Logística</span>
+                <div class="testimonio-card">
+                    <div class="testimonio-stars">★★★★★</div>
+                    <p class="testimonio-quote" data-es="Nuestros reportes tardaban 3 días en generarse. Ahora el dashboard se actualiza solo cada hora. El equipo directivo toma decisiones el mismo día, no la siguiente semana." data-en="Our reports took 3 days to generate. Now the dashboard updates automatically every hour. The management team makes decisions the same day, not the following week.">Nuestros reportes tardaban 3 días en generarse. Ahora el dashboard se actualiza solo cada hora. El equipo directivo toma decisiones el mismo día, no la siguiente semana.</p>
+                    <div class="testimonio-author">
+                        <div class="testimonio-avatar" style="background:#B87326;">C</div>
+                        <div class="testimonio-info">
+                            <strong>CEO</strong>
+                            <span data-es="Empresa · Industria Logística" data-en="Company · Logistics Industry">Empresa · Industria Logística</span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1748,66 +1013,70 @@
     </section>
 
     <!-- FAQ -->
-    <section id="faq" style="overflow:visible;">
-        <div class="section-header">
-            <div class="section-label" data-es="FAQ" data-en="FAQ">FAQ</div>
-            <h2 class="section-title tw-section" data-tw="Preguntas sobre IA y automatización en Chile" data-tw-en="Questions About AI and Automation in Chile">Preguntas sobre IA y automatización en Chile</h2>
-            <p class="section-desc" data-es="Todo lo que necesitas saber sobre inteligencia artificial para empresas antes de empezar." data-en="Everything you need to know about artificial intelligence for businesses before getting started.">Todo lo que necesitas saber sobre inteligencia artificial para empresas antes de empezar.</p>
-        </div>
-        <div class="faq-list">
-            <details class="faq-item">
-                <summary class="faq-question" data-es="¿Qué hace FlexPoint exactamente?" data-en="What does FlexPoint do exactly?">¿Qué hace FlexPoint exactamente?</summary>
-                <div class="faq-answer" data-es="FlexPoint es un ecosistema de soluciones digitales para empresas chilenas. Desarrollamos herramientas SaaS de IA conversacional, automatización de WhatsApp y dashboards de negocio — todo diseñado para que tu empresa opere más rápido y venda más sin aumentar el equipo." data-en="FlexPoint is a digital solutions ecosystem for Chilean businesses. We develop conversational AI SaaS tools, WhatsApp automation and business dashboards — all designed so your company operates faster and sells more without growing the team.">FlexPoint es un ecosistema de soluciones digitales para empresas chilenas. Desarrollamos herramientas SaaS de IA conversacional, automatización de WhatsApp y dashboards de negocio — todo diseñado para que tu empresa opere más rápido y venda más sin aumentar el equipo.</div>
-            </details>
-            <details class="faq-item">
-                <summary class="faq-question" data-es="¿Necesito equipo técnico o legal para usar FLEXLEY21?" data-en="Do I need a technical or legal team to use FLEXLEY21?">¿Necesito equipo técnico o legal para usar FLEXLEY21?</summary>
-                <div class="faq-answer" data-es="No. La evaluación de Ley 21.719 se completa 100% online en 15 minutos, sin registro previo ni instalaciones. Respondes sobre 12 dominios regulatorios y obtienes tu Compliance Score al instante, gratis." data-en="No. The Law 21.719 evaluation is completed 100% online in 15 minutes, with no prior registration or installations. You answer questions across 12 regulatory domains and get your Compliance Score instantly, for free.">No. La evaluación de Ley 21.719 se completa 100% online en 15 minutos, sin registro previo ni instalaciones. Respondes sobre 12 dominios regulatorios y obtienes tu Compliance Score al instante, gratis.</div>
-            </details>
-            <details class="faq-item">
-                <summary class="faq-question" data-es="¿FLEXAGENT puede banear mi número de WhatsApp?" data-en="Can FLEXAGENT ban my WhatsApp number?">¿FLEXAGENT puede banear mi número de WhatsApp?</summary>
-                <div class="faq-answer" data-es="FLEXAGENT opera con tu número de WhatsApp real y responde de forma controlada, sin depender de envíos masivos descuidados, minimizando el riesgo de bloqueo. Además evita los costos por conversación de Meta Business." data-en="FLEXAGENT operates with your real WhatsApp number and responds in a controlled way, without relying on careless bulk sends, minimizing the risk of a ban. It also avoids Meta Business conversation costs.">FLEXAGENT opera con tu número de WhatsApp real y responde de forma controlada, sin depender de envíos masivos descuidados, minimizando el riesgo de bloqueo. Además evita los costos por conversación de Meta Business.</div>
-            </details>
-            <details class="faq-item">
-                <summary class="faq-question" data-es="¿Necesito contratar Meta Business API para usar FLEXAGENT?" data-en="Do I need to hire the Meta Business API to use FLEXAGENT?">¿Necesito contratar Meta Business API para usar FLEXAGENT?</summary>
-                <div class="faq-answer" data-es="No. FLEXAGENT funciona con tu número de WhatsApp actual — sin aprobación de Meta, sin templates pre-aprobados y sin costo por conversación. Conectas hoy y respondes hoy." data-en="No. FLEXAGENT works with your current WhatsApp number — no Meta approval, no pre-approved templates and no per-conversation cost. You connect today and respond today.">No. FLEXAGENT funciona con tu número de WhatsApp actual — sin aprobación de Meta, sin templates pre-aprobados y sin costo por conversación. Conectas hoy y respondes hoy.</div>
-            </details>
-            <details class="faq-item">
-                <summary class="faq-question" data-es="¿En qué industrias funciona mejor FlexPoint?" data-en="In which industries does FlexPoint work best?">¿En qué industrias funciona mejor FlexPoint?</summary>
-                <div class="faq-answer" data-es="Nuestros productos están optimizados para inmobiliarias, centros de salud, retail, educación, seguros y empresas B2B en Chile. Cualquier negocio que tenga prospectos, clientes recurrentes o procesos repetitivos puede beneficiarse." data-en="Our products are optimized for real estate, health centers, retail, education, insurance and B2B companies in Chile. Any business with prospects, recurring customers or repetitive processes can benefit.">Nuestros productos están optimizados para inmobiliarias, centros de salud, retail, educación, seguros y empresas B2B en Chile. Cualquier negocio que tenga prospectos, clientes recurrentes o procesos repetitivos puede beneficiarse.</div>
-            </details>
-            <details class="faq-item">
-                <summary class="faq-question" data-es="¿Cuánto tiempo tarda la implementación?" data-en="How long does implementation take?">¿Cuánto tiempo tarda la implementación?</summary>
-                <div class="faq-answer" data-es="Depende del producto. FLEXLEY21 entrega tu resultado en 15 minutos. FLEXAGENT y FLEXCALLCENTER se implementan tras una demo, normalmente en pocos días. Proyectos de automatización a medida o dashboards personalizados toman entre 1 y 3 semanas según complejidad." data-en="It depends on the product. FLEXLEY21 delivers your result in 15 minutes. FLEXAGENT and FLEXCALLCENTER are implemented after a demo, usually within a few days. Custom automation projects or personalized dashboards take between 1 and 3 weeks depending on complexity.">Depende del producto. FLEXLEY21 entrega tu resultado en 15 minutos. FLEXAGENT y FLEXCALLCENTER se implementan tras una demo, normalmente en pocos días. Proyectos de automatización a medida o dashboards personalizados toman entre 1 y 3 semanas según complejidad.</div>
-            </details>
-            <details class="faq-item">
-                <summary class="faq-question" data-es="¿Tienen soporte en español y en Chile?" data-en="Do you have support in Spanish and in Chile?">¿Tienen soporte en español y en Chile?</summary>
-                <div class="faq-answer" data-es="Sí. Todo nuestro equipo está en Chile, con soporte en horario hábil por WhatsApp y reuniones por video. Sin tickets internacionales ni soporte en inglés obligatorio." data-en="Yes. Our entire team is in Chile, with support during business hours via WhatsApp and video meetings. No international tickets or mandatory English-only support.">Sí. Todo nuestro equipo está en Chile, con soporte en horario hábil por WhatsApp y reuniones por video. Sin tickets internacionales ni soporte en inglés obligatorio.</div>
-            </details>
-            <details class="faq-item">
-                <summary class="faq-question" data-es="¿Qué es un agente de inteligencia artificial para ventas?" data-en="What is an artificial intelligence agent for sales?">¿Qué es un agente de inteligencia artificial para ventas?</summary>
-                <div class="faq-answer" data-es="Un agente de inteligencia artificial para ventas es un sistema automatizado que realiza llamadas, responde mensajes y califica prospectos sin intervención humana. FLEXCALLCENTER de FlexPoint es un ejemplo: agentes de voz IA que realizan y reciben llamadas 24/7, con respuesta en menos de 1 segundo y tasas de conversión de hasta 45%." data-en="An artificial intelligence agent for sales is an automated system that makes calls, responds to messages and qualifies prospects without human intervention. FlexPoint's FLEXCALLCENTER is an example: AI voice agents that make and receive calls 24/7, with under 1-second response time and conversion rates of up to 45%.">Un agente de inteligencia artificial para ventas es un sistema automatizado que realiza llamadas, responde mensajes y califica prospectos sin intervención humana. FLEXCALLCENTER de FlexPoint es un ejemplo: agentes de voz IA que realizan y reciben llamadas 24/7, con respuesta en menos de 1 segundo y tasas de conversión de hasta 45%.</div>
-            </details>
-            <details class="faq-item">
-                <summary class="faq-question" data-es="¿Cuánto cuesta implementar inteligencia artificial en una empresa chilena?" data-en="How much does it cost to implement artificial intelligence in a Chilean company?">¿Cuánto cuesta implementar inteligencia artificial en una empresa chilena?</summary>
-                <div class="faq-answer" data-es="El costo varía según el producto. FLEXLEY21 es 100% gratuito. FLEXAGENT y FLEXCALLCENTER tienen planes mensuales sin inversión inicial en infraestructura. Proyectos de automatización a medida se cotizan según complejidad. Contáctanos por WhatsApp para una evaluación gratuita de tu empresa." data-en="The cost varies by product. FLEXLEY21 is 100% free. FLEXAGENT and FLEXCALLCENTER have monthly plans with no initial infrastructure investment. Custom automation projects are quoted by complexity. Contact us via WhatsApp for a free evaluation of your company.">El costo varía según el producto. FLEXLEY21 es 100% gratuito. FLEXAGENT y FLEXCALLCENTER tienen planes mensuales sin inversión inicial en infraestructura. Proyectos de automatización a medida se cotizan según complejidad. Contáctanos por WhatsApp para una evaluación gratuita de tu empresa.</div>
-            </details>
-            <details class="faq-item">
-                <summary class="faq-question" data-es="¿Cómo puede la inteligencia artificial ayudar a mi empresa a vender más?" data-en="How can artificial intelligence help my company sell more?">¿Cómo puede la inteligencia artificial ayudar a mi empresa a vender más?</summary>
-                <div class="faq-answer" data-es="La inteligencia artificial puede automatizar la prospección telefónica, responder clientes en WhatsApp las 24 horas, enviar campañas masivas y generar reportes automáticos. Empresas chilenas que usan FlexPoint han reducido hasta un 40% sus tiempos operativos y triplicado la velocidad de conversión de prospectos." data-en="Artificial intelligence can automate phone prospecting, respond to customers on WhatsApp 24 hours a day, send mass campaigns and generate automatic reports. Chilean companies using FlexPoint have reduced their operational times by up to 40% and tripled the speed of prospect conversion.">La inteligencia artificial puede automatizar la prospección telefónica, responder clientes en WhatsApp las 24 horas, enviar campañas masivas y generar reportes automáticos. Empresas chilenas que usan FlexPoint han reducido hasta un 40% sus tiempos operativos y triplicado la velocidad de conversión de prospectos.</div>
-            </details>
+    <section id="faq">
+        <div class="wrap">
+            <div class="section-header">
+                <span class="section-label" data-es="FAQ" data-en="FAQ">FAQ</span>
+                <h2 class="section-title" data-es="Preguntas sobre IA y automatización en Chile" data-en="Questions About AI and Automation in Chile">Preguntas sobre IA y automatización en Chile</h2>
+                <p class="section-desc" data-es="Todo lo que necesitas saber sobre inteligencia artificial para empresas antes de empezar." data-en="Everything you need to know about artificial intelligence for businesses before getting started.">Todo lo que necesitas saber sobre inteligencia artificial para empresas antes de empezar.</p>
+            </div>
+            <div class="faq-list">
+                <details class="faq-item">
+                    <summary class="faq-question" data-es="¿Qué hace FlexPoint exactamente?" data-en="What does FlexPoint do exactly?">¿Qué hace FlexPoint exactamente?</summary>
+                    <div class="faq-answer" data-es="FlexPoint es un ecosistema de soluciones digitales para empresas chilenas. Desarrollamos herramientas SaaS de IA conversacional, automatización de WhatsApp y dashboards de negocio — todo diseñado para que tu empresa opere más rápido y venda más sin aumentar el equipo." data-en="FlexPoint is a digital solutions ecosystem for Chilean businesses. We develop conversational AI SaaS tools, WhatsApp automation and business dashboards — all designed so your company operates faster and sells more without growing the team.">FlexPoint es un ecosistema de soluciones digitales para empresas chilenas. Desarrollamos herramientas SaaS de IA conversacional, automatización de WhatsApp y dashboards de negocio — todo diseñado para que tu empresa opere más rápido y venda más sin aumentar el equipo.</div>
+                </details>
+                <details class="faq-item">
+                    <summary class="faq-question" data-es="¿Necesito equipo técnico o legal para usar FLEXLEY21?" data-en="Do I need a technical or legal team to use FLEXLEY21?">¿Necesito equipo técnico o legal para usar FLEXLEY21?</summary>
+                    <div class="faq-answer" data-es="No. La evaluación de Ley 21.719 se completa 100% online en 15 minutos, sin registro previo ni instalaciones. Respondes sobre 12 dominios regulatorios y obtienes tu Compliance Score al instante, gratis." data-en="No. The Law 21.719 evaluation is completed 100% online in 15 minutes, with no prior registration or installations. You answer questions across 12 regulatory domains and get your Compliance Score instantly, for free.">No. La evaluación de Ley 21.719 se completa 100% online en 15 minutos, sin registro previo ni instalaciones. Respondes sobre 12 dominios regulatorios y obtienes tu Compliance Score al instante, gratis.</div>
+                </details>
+                <details class="faq-item">
+                    <summary class="faq-question" data-es="¿FLEXAGENT puede banear mi número de WhatsApp?" data-en="Can FLEXAGENT ban my WhatsApp number?">¿FLEXAGENT puede banear mi número de WhatsApp?</summary>
+                    <div class="faq-answer" data-es="FLEXAGENT opera con tu número de WhatsApp real y responde de forma controlada, sin depender de envíos masivos descuidados, minimizando el riesgo de bloqueo. Además evita los costos por conversación de Meta Business." data-en="FLEXAGENT operates with your real WhatsApp number and responds in a controlled way, without relying on careless bulk sends, minimizing the risk of a ban. It also avoids Meta Business conversation costs.">FLEXAGENT opera con tu número de WhatsApp real y responde de forma controlada, sin depender de envíos masivos descuidados, minimizando el riesgo de bloqueo. Además evita los costos por conversación de Meta Business.</div>
+                </details>
+                <details class="faq-item">
+                    <summary class="faq-question" data-es="¿Necesito contratar Meta Business API para usar FLEXAGENT?" data-en="Do I need to hire the Meta Business API to use FLEXAGENT?">¿Necesito contratar Meta Business API para usar FLEXAGENT?</summary>
+                    <div class="faq-answer" data-es="No. FLEXAGENT funciona con tu número de WhatsApp actual — sin aprobación de Meta, sin templates pre-aprobados y sin costo por conversación. Conectas hoy y respondes hoy." data-en="No. FLEXAGENT works with your current WhatsApp number — no Meta approval, no pre-approved templates and no per-conversation cost. You connect today and respond today.">No. FLEXAGENT funciona con tu número de WhatsApp actual — sin aprobación de Meta, sin templates pre-aprobados y sin costo por conversación. Conectas hoy y respondes hoy.</div>
+                </details>
+                <details class="faq-item">
+                    <summary class="faq-question" data-es="¿En qué industrias funciona mejor FlexPoint?" data-en="In which industries does FlexPoint work best?">¿En qué industrias funciona mejor FlexPoint?</summary>
+                    <div class="faq-answer" data-es="Nuestros productos están optimizados para inmobiliarias, centros de salud, retail, educación, seguros y empresas B2B en Chile. Cualquier negocio que tenga prospectos, clientes recurrentes o procesos repetitivos puede beneficiarse." data-en="Our products are optimized for real estate, health centers, retail, education, insurance and B2B companies in Chile. Any business with prospects, recurring customers or repetitive processes can benefit.">Nuestros productos están optimizados para inmobiliarias, centros de salud, retail, educación, seguros y empresas B2B en Chile. Cualquier negocio que tenga prospectos, clientes recurrentes o procesos repetitivos puede beneficiarse.</div>
+                </details>
+                <details class="faq-item">
+                    <summary class="faq-question" data-es="¿Cuánto tiempo tarda la implementación?" data-en="How long does implementation take?">¿Cuánto tiempo tarda la implementación?</summary>
+                    <div class="faq-answer" data-es="Depende del producto. FLEXLEY21 entrega tu resultado en 15 minutos. FLEXAGENT y FLEXCALLCENTER se implementan tras una demo, normalmente en pocos días. Proyectos de automatización a medida o dashboards personalizados toman entre 1 y 3 semanas según complejidad." data-en="It depends on the product. FLEXLEY21 delivers your result in 15 minutes. FLEXAGENT and FLEXCALLCENTER are implemented after a demo, usually within a few days. Custom automation projects or personalized dashboards take between 1 and 3 weeks depending on complexity.">Depende del producto. FLEXLEY21 entrega tu resultado en 15 minutos. FLEXAGENT y FLEXCALLCENTER se implementan tras una demo, normalmente en pocos días. Proyectos de automatización a medida o dashboards personalizados toman entre 1 y 3 semanas según complejidad.</div>
+                </details>
+                <details class="faq-item">
+                    <summary class="faq-question" data-es="¿Tienen soporte en español y en Chile?" data-en="Do you have support in Spanish and in Chile?">¿Tienen soporte en español y en Chile?</summary>
+                    <div class="faq-answer" data-es="Sí. Todo nuestro equipo está en Chile, con soporte en horario hábil por WhatsApp y reuniones por video. Sin tickets internacionales ni soporte en inglés obligatorio." data-en="Yes. Our entire team is in Chile, with support during business hours via WhatsApp and video meetings. No international tickets or mandatory English-only support.">Sí. Todo nuestro equipo está en Chile, con soporte en horario hábil por WhatsApp y reuniones por video. Sin tickets internacionales ni soporte en inglés obligatorio.</div>
+                </details>
+                <details class="faq-item">
+                    <summary class="faq-question" data-es="¿Qué es un agente de inteligencia artificial para ventas?" data-en="What is an artificial intelligence agent for sales?">¿Qué es un agente de inteligencia artificial para ventas?</summary>
+                    <div class="faq-answer" data-es="Un agente de inteligencia artificial para ventas es un sistema automatizado que realiza llamadas, responde mensajes y califica prospectos sin intervención humana. FLEXCALLCENTER de FlexPoint es un ejemplo: agentes de voz IA que realizan y reciben llamadas 24/7, con respuesta en menos de 1 segundo y tasas de conversión de hasta 45%." data-en="An artificial intelligence agent for sales is an automated system that makes calls, responds to messages and qualifies prospects without human intervention. FlexPoint's FLEXCALLCENTER is an example: AI voice agents that make and receive calls 24/7, with under 1-second response time and conversion rates of up to 45%.">Un agente de inteligencia artificial para ventas es un sistema automatizado que realiza llamadas, responde mensajes y califica prospectos sin intervención humana. FLEXCALLCENTER de FlexPoint es un ejemplo: agentes de voz IA que realizan y reciben llamadas 24/7, con respuesta en menos de 1 segundo y tasas de conversión de hasta 45%.</div>
+                </details>
+                <details class="faq-item">
+                    <summary class="faq-question" data-es="¿Cuánto cuesta implementar inteligencia artificial en una empresa chilena?" data-en="How much does it cost to implement artificial intelligence in a Chilean company?">¿Cuánto cuesta implementar inteligencia artificial en una empresa chilena?</summary>
+                    <div class="faq-answer" data-es="El costo varía según el producto. FLEXLEY21 es 100% gratuito. FLEXAGENT y FLEXCALLCENTER tienen planes mensuales sin inversión inicial en infraestructura. Proyectos de automatización a medida se cotizan según complejidad. Contáctanos por WhatsApp para una evaluación gratuita de tu empresa." data-en="The cost varies by product. FLEXLEY21 is 100% free. FLEXAGENT and FLEXCALLCENTER have monthly plans with no initial infrastructure investment. Custom automation projects are quoted by complexity. Contact us via WhatsApp for a free evaluation of your company.">El costo varía según el producto. FLEXLEY21 es 100% gratuito. FLEXAGENT y FLEXCALLCENTER tienen planes mensuales sin inversión inicial en infraestructura. Proyectos de automatización a medida se cotizan según complejidad. Contáctanos por WhatsApp para una evaluación gratuita de tu empresa.</div>
+                </details>
+                <details class="faq-item">
+                    <summary class="faq-question" data-es="¿Cómo puede la inteligencia artificial ayudar a mi empresa a vender más?" data-en="How can artificial intelligence help my company sell more?">¿Cómo puede la inteligencia artificial ayudar a mi empresa a vender más?</summary>
+                    <div class="faq-answer" data-es="La inteligencia artificial puede automatizar la prospección telefónica, responder clientes en WhatsApp las 24 horas, enviar campañas masivas y generar reportes automáticos. Empresas chilenas que usan FlexPoint han reducido hasta un 40% sus tiempos operativos y triplicado la velocidad de conversión de prospectos." data-en="Artificial intelligence can automate phone prospecting, respond to customers on WhatsApp 24 hours a day, send mass campaigns and generate automatic reports. Chilean companies using FlexPoint have reduced their operational times by up to 40% and tripled the speed of prospect conversion.">La inteligencia artificial puede automatizar la prospección telefónica, responder clientes en WhatsApp las 24 horas, enviar campañas masivas y generar reportes automáticos. Empresas chilenas que usan FlexPoint han reducido hasta un 40% sus tiempos operativos y triplicado la velocidad de conversión de prospectos.</div>
+                </details>
+            </div>
         </div>
     </section>
 
     <!-- CONTACTO -->
     <section id="contacto">
-        <div class="brand-hero">
-            <div class="section-label" style="margin-bottom:0;" data-es="Conversemos" data-en="Let's Talk">Conversemos</div>
-            <div class="brand-tagline tw-section" data-tw="Muéstranos el problema. Te traemos la solución en 24h." data-tw-en="Show us the problem. We'll bring the solution in 24h.">Muéstranos el problema. Te traemos la solución en 24h.</div>
-            <p class="brand-desc" data-es="Cuéntanos dónde está el cuello de botella en tu operación y te mostramos exactamente cómo FlexPoint puede resolverlo — sin venderle humo a nadie." data-en="Tell us where the bottleneck is in your operation and we'll show you exactly how FlexPoint can solve it — no smoke and mirrors.">Cuéntanos dónde está el cuello de botella en tu operación y te mostramos exactamente cómo FlexPoint puede resolverlo — sin venderle humo a nadie.</p>
-            <div class="contact-options">
-                <div class="hero-actions-row">
-                    <button onclick="openCalendly()" class="btn-primary" aria-label="Agendar reunión gratis en Google Calendar" data-es="Agendar reunión gratis" data-en="Book a free meeting"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>Agendar reunión gratis</button>
-                    <a href="https://wa.me/56985835922?text=Hola%20FlexPoint,%20quiero%20saber%20m%C3%A1s%20sobre%20sus%20servicios." target="_blank" rel="noopener noreferrer" class="btn-secondary" data-es="Hablar por WhatsApp" data-en="Chat on WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.117.549 4.107 1.51 5.833L.057 23.215a.75.75 0 00.921.921l5.382-1.453A11.95 11.95 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.9 0-3.68-.523-5.2-1.432l-.374-.22-3.876 1.046 1.046-3.876-.22-.374A9.95 9.95 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>Hablar por WhatsApp</a>
+        <div class="wrap contact-inner">
+            <div>
+                <span class="section-label" data-es="Conversemos" data-en="Let's Talk">Conversemos</span>
+                <div class="brand-tagline" data-es="Muéstranos el problema. Te traemos la solución en 24h." data-en="Show us the problem. We'll bring the solution in 24h.">Muéstranos el problema. Te traemos la solución en 24h.</div>
+                <p class="brand-desc" data-es="Cuéntanos dónde está el cuello de botella en tu operación y te mostramos exactamente cómo FlexPoint puede resolverlo — sin venderle humo a nadie." data-en="Tell us where the bottleneck is in your operation and we'll show you exactly how FlexPoint can solve it — no smoke and mirrors.">Cuéntanos dónde está el cuello de botella en tu operación y te mostramos exactamente cómo FlexPoint puede resolverlo — sin venderle humo a nadie.</p>
+                <div class="contact-options">
+                    <div class="hero-actions-row">
+                        <button onclick="openCalendly()" class="btn btn-solid" data-es="Agendar reunión gratis" data-en="Book a free meeting">Agendar reunión gratis</button>
+                        <a href="https://wa.me/56985835922?text=Hola%20FlexPoint,%20quiero%20saber%20m%C3%A1s%20sobre%20sus%20servicios." target="_blank" rel="noopener noreferrer" class="btn" data-es="Hablar por WhatsApp" data-en="Chat on WhatsApp">Hablar por WhatsApp</a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1815,12 +1084,10 @@
 
     <!-- FOOTER -->
     <footer>
-        <div class="footer-logo">
-            <span class="logo-text">FlexPoint</span>
+        <div>
+            <div class="footer-logo">FlexPoint</div>
+            <p class="footer-text">&copy; 2026 FlexPoint Chile</p>
         </div>
-        <p class="footer-text">
-            &copy; 2026 FlexPoint Chile
-        </p>
         <div class="footer-links">
             <a href="#servicios" data-es="Servicios" data-en="Services">Servicios</a>
             <a href="#porque" data-es="Nosotros" data-en="About">Nosotros</a>
@@ -1830,144 +1097,15 @@
         </div>
     </footer>
 
-
     <script>
-        /* ─── CONSTELLATION PARTICLES ─── */
-        const canvas = document.getElementById('trailCanvas');
-        const ctx    = canvas.getContext('2d');
-        const particles = [];
-        const PCOUNT   = window.innerWidth < 768 ? 55 : 100;
-        const LINK_DIST = 180;
-        const DOT_COLORS = ['#4f8bff', '#3a6ee8', '#4f8bff99', '#4f8bff44'];
-
-        let mouse    = { x: -9999, y: -9999 };
-        let hasMouse = false;
-
-        function resize() {
-            canvas.width  = window.innerWidth;
-            canvas.height = window.innerHeight;
-        }
-        window.addEventListener('resize', resize);
-        resize();
-
-        window.addEventListener('mousemove', e => {
-            mouse.x = e.clientX; mouse.y = e.clientY; hasMouse = true;
-        });
-        window.addEventListener('mouseleave', () => { hasMouse = false; });
-        window.addEventListener('touchmove', e => {
-            mouse.x = e.touches[0].clientX; mouse.y = e.touches[0].clientY; hasMouse = true;
-        }, { passive: true });
-        window.addEventListener('touchend', () => { hasMouse = false; });
-
-        class Particle {
-            constructor() { this.init(); }
-            init() {
-                this.x    = Math.random() * canvas.width;
-                this.y    = Math.random() * canvas.height;
-                this.vx   = (Math.random() - 0.5) * 0.45;
-                this.vy   = (Math.random() - 0.5) * 0.45;
-                this.size = Math.random() * 1.8 + 0.5;
-                this.alpha = Math.random() * 0.6 + 0.55;
-                this.col  = DOT_COLORS[Math.floor(Math.random() * DOT_COLORS.length)];
-            }
-            update() {
-                // Atracción suave hacia el cursor
-                if (hasMouse) {
-                    const dx = mouse.x - this.x;
-                    const dy = mouse.y - this.y;
-                    const d2 = dx * dx + dy * dy;
-                    if (d2 < 300 * 300) {
-                        const f = 0.09 / Math.sqrt(d2);
-                        this.vx += dx * f;
-                        this.vy += dy * f;
-                    }
-                }
-                // Límite de velocidad
-                const spd = Math.sqrt(this.vx * this.vx + this.vy * this.vy);
-                if (spd > 5) { this.vx *= 0.88; this.vy *= 0.88; }
-                // Mover
-                this.x += this.vx;
-                this.y += this.vy;
-                // Wrap en los bordes
-                if (this.x < -12) this.x = canvas.width  + 12;
-                if (this.x > canvas.width  + 12) this.x = -12;
-                if (this.y < -12) this.y = canvas.height + 12;
-                if (this.y > canvas.height + 12) this.y = -12;
-            }
-            draw() {
-                ctx.globalAlpha = this.alpha;
-                ctx.fillStyle   = this.col;
-                ctx.beginPath();
-                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-                ctx.fill();
-            }
-        }
-
-        for (let i = 0; i < PCOUNT; i++) particles.push(new Particle());
-
-        function drawLinks() {
-            const d2max = LINK_DIST * LINK_DIST;
-            ctx.strokeStyle = '#4f8bff';
-            ctx.lineWidth   = 0.6;
-            for (let i = 0; i < particles.length; i++) {
-                for (let j = i + 1; j < particles.length; j++) {
-                    const dx = particles[i].x - particles[j].x;
-                    const dy = particles[i].y - particles[j].y;
-                    const d2 = dx * dx + dy * dy;
-                    if (d2 < d2max) {
-                        ctx.globalAlpha = (1 - Math.sqrt(d2) / LINK_DIST) * 0.6;
-                        ctx.beginPath();
-                        ctx.moveTo(particles[i].x, particles[i].y);
-                        ctx.lineTo(particles[j].x, particles[j].y);
-                        ctx.stroke();
-                    }
-                }
-                if (hasMouse) {
-                    const dx = particles[i].x - mouse.x;
-                    const dy = particles[i].y - mouse.y;
-                    const d2 = dx * dx + dy * dy;
-                    if (d2 < 170 * 170) {
-                        ctx.lineWidth   = 0.8;
-                        ctx.globalAlpha = (1 - Math.sqrt(d2) / 170) * 0.4;
-                        ctx.beginPath();
-                        ctx.moveTo(particles[i].x, particles[i].y);
-                        ctx.lineTo(mouse.x, mouse.y);
-                        ctx.stroke();
-                        ctx.lineWidth = 0.6;
-                    }
-                }
-            }
-        }
-
-        function animate() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            drawLinks();
-            particles.forEach(p => { p.update(); p.draw(); });
-            requestAnimationFrame(animate);
-        }
-        if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-            animate();
-        }
-
-
         /* ─── CALENDLY ─── */
         function openCalendly() {
             window.open('https://calendar.app.google/fqu3U8FbReQNwwWR6', '_blank', 'noopener,noreferrer');
         }
 
-        /* ─── BOTONES: hover y press via clases CSS ─── */
-        document.querySelectorAll('.btn-primary, .btn-secondary, .btn-calendly').forEach(btn => {
-            btn.addEventListener('mouseenter',  () => { btn.classList.add('btn-hover'); });
-            btn.addEventListener('mouseleave',  () => { btn.classList.remove('btn-hover', 'btn-press'); });
-            btn.addEventListener('mousedown',   () => { btn.classList.remove('btn-hover'); btn.classList.add('btn-press'); });
-            btn.addEventListener('mouseup',     () => { btn.classList.remove('btn-press'); btn.classList.add('btn-hover'); });
-            btn.addEventListener('touchstart',  () => { btn.classList.add('btn-press'); }, { passive: true });
-            btn.addEventListener('touchend',    () => { btn.classList.remove('btn-press'); });
-        });
-
         /* ─── COUNTER ANIMATION ─── */
         function animateCount(el, targetVal, prefix, suffix) {
-            const duration = 2000;
+            const duration = 1600;
             let startTime = null;
             const step = (timestamp) => {
                 if (!startTime) startTime = timestamp;
@@ -1980,11 +1118,12 @@
             requestAnimationFrame(step);
         }
 
-        // Observar las stat-card; cuando entren en viewport, disparar el contador de sus stat-num hijos
         const statsObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    const numEl = entry.target.querySelector('.stat-num[data-target]');
+                    const numEl = entry.target.matches('.stat-num[data-target], .readout-item .num[data-target]')
+                        ? entry.target
+                        : entry.target.querySelector('[data-target]');
                     if (numEl && !numEl.dataset.animated) {
                         numEl.dataset.animated = 'true';
                         const targetVal = parseInt(numEl.dataset.target, 10);
@@ -1992,116 +1131,25 @@
                         const suffix = numEl.dataset.suffix || '';
                         animateCount(numEl, targetVal, prefix, suffix);
                     }
-                    statsObserver.unobserve(entry.target);
                 }
             });
         }, { threshold: 0.3 });
 
-        document.querySelectorAll('.stat-card').forEach(card => {
-            const numEl = card.querySelector('.stat-num[data-target]');
-            if (numEl) {
-                numEl.textContent = (numEl.dataset.prefix || '') + '0' + (numEl.dataset.suffix || '');
-            }
-            statsObserver.observe(card);
+        document.querySelectorAll('[data-target]').forEach(numEl => {
+            numEl.textContent = (numEl.dataset.prefix || '') + '0' + (numEl.dataset.suffix || '');
+            statsObserver.observe(numEl);
         });
 
-        /* ─── SCROLL REVEAL ─── */
+        /* ─── SCROLL REVEAL (único, restringido) ─── */
         const revealObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
+                    entry.target.classList.add('in');
+                    revealObserver.unobserve(entry.target);
                 }
             });
         }, { threshold: 0.1 });
-
-        document.querySelectorAll('.service-card, .why-item, .stat-card, .testimonio-card, .producto-card').forEach(el => {
-            el.style.opacity = '0';
-            el.style.transform = 'translateY(20px)';
-            el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-            revealObserver.observe(el);
-        });
-
-        /* ─── TYPEWRITER HERO ─── */
-        (function () {
-            const h1 = document.querySelector('.hero-headline');
-            if (!h1 || h1.dataset.twInit) return;
-            h1.dataset.twInit = '1';
-
-            const TEXT  = h1.textContent.trim() || 'IA y Automatización para tu Empresa';
-            const SPEED = 52;
-
-            h1.innerHTML = '';
-            h1.style.opacity = '1';
-
-            const wrap = document.createElement('span');
-            wrap.style.cssText = 'color:#eaeaf5;';
-            const cursor = document.createElement('span');
-            cursor.className = 'tw-cursor';
-            cursor.style.height = '0.85em';
-            h1.appendChild(wrap);
-            h1.appendChild(cursor);
-
-            let i = 0;
-            function type() {
-                if (i < TEXT.length) {
-                    wrap.textContent += TEXT[i++];
-                    setTimeout(type, SPEED);
-                }
-            }
-            setTimeout(type, 500);
-        })();
-
-        /* ─── SECTION TYPEWRITER TITLES ─── */
-        (function () {
-            const SPEED = 38;
-            function twSection(el) {
-                const text = (el.dataset.tw || el.textContent.trim()).trim();
-                el.innerHTML = '';
-                el.classList.add('tw-done');
-                // Wrap in explicit white span so it never inherits green
-                const wrap = document.createElement('span');
-                wrap.style.cssText = 'color:#e0e0e0;';
-                el.appendChild(wrap);
-                const cur = document.createElement('span');
-                cur.className = 'tw-cursor';
-                cur.style.height = '0.8em';
-                el.appendChild(cur);
-                let i = 0;
-                function type() {
-                    if (i < text.length) {
-                        wrap.textContent += text[i++];
-                        setTimeout(type, SPEED);
-                    }
-                    // cursor queda parpadeando indefinidamente
-                }
-                type();
-            }
-            const obs = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting && !entry.target.dataset.twDone) {
-                        entry.target.dataset.twDone = '1';
-                        obs.unobserve(entry.target);
-                        twSection(entry.target);
-                    }
-                });
-            }, { threshold: 0.05, rootMargin: '0px 0px -40px 0px' });
-            document.querySelectorAll('.tw-section').forEach(el => obs.observe(el));
-        })();
-
-        /* ─── TEMA CLARO/OSCURO ─── */
-        function toggleTheme() {
-            const light = document.body.classList.toggle('light-mode');
-            document.getElementById('btn-theme').textContent = light ? '☀️' : '🌙';
-            localStorage.setItem('fp-theme', light ? 'light' : 'dark');
-        }
-        (function() {
-            if (localStorage.getItem('fp-theme') === 'light') {
-                document.body.classList.add('light-mode');
-                const btn = document.getElementById('btn-theme');
-                if (btn) btn.textContent = '☀️';
-            }
-        })();
+        document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
         /* ─── TAMAÑO DE FUENTE ─── */
         let fontSize = parseInt(localStorage.getItem('fp-fontsize') || '16');
@@ -2115,28 +1163,9 @@
         /* ─── IDIOMA ES/EN ─── */
         let currentLang = localStorage.getItem('fp-lang') || 'es';
         function applyLang(lang) {
-            // Elementos con data-es / data-en (texto plano)
             document.querySelectorAll('[data-es][data-en]').forEach(el => {
                 el.textContent = el.getAttribute('data-' + lang);
             });
-            // Elementos typewriter: actualizar data-tw y reescribir si ya fueron animados
-            document.querySelectorAll('.tw-section[data-tw-en]').forEach(el => {
-                const text = lang === 'en' ? el.getAttribute('data-tw-en') : el.getAttribute('data-tw');
-                el.setAttribute('data-tw', text);
-                if (el.classList.contains('tw-done')) {
-                    el.textContent = text;
-                }
-            });
-            // H1 typewriter (hero-headline)
-            const h1 = document.querySelector('.hero-headline');
-            if (h1) {
-                const esText = 'Inteligencia Artificial para tu Empresa';
-                const enText = 'Artificial Intelligence for Your Business';
-                const target = lang === 'en' ? enText : esText;
-                h1.setAttribute('data-es', esText);
-                h1.setAttribute('data-en', enText);
-                if (h1.textContent.trim()) h1.textContent = target;
-            }
             document.getElementById('btn-lang').textContent = lang === 'es' ? 'ES' : 'EN';
             localStorage.setItem('fp-lang', lang);
             currentLang = lang;
@@ -2145,120 +1174,6 @@
             applyLang(currentLang === 'es' ? 'en' : 'es');
         }
         if (currentLang === 'en') applyLang('en');
-
-        // ─── PRODUCTOS CAROUSEL (infinito) ───
-        (function () {
-            const track = document.getElementById('productosTrack');
-            if (!track) return;
-            const prevBtn = document.getElementById('productosPrev');
-            const nextBtn = document.getElementById('productosNext');
-
-            // Duplicamos las tarjetas una vez para poder hacer wrap sin salto visible
-            const originalCards = Array.from(track.children);
-            originalCards.forEach((card) => {
-                const clone = card.cloneNode(true);
-                clone.setAttribute('aria-hidden', 'true');
-                clone.setAttribute('tabindex', '-1');
-                track.appendChild(clone);
-            });
-
-            let halfWidth = 0;
-            function measure() {
-                halfWidth = track.scrollWidth / 2;
-            }
-            measure();
-            window.addEventListener('resize', measure);
-
-            function wrap() {
-                if (halfWidth <= 0) return;
-                if (track.scrollLeft >= halfWidth) track.scrollLeft -= halfWidth;
-                else if (track.scrollLeft < 0) track.scrollLeft += halfWidth;
-            }
-
-            function cardStep() {
-                const card = track.children[0];
-                const style = getComputedStyle(track);
-                const gap = parseFloat(style.columnGap || style.gap || '0');
-                return card.getBoundingClientRect().width + gap;
-            }
-
-            // Avance continuo (flotante, sin fin)
-            const SPEED = 28; // px por segundo
-            let rafId = null;
-            let lastTime = null;
-            let playing = true;
-
-            function tick(now) {
-                if (lastTime === null) lastTime = now;
-                const dt = (now - lastTime) / 1000;
-                lastTime = now;
-                if (playing) {
-                    track.scrollLeft += SPEED * dt;
-                    wrap();
-                }
-                rafId = requestAnimationFrame(tick);
-            }
-            rafId = requestAnimationFrame(tick);
-
-            function pauseFloat() { playing = false; }
-            let resumeTimer = null;
-            function resumeFloatSoon() {
-                if (resumeTimer) clearTimeout(resumeTimer);
-                resumeTimer = setTimeout(() => { playing = true; lastTime = null; }, 2500);
-            }
-
-            prevBtn.addEventListener('click', () => {
-                pauseFloat();
-                track.scrollBy({ left: -cardStep(), behavior: 'smooth' });
-                resumeFloatSoon();
-            });
-            nextBtn.addEventListener('click', () => {
-                pauseFloat();
-                track.scrollBy({ left: cardStep(), behavior: 'smooth' });
-                resumeFloatSoon();
-            });
-
-            // Arrastre (mouse / touch vía pointer events)
-            let isDown = false, startX = 0, startScroll = 0, dragged = false;
-            track.addEventListener('pointerdown', (e) => {
-                isDown = true;
-                dragged = false;
-                pauseFloat();
-                track.classList.add('dragging');
-                startX = e.clientX;
-                startScroll = track.scrollLeft;
-                track.setPointerCapture(e.pointerId);
-            });
-            track.addEventListener('pointermove', (e) => {
-                if (!isDown) return;
-                const dx = e.clientX - startX;
-                if (Math.abs(dx) > 4) dragged = true;
-                track.scrollLeft = startScroll - dx;
-                wrap();
-            });
-            function endDrag() {
-                if (!isDown) return;
-                isDown = false;
-                track.classList.remove('dragging');
-                resumeFloatSoon();
-            }
-            track.addEventListener('pointerup', endDrag);
-            track.addEventListener('pointerleave', endDrag);
-            track.addEventListener('click', (e) => { if (dragged) e.preventDefault(); }, true);
-
-            track.addEventListener('mouseenter', pauseFloat);
-            track.addEventListener('mouseleave', resumeFloatSoon);
-            track.addEventListener('touchstart', pauseFloat, { passive: true });
-            track.addEventListener('touchend', resumeFloatSoon, { passive: true });
-
-            const carouselObserver = new IntersectionObserver((entries) => {
-                entries.forEach((entry) => {
-                    if (entry.isIntersecting) { playing = true; lastTime = null; }
-                    else playing = false;
-                });
-            }, { threshold: 0.2 });
-            carouselObserver.observe(track);
-        })();
     </script>
 </body>
 </html>

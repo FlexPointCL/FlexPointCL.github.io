@@ -6,32 +6,40 @@
 <title>Términos y Condiciones | FlexPoint</title>
 <meta name="description" content="Términos y Condiciones de uso de FlexPoint y su ecosistema de productos: FLEXLEY21, FLEXAGENT, FLEXCALLCENTER, FLEXAHORRO, FUTURIA, FLEXREVIEW y FLEXPROSPECTA.">
 <meta name="robots" content="index, follow">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
 <style>
+    @font-face { font-family:'Fraunces Display'; font-style:normal; font-weight:600; font-display:swap; src:url('fonts/fraunces-600.woff2') format('woff2'); }
+    @font-face { font-family:'Work Sans'; font-style:normal; font-weight:400; font-display:swap; src:url('fonts/worksans-400.woff2') format('woff2'); }
+    @font-face { font-family:'Work Sans'; font-style:normal; font-weight:500; font-display:swap; src:url('fonts/worksans-500.woff2') format('woff2'); }
+    @font-face { font-family:'JetBrains Mono'; font-style:normal; font-weight:500; font-display:swap; src:url('fonts/jbmono-500.woff2') format('woff2'); }
     :root {
-        --verde: #4f8bff;
-        --fondo: #090912;
-        --card: #0f0f1c;
-        --borde: #1a1a30;
-        --texto: #eaeaf5;
-        --suave: #9d9dc4;
+        --paper:#F1F1EC;
+        --paper-raised:#FBFBF8;
+        --ink:#171A17;
+        --ink-soft:#54584F;
+        --ink-faint:#8B8F84;
+        --line:#DBDACF;
+        --signal:#2F6E5C;
+        color-scheme: light;
+    }
+    @media (prefers-color-scheme: dark){
+        :root{ --paper:#141613; --paper-raised:#1B1E1A; --ink:#EDEEE8; --ink-soft:#AFB3A7; --ink-faint:#767A70; --line:#2C2F29; --signal:#7FC4A9; color-scheme: dark; }
     }
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
-        font-family: 'Inter', sans-serif;
-        background-color: var(--fondo);
-        color: var(--texto);
+        font-family: 'Work Sans', ui-sans-serif, system-ui, sans-serif;
+        background-color: var(--paper);
+        color: var(--ink-soft);
         line-height: 1.7;
     }
     header {
         padding: 1.5rem 2rem;
-        border-bottom: 1px solid var(--borde);
+        border-bottom: 1px solid var(--line);
     }
     header a {
-        font-family: 'Space Grotesk', sans-serif;
-        font-weight: 700;
+        font-family: 'Fraunces Display', ui-serif, Georgia, serif;
+        font-weight: 600;
         font-size: 1.2rem;
-        color: var(--texto);
+        color: var(--ink);
         text-decoration: none;
     }
     main {
@@ -41,42 +49,52 @@
     }
     a.back {
         display: inline-block;
-        color: var(--verde);
+        font-family: 'JetBrains Mono', ui-monospace, monospace;
+        font-size: 0.8rem;
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+        color: var(--signal);
         text-decoration: none;
-        font-weight: 600;
-        margin-bottom: 2rem;
+        margin-bottom: 2.5rem;
     }
     h1 {
-        font-family: 'Space Grotesk', sans-serif;
+        font-family: 'Fraunces Display', ui-serif, Georgia, serif;
+        font-weight: 600;
         font-size: 2rem;
+        color: var(--ink);
         margin-bottom: 0.5rem;
     }
     .updated {
-        color: var(--suave);
-        font-size: 0.9rem;
+        font-family: 'JetBrains Mono', ui-monospace, monospace;
+        color: var(--ink-faint);
+        font-size: 0.8rem;
+        text-transform: uppercase;
+        letter-spacing: 0.03em;
         margin-bottom: 2.5rem;
     }
     h2 {
-        font-family: 'Space Grotesk', sans-serif;
+        font-family: 'Fraunces Display', ui-serif, Georgia, serif;
+        font-weight: 600;
         font-size: 1.2rem;
         margin: 2.2rem 0 0.8rem;
-        color: var(--texto);
+        color: var(--ink);
     }
     p, li {
-        color: var(--suave);
+        color: var(--ink-soft);
         font-size: 1rem;
     }
     ul {
         margin: 0.5rem 0 0.5rem 1.3rem;
     }
     li { margin-bottom: 0.4rem; }
-    a { color: var(--verde); }
+    a { color: var(--signal); }
     footer {
         text-align: center;
         padding: 2rem;
-        color: var(--suave);
-        font-size: 0.85rem;
-        border-top: 1px solid var(--borde);
+        font-family: 'JetBrains Mono', ui-monospace, monospace;
+        color: var(--ink-faint);
+        font-size: 0.75rem;
+        border-top: 1px solid var(--line);
     }
 </style>
 </head>
