@@ -876,6 +876,51 @@
             .step-item:not(:last-child)::after{ display:none; }
             .step-item{ padding-right:0; }
         }
+
+        /* ─── ANTES / DESPUÉS ─── */
+        .compare-grid{
+            display:grid;
+            grid-template-columns:1fr auto 1fr;
+            align-items:stretch;
+            gap:0;
+            border:1px solid var(--line);
+        }
+        .compare-col{
+            padding:clamp(1.5rem,3vw,2.25rem);
+            display:flex; flex-direction:column; gap:1.1rem;
+        }
+        .compare-col.before{ background:var(--paper); }
+        .compare-col.after{ background:var(--paper-raised); }
+        .compare-head{
+            font-family:var(--font-mono); font-size:0.72rem; letter-spacing:0.06em; text-transform:uppercase;
+            padding-bottom:1rem; margin-bottom:0.25rem; border-bottom:1px dashed var(--line-strong);
+        }
+        .compare-col.before .compare-head{ color:var(--ink-faint); }
+        .compare-col.after .compare-head{ color:var(--signal); }
+        .compare-item{ display:flex; align-items:flex-start; gap:0.75rem; }
+        .compare-item .mark{
+            flex:0 0 auto; width:1.3rem; height:1.3rem;
+            display:flex; align-items:center; justify-content:center;
+            font-family:var(--font-mono); font-size:0.8rem; margin-top:0.05rem;
+        }
+        .compare-col.before .mark{ color:var(--ink-faint); }
+        .compare-col.after .mark{ color:var(--signal); }
+        .compare-item p{ font-size:0.92rem; }
+        .compare-col.before .compare-item p{ color:var(--ink-faint); }
+        .compare-col.after .compare-item p{ color:var(--ink); }
+        .compare-divider{
+            display:flex; align-items:center; justify-content:center;
+            padding:0 1rem;
+            color:var(--ink-faint);
+            border-left:1px solid var(--line);
+            border-right:1px solid var(--line);
+        }
+        .compare-divider svg{ width:20px; height:20px; }
+        @media (max-width:800px){
+            .compare-grid{ grid-template-columns:1fr; }
+            .compare-divider{ border:none; border-top:1px solid var(--line); border-bottom:1px solid var(--line); padding:0.75rem 0; }
+            .compare-divider svg{ transform:rotate(90deg); }
+        }
     </style>
 </head>
 <body>
@@ -940,6 +985,59 @@
                     <div class="waveform-cap">
                         <span data-es="Llamada en curso — FLEXCALLCENTER" data-en="Call in progress — FLEXCALLCENTER">Llamada en curso — FLEXCALLCENTER</span>
                         <span id="waveformTimer">00:00</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ANTES / DESPUÉS -->
+    <section id="antes-despues">
+        <div class="wrap">
+            <div class="section-header">
+                <span class="section-label" data-es="La diferencia real" data-en="The real difference">La diferencia real</span>
+                <h2 class="section-title" data-es="Lo que cambia cuando dejas de hacerlo a mano" data-en="What changes when you stop doing it by hand">Lo que cambia cuando dejas de hacerlo a mano</h2>
+            </div>
+            <div class="compare-grid reveal">
+                <div class="compare-col before">
+                    <div class="compare-head" data-es="Sin FlexPoint" data-en="Without FlexPoint">Sin FlexPoint</div>
+                    <div class="compare-item">
+                        <span class="mark">×</span>
+                        <p data-es="WhatsApp sin responder fuera de horario, prospectos que se enfrían esperando." data-en="WhatsApp unanswered after hours, prospects going cold while they wait.">WhatsApp sin responder fuera de horario, prospectos que se enfrían esperando.</p>
+                    </div>
+                    <div class="compare-item">
+                        <span class="mark">×</span>
+                        <p data-es="Llamadas de prospección que dependen de que alguien tenga tiempo ese día." data-en="Prospecting calls that depend on someone having time that day.">Llamadas de prospección que dependen de que alguien tenga tiempo ese día.</p>
+                    </div>
+                    <div class="compare-item">
+                        <span class="mark">×</span>
+                        <p data-es="Reportes armados a mano en Excel, uno por uno, día por día." data-en="Reports built by hand in Excel, one by one, day by day.">Reportes armados a mano en Excel, uno por uno, día por día.</p>
+                    </div>
+                    <div class="compare-item">
+                        <span class="mark">×</span>
+                        <p data-es="Tu equipo más capacitado atrapado en tareas repetitivas." data-en="Your most capable team stuck doing repetitive tasks.">Tu equipo más capacitado atrapado en tareas repetitivas.</p>
+                    </div>
+                </div>
+                <div class="compare-divider" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                </div>
+                <div class="compare-col after">
+                    <div class="compare-head" data-es="Con FlexPoint" data-en="With FlexPoint">Con FlexPoint</div>
+                    <div class="compare-item">
+                        <span class="mark">✓</span>
+                        <p data-es="Responde WhatsApp 24/7, sin fila de espera ni horario de oficina." data-en="Responds on WhatsApp 24/7, no queue, no office hours.">Responde WhatsApp 24/7, sin fila de espera ni horario de oficina.</p>
+                    </div>
+                    <div class="compare-item">
+                        <span class="mark">✓</span>
+                        <p data-es="Llama al prospecto en segundos, no cuando alguien tenga un hueco." data-en="Calls the prospect in seconds, not whenever someone has a gap.">Llama al prospecto en segundos, no cuando alguien tenga un hueco.</p>
+                    </div>
+                    <div class="compare-item">
+                        <span class="mark">✓</span>
+                        <p data-es="Dashboards que se actualizan solos, en tiempo real." data-en="Dashboards that update themselves, in real time.">Dashboards que se actualizan solos, en tiempo real.</p>
+                    </div>
+                    <div class="compare-item">
+                        <span class="mark">✓</span>
+                        <p data-es="Tu equipo enfocado en decisiones, no en tareas que puede hacer una IA." data-en="Your team focused on decisions, not on tasks an AI can do.">Tu equipo enfocado en decisiones, no en tareas que puede hacer una IA.</p>
                     </div>
                 </div>
             </div>
