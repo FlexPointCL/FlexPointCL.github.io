@@ -459,6 +459,44 @@
             text-transform:uppercase;
             margin-top:0.45rem;
         }
+        .waveform-wrap{
+            position:relative;
+            margin-top:1.25rem;
+            padding-top:1.1rem;
+            border-top:1px dashed var(--line-strong);
+        }
+        .waveform-wrap canvas{
+            display:block;
+            width:100%;
+            height:46px;
+        }
+        .waveform-playhead{
+            position:absolute;
+            top:1.1rem;
+            left:0;
+            width:2px;
+            height:46px;
+            background:var(--amber);
+            opacity:0.55;
+            animation:waveformSweep 7s linear infinite;
+        }
+        @keyframes waveformSweep{
+            0%{ left:0; }
+            100%{ left:100%; }
+        }
+        @media (prefers-reduced-motion: reduce){
+            .waveform-playhead{ animation:none; display:none; }
+        }
+        .waveform-cap{
+            display:flex; justify-content:space-between;
+            font-family:var(--font-mono);
+            font-size:0.65rem;
+            color:var(--ink-faint);
+            letter-spacing:0.04em;
+            text-transform:uppercase;
+            margin-top:0.5rem;
+        }
+        #waveformTimer{ font-variant-numeric:tabular-nums; }
         @media (max-width:900px){
             .hero-grid{ grid-template-columns:1fr; }
         }
@@ -760,7 +798,7 @@
                 <p class="hero-sub" data-es="Automatiza lo que hoy consume tiempo de tu equipo: llamadas de prospección, WhatsApp, reportes. FlexPoint lo hace por ti — implementado en días, no meses." data-en="Automate what consumes your team's time today: prospecting calls, WhatsApp, reports. FlexPoint does it for you — implemented in days, not months.">Automatiza lo que hoy consume tiempo de tu equipo: llamadas de prospección, WhatsApp, reportes. FlexPoint lo hace por ti — implementado en días, no meses.</p>
                 <div class="hero-actions">
                     <button onclick="openCalendly()" class="btn btn-solid" data-es="Agendar reunión gratis" data-en="Book a free meeting">Agendar reunión gratis</button>
-                    <a href="https://flexpointcl.github.io/roi" target="_blank" rel="noopener noreferrer" class="btn" data-es="Calcular mi ahorro automatizando" data-en="Calculate my automation savings">Calcular mi ahorro automatizando</a>
+                    <a href="/roi/" target="_blank" rel="noopener noreferrer" class="btn" data-es="Calcular mi ahorro automatizando" data-en="Calculate my automation savings">Calcular mi ahorro automatizando</a>
                 </div>
             </div>
             <div class="signal-panel">
@@ -770,20 +808,28 @@
                 </div>
                 <div class="readout">
                     <div class="readout-item">
+                        <div class="num">&lt;1s</div>
+                        <div class="lbl" data-es="Tiempo de respuesta" data-en="Response time">Tiempo de respuesta</div>
+                    </div>
+                    <div class="readout-item">
                         <div class="num">24/7</div>
                         <div class="lbl" data-es="Disponibilidad" data-en="Availability">Disponibilidad</div>
                     </div>
                     <div class="readout-item">
-                        <div class="num" data-target="40" data-prefix="+" data-suffix="%">0</div>
+                        <div class="num" data-target="40" data-prefix="+" data-suffix="%" data-loop="true">0</div>
                         <div class="lbl" data-es="Reducción operativa" data-en="Operational reduction">Reducción operativa</div>
-                    </div>
-                    <div class="readout-item">
-                        <div class="num" data-target="3" data-prefix="+" data-suffix="x">0</div>
-                        <div class="lbl" data-es="Velocidad de conversión" data-en="Conversion speed">Velocidad de conversión</div>
                     </div>
                     <div class="readout-item">
                         <div class="num">7</div>
                         <div class="lbl" data-es="Productos activos" data-en="Active products">Productos activos</div>
+                    </div>
+                </div>
+                <div class="waveform-wrap">
+                    <canvas id="heroWaveform" width="600" height="46" aria-hidden="true"></canvas>
+                    <div class="waveform-playhead" aria-hidden="true"></div>
+                    <div class="waveform-cap">
+                        <span data-es="Llamada en curso — FLEXCALLCENTER" data-en="Call in progress — FLEXCALLCENTER">Llamada en curso — FLEXCALLCENTER</span>
+                        <span id="waveformTimer">00:00</span>
                     </div>
                 </div>
             </div>
@@ -1118,6 +1164,15 @@
             requestAnimationFrame(step);
         }
 
+        function startLoopingCount(el, targetVal, prefix, suffix) {
+            const cycle = () => {
+                el.textContent = prefix + '0' + suffix;
+                animateCount(el, targetVal, prefix, suffix);
+                setTimeout(cycle, 1600 + 3200);
+            };
+            cycle();
+        }
+
         const statsObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -1129,7 +1184,11 @@
                         const targetVal = parseInt(numEl.dataset.target, 10);
                         const prefix = numEl.dataset.prefix || '';
                         const suffix = numEl.dataset.suffix || '';
-                        animateCount(numEl, targetVal, prefix, suffix);
+                        if (numEl.dataset.loop === 'true') {
+                            startLoopingCount(numEl, targetVal, prefix, suffix);
+                        } else {
+                            animateCount(numEl, targetVal, prefix, suffix);
+                        }
                     }
                 }
             });
@@ -1139,6 +1198,53 @@
             numEl.textContent = (numEl.dataset.prefix || '') + '0' + (numEl.dataset.suffix || '');
             statsObserver.observe(numEl);
         });
+
+        /* ─── HERO WAVEFORM (leve, estático con playhead) ─── */
+        (function () {
+            const canvas = document.getElementById('heroWaveform');
+            if (!canvas) return;
+            function draw() {
+                const dpr = window.devicePixelRatio || 1;
+                const w = canvas.clientWidth || 560;
+                const h = 46;
+                canvas.width = w * dpr;
+                canvas.height = h * dpr;
+                const ctx = canvas.getContext('2d');
+                ctx.scale(dpr, dpr);
+                ctx.clearRect(0, 0, w, h);
+                const styles = getComputedStyle(document.documentElement);
+                const signal = styles.getPropertyValue('--signal').trim() || '#2F6E5C';
+                const faint = styles.getPropertyValue('--line-strong').trim() || '#C6C5B8';
+                let seed = 11;
+                function rand() { seed = (seed * 9301 + 49297) % 233280; return seed / 233280; }
+                const bars = Math.floor(w / 5);
+                const mid = h / 2;
+                for (let i = 0; i < bars; i++) {
+                    const x = i * 5 + 1.5;
+                    const envelope = Math.sin((i / bars) * Math.PI);
+                    const amp = (0.15 + rand() * 0.85) * envelope * (h / 2 - 3);
+                    ctx.strokeStyle = i % 4 === 0 ? signal : faint;
+                    ctx.lineWidth = 1.6;
+                    ctx.beginPath();
+                    ctx.moveTo(x, mid - amp);
+                    ctx.lineTo(x, mid + amp);
+                    ctx.stroke();
+                }
+            }
+            draw();
+            window.addEventListener('resize', draw);
+
+            const timerEl = document.getElementById('waveformTimer');
+            if (timerEl) {
+                let seconds = 0;
+                setInterval(() => {
+                    seconds = (seconds + 1) % 3600;
+                    const m = String(Math.floor(seconds / 60)).padStart(2, '0');
+                    const s = String(seconds % 60).padStart(2, '0');
+                    timerEl.textContent = m + ':' + s;
+                }, 1000);
+            }
+        })();
 
         /* ─── SCROLL REVEAL (único, restringido) ─── */
         const revealObserver = new IntersectionObserver((entries) => {
