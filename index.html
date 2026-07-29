@@ -766,6 +766,116 @@
         @media (prefers-reduced-motion: reduce){
             .reveal{ opacity:1; transform:none; transition:none; }
         }
+
+        /* ─── PRODUCTO EN ACCIÓN ─── */
+        .demo-grid{
+            display:grid;
+            grid-template-columns:1fr 1fr;
+            gap:1px;
+            background:var(--line);
+            border:1px solid var(--line);
+        }
+        .demo-card{
+            background:var(--paper-raised);
+            padding:1.5rem;
+            display:flex;
+            flex-direction:column;
+        }
+        .demo-card-head{
+            display:flex; justify-content:space-between; align-items:center;
+            font-family:var(--font-mono); font-size:0.7rem; letter-spacing:0.06em; text-transform:uppercase;
+            color:var(--ink-faint);
+            padding-bottom:1rem; margin-bottom:1.25rem;
+            border-bottom:1px dashed var(--line-strong);
+        }
+        .demo-card-head .live{ color:var(--amber); display:flex; align-items:center; gap:0.4em; }
+        .demo-card-head .live::before{ content:""; width:6px; height:6px; border-radius:50%; background:var(--amber); }
+
+        .chat-thread{ display:flex; flex-direction:column; gap:0.7rem; flex:1; }
+        .chat-bubble{
+            max-width:78%;
+            padding:0.65rem 0.9rem;
+            font-size:0.88rem;
+            line-height:1.4;
+            border:1px solid var(--line-strong);
+        }
+        .chat-bubble.in{ align-self:flex-start; background:var(--paper); color:var(--ink); border-bottom-left-radius:0; }
+        .chat-bubble.out{ align-self:flex-end; background:var(--signal); color:var(--paper-raised); border-color:var(--signal); border-bottom-right-radius:0; }
+        .chat-time{
+            font-family:var(--font-mono); font-size:0.62rem; color:var(--ink-faint);
+            margin-top:0.3rem; align-self:flex-end;
+        }
+        .chat-bubble.in + .chat-time{ align-self:flex-start; }
+
+        .call-mockup{ flex:1; display:flex; flex-direction:column; }
+        .call-caller{ display:flex; align-items:center; gap:0.9rem; margin-bottom:1.25rem; }
+        .call-avatar{
+            width:42px; height:42px; border-radius:50%;
+            background:var(--signal-soft); color:var(--signal-ink);
+            display:flex; align-items:center; justify-content:center;
+            font-family:var(--font-mono); font-weight:500; font-size:0.95rem;
+        }
+        .call-caller-name{ font-family:var(--font-display); font-weight:600; font-size:1rem; }
+        .call-caller-sub{ font-family:var(--font-mono); font-size:0.7rem; color:var(--ink-faint); margin-top:0.2rem; }
+        .call-transcript{
+            font-size:0.88rem; color:var(--ink-soft); font-style:italic;
+            padding:0.9rem; background:var(--paper); border:1px solid var(--line-strong);
+            margin-bottom:1rem;
+        }
+        .call-waveform{ margin-top:auto; }
+        .call-waveform canvas{ display:block; width:100%; height:36px; }
+        .call-meta{
+            display:flex; justify-content:space-between;
+            font-family:var(--font-mono); font-size:0.68rem; color:var(--ink-faint);
+            text-transform:uppercase; letter-spacing:0.03em; margin-top:0.5rem;
+        }
+        @media (max-width:900px){ .demo-grid{ grid-template-columns:1fr; } }
+
+        /* ─── INTEGRACIONES ─── */
+        .integrations-strip{
+            display:flex; flex-wrap:wrap; gap:0.75rem;
+        }
+        .integration-badge{
+            font-family:var(--font-mono); font-size:0.78rem;
+            border:1px solid var(--line-strong);
+            padding:0.55rem 1rem;
+            color:var(--ink-soft);
+            background:var(--paper-raised);
+        }
+
+        /* ─── CÓMO EMPEZAR ─── */
+        .steps-flow{
+            display:grid;
+            grid-template-columns:repeat(3,1fr);
+            gap:0;
+            position:relative;
+        }
+        .step-item{
+            padding:0 1.5rem 0 0;
+            position:relative;
+        }
+        .step-item:not(:last-child)::after{
+            content:"";
+            position:absolute;
+            top:0.75rem;
+            left:calc(100% - 1.1rem);
+            width:calc(1.5rem + 1px);
+            border-top:1px dashed var(--line-strong);
+        }
+        .step-num{
+            font-family:var(--font-mono); font-size:0.85rem; color:var(--signal);
+            border:1px solid var(--line-strong);
+            width:1.9rem; height:1.9rem;
+            display:flex; align-items:center; justify-content:center;
+            margin-bottom:1rem;
+        }
+        .step-item h3{ font-size:1.05rem; margin-bottom:0.5rem; }
+        .step-item p{ font-size:0.9rem; }
+        @media (max-width:800px){
+            .steps-flow{ grid-template-columns:1fr; gap:2rem; }
+            .step-item:not(:last-child)::after{ display:none; }
+            .step-item{ padding-right:0; }
+        }
     </style>
 </head>
 <body>
@@ -894,6 +1004,69 @@
                     <p data-es="Extrae leads de 7 fuentes, los califica con FlexScore™ en 5 pilares y genera mensajes de contacto humanizados, sin intervención manual." data-en="Extracts leads from 7 sources, scores them with FlexScore™ across 5 pillars and generates humanized outreach messages, with no manual work.">Extrae leads de 7 fuentes, los califica con FlexScore™ en 5 pilares y genera mensajes de contacto humanizados, sin intervención manual.</p>
                     <span class="producto-link"><span data-es="Ver producto" data-en="View product">Ver producto</span><svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
                 </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- PRODUCTO EN ACCIÓN -->
+    <section id="demo">
+        <div class="wrap">
+            <div class="section-header">
+                <span class="section-label" data-es="Producto en acción" data-en="Product in action">Producto en acción</span>
+                <h2 class="section-title" data-es="Así se ve un cliente hablando con tu empresa" data-en="This is what a customer talking to your business looks like">Así se ve un cliente hablando con tu empresa</h2>
+                <p class="section-desc" data-es="Dos canales, un mismo estándar: responde en segundos, sin guiones robóticos." data-en="Two channels, one standard: responds in seconds, no robotic scripts.">Dos canales, un mismo estándar: responde en segundos, sin guiones robóticos.</p>
+            </div>
+            <div class="demo-grid reveal">
+                <div class="demo-card">
+                    <div class="demo-card-head">
+                        <span data-es="WhatsApp — FLEXAGENT" data-en="WhatsApp — FLEXAGENT">WhatsApp — FLEXAGENT</span>
+                        <span class="live" data-es="en línea" data-en="online">en línea</span>
+                    </div>
+                    <div class="chat-thread">
+                        <div class="chat-bubble in" data-es="Hola! vi que hacen mantención de aires acondicionados, cuánto sale para 2 equipos" data-en="Hi! I saw you do AC maintenance, how much for 2 units">Hola! vi que hacen mantención de aires acondicionados, cuánto sale para 2 equipos</div>
+                        <div class="chat-time">14:02</div>
+                        <div class="chat-bubble out" data-es="¡Hola! Para 2 equipos split la mantención sale $45.000 en total. ¿Te acomoda esta semana o la próxima?" data-en="Hi! For 2 split units, maintenance is $45,000 total. Does this week or next work for you?">¡Hola! Para 2 equipos split la mantención sale $45.000 en total. ¿Te acomoda esta semana o la próxima?</div>
+                        <div class="chat-time">14:02</div>
+                        <div class="chat-bubble in" data-es="Esta semana, el jueves en la tarde" data-en="This week, Thursday afternoon">Esta semana, el jueves en la tarde</div>
+                        <div class="chat-time">14:03</div>
+                        <div class="chat-bubble out" data-es="Perfecto, jueves 15:30 quedó agendado. Te llega la confirmación por WhatsApp ✓" data-en="Perfect, Thursday 3:30pm is booked. You'll get the confirmation by WhatsApp ✓">Perfecto, jueves 15:30 quedó agendado. Te llega la confirmación por WhatsApp ✓</div>
+                        <div class="chat-time">14:03</div>
+                    </div>
+                </div>
+                <div class="demo-card">
+                    <div class="demo-card-head">
+                        <span data-es="Llamada — FLEXCALLCENTER" data-en="Call — FLEXCALLCENTER">Llamada — FLEXCALLCENTER</span>
+                        <span class="live" data-es="en curso" data-en="ongoing">en curso</span>
+                    </div>
+                    <div class="call-mockup">
+                        <div class="call-caller">
+                            <div class="call-avatar">RM</div>
+                            <div>
+                                <div class="call-caller-name">+56 9 8123 4567</div>
+                                <div class="call-caller-sub" data-es="Llamada entrante — soporte técnico" data-en="Incoming call — technical support">Llamada entrante — soporte técnico</div>
+                            </div>
+                        </div>
+                        <p class="call-transcript" data-es="&quot;Buenas, tengo un problema con mi pedido número 4521, no me ha llegado...&quot;" data-en="&quot;Hi, I have a problem with my order number 4521, it hasn't arrived...&quot;">"Buenas, tengo un problema con mi pedido número 4521, no me ha llegado..."</p>
+                        <div class="call-waveform">
+                            <canvas id="demoWaveform" width="500" height="36" aria-hidden="true"></canvas>
+                        </div>
+                        <div class="call-meta">
+                            <span data-es="Tiempo de respuesta: &lt;1s" data-en="Response time: &lt;1s">Tiempo de respuesta: &lt;1s</span>
+                            <span id="demoCallTimer">00:00</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="section-header" style="margin-top:3rem; margin-bottom:1.5rem;">
+                <span class="section-label" data-es="Se integra con lo que ya usas" data-en="Integrates with what you already use">Se integra con lo que ya usas</span>
+            </div>
+            <div class="integrations-strip reveal">
+                <span class="integration-badge">WhatsApp Business</span>
+                <span class="integration-badge">Google Calendar</span>
+                <span class="integration-badge">Meta Business</span>
+                <span class="integration-badge">WebPay</span>
+                <span class="integration-badge">Mercado Pago</span>
+                <span class="integration-badge">Claude (Anthropic)</span>
             </div>
         </div>
     </section>
@@ -1111,6 +1284,33 @@
         </div>
     </section>
 
+    <!-- CÓMO EMPEZAR -->
+    <section id="empezar">
+        <div class="wrap">
+            <div class="section-header">
+                <span class="section-label" data-es="Cómo empezar" data-en="How to start">Cómo empezar</span>
+                <h2 class="section-title" data-es="De la reunión a producción, en días" data-en="From meeting to production, in days">De la reunión a producción, en días</h2>
+            </div>
+            <div class="steps-flow reveal">
+                <div class="step-item">
+                    <div class="step-num">01</div>
+                    <h3 data-es="Conectas tu WhatsApp o número" data-en="Connect your WhatsApp or number">Conectas tu WhatsApp o número</h3>
+                    <p data-es="Usamos el canal que ya tienes — tu número actual, tu WhatsApp Business. Sin migrar nada." data-en="We use the channel you already have — your current number, your WhatsApp Business. No migration needed.">Usamos el canal que ya tienes — tu número actual, tu WhatsApp Business. Sin migrar nada.</p>
+                </div>
+                <div class="step-item">
+                    <div class="step-num">02</div>
+                    <h3 data-es="Configuramos tu agente contigo" data-en="We configure your agent with you">Configuramos tu agente contigo</h3>
+                    <p data-es="Una reunión de 30 minutos para definir cómo responde, qué agenda y cuándo escala a un humano." data-en="A 30-minute meeting to define how it responds, what it schedules and when it escalates to a human.">Una reunión de 30 minutos para definir cómo responde, qué agenda y cuándo escala a un humano.</p>
+                </div>
+                <div class="step-item">
+                    <div class="step-num">03</div>
+                    <h3 data-es="Empieza a atender" data-en="It starts assisting">Empieza a atender</h3>
+                    <p data-es="Tu agente queda activo 24/7. Ves resultados desde la primera semana, con reportes claros." data-en="Your agent goes live 24/7. You see results from the first week, with clear reports.">Tu agente queda activo 24/7. Ves resultados desde la primera semana, con reportes claros.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- CONTACTO -->
     <section id="contacto">
         <div class="wrap contact-inner">
@@ -1199,14 +1399,14 @@
             statsObserver.observe(numEl);
         });
 
-        /* ─── HERO WAVEFORM (leve, estático con playhead) ─── */
-        (function () {
-            const canvas = document.getElementById('heroWaveform');
+        /* ─── WAVEFORMS (leve, estático) + timers de llamada ─── */
+        function setupWaveform(canvasId, timerId, seedStart, startSeconds, height) {
+            const canvas = document.getElementById(canvasId);
             if (!canvas) return;
             function draw() {
                 const dpr = window.devicePixelRatio || 1;
                 const w = canvas.clientWidth || 560;
-                const h = 46;
+                const h = height;
                 canvas.width = w * dpr;
                 canvas.height = h * dpr;
                 const ctx = canvas.getContext('2d');
@@ -1215,7 +1415,7 @@
                 const styles = getComputedStyle(document.documentElement);
                 const signal = styles.getPropertyValue('--signal').trim() || '#2F6E5C';
                 const faint = styles.getPropertyValue('--line-strong').trim() || '#C6C5B8';
-                let seed = 11;
+                let seed = seedStart;
                 function rand() { seed = (seed * 9301 + 49297) % 233280; return seed / 233280; }
                 const bars = Math.floor(w / 5);
                 const mid = h / 2;
@@ -1234,9 +1434,9 @@
             draw();
             window.addEventListener('resize', draw);
 
-            const timerEl = document.getElementById('waveformTimer');
+            const timerEl = document.getElementById(timerId);
             if (timerEl) {
-                let seconds = 0;
+                let seconds = startSeconds;
                 setInterval(() => {
                     seconds = (seconds + 1) % 3600;
                     const m = String(Math.floor(seconds / 60)).padStart(2, '0');
@@ -1244,7 +1444,9 @@
                     timerEl.textContent = m + ':' + s;
                 }, 1000);
             }
-        })();
+        }
+        setupWaveform('heroWaveform', 'waveformTimer', 11, 0, 46);
+        setupWaveform('demoWaveform', 'demoCallTimer', 29, 7, 36);
 
         /* ─── SCROLL REVEAL (único, restringido) ─── */
         const revealObserver = new IntersectionObserver((entries) => {
