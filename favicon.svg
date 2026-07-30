@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <rect width="64" height="64" rx="13" fill="#171A17"/>
+  <ellipse cx="12" cy="12" rx="22" ry="22" fill="#2F6E5C" opacity="0.16"/>
+  <text x="14" y="46" font-family="Georgia, 'Times New Roman', serif" font-weight="700" font-size="40" fill="#F1F1EC" text-anchor="middle" letter-spacing="-1">F</text>
+  <circle cx="57" cy="55" r="5.5" fill="#7FC4A9"/>
+</svg>
