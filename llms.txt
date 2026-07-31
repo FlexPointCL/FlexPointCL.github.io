@@ -13,6 +13,7 @@ FlexPoint desarrolla y opera un ecosistema de productos de inteligencia artifici
 - **FUTURIA**: Orientación universitaria inteligente. Test vocacional, compatibilidad por carrera y simulador de ingreso PAES en menos de 60 segundos, gratis para estudiantes de 3° y 4° medio.
 - **FLEXREVIEW**: Captura reseñas reales, filtra experiencias negativas antes de que lleguen a Google y gestiona la reputación del negocio desde un panel inteligente, 24/7.
 - **FLEXPROSPECTA**: Extrae leads de 7 fuentes, los califica con FlexScore™ en 5 pilares usando IA y genera mensajes de contacto humanizados, sin intervención manual.
+- **FLEXGAME**: Convierte metas comerciales y de equipo en desafíos con puntos, rankings y recompensas, para aumentar el compromiso sin depender de bonos fijos.
 
 ## Servicios a medida
 
@@ -51,6 +52,7 @@ Inmobiliarias, centros de salud, retail, educación, seguros y empresas B2B en C
 - FUTURIA: https://futuria.flexpoint.cl
 - FLEXREVIEW: https://flexreview.flexpoint.cl
 - FLEXPROSPECTA: https://flexprospeccion.flexpoint.cl
+- FLEXGAME: https://flexgame.flexpoint.cl
 
 ## Legal
 
